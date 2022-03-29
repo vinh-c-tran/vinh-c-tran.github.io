@@ -17,7 +17,7 @@ form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
-section, summary, time, mark, audio, video {
+section, summary, time, mark, audio, video, toc {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -3328,3 +3328,112 @@ input, select, textarea {
 			}
 
 		}
+
+
+/* Table of Contents */ 
+:root{
+	--menuWidth: 10em;
+	--menuPaddingLeft: 3em;
+}
+
+/*
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+body {
+  padding: 2em 2em 2em var(--menuWidth)+var(--menuPaddingLeft);
+  font-size: 16px;
+  line-height: 1.6;
+  
+  font-family: 'Roboto', sans-serif;
+}
+*/ 
+
+.toc {
+  position: fixed;
+  left: var(--menuPaddingLeft);
+  top: 10em;
+  padding: 1em;
+  width: var(--menuWidth);
+  line-height: 2;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+.toc ul ul {
+    padding-left: 2em;
+  }
+  
+.toc  li a {
+    display: inline-block;
+    color: #aaa;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+  }
+  
+.toc li.visible>a {
+    color: #111;
+    transform: translate( 5px );
+  }
+
+.toc-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.toc-marker path {
+    transition: all 0.3s ease;
+}
+
+.contents {
+  padding: 1em;
+  max-width: 800px;
+  font-size: 1.2em;
+  font-family: 'Frank Ruhl Libre', sans-serif;
+}
+.contents img {
+    max-width: 100%;
+}
+  
+.contents .code-block {
+		white-space: pre;
+		overflow: auto;
+		max-width: 100%;
+}
+
+.contents .code-block code {
+      display: block;
+			background-color: #f9f9f9;
+			padding: 10px;
+}
+
+.contents .code-inline {
+		background-color: #f9f9f9;
+		padding: 4px;
+}
+  
+.contents h2, .contents h3 {
+    padding-top: 1em;
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+    font-size: 14px;
+  }
+}
