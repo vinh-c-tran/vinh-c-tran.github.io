@@ -1,6 +1,6 @@
 ---
 style: style2
-image_path: images/FET.jpg
+image_path: images/FET.JPG
 path: generic.html 
 title: Graphene Field Effect Transistor Fabrication
 caption: Graphene Field Effect transistor fabrication and measurement of resistivity as a function of
