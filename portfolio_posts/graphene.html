@@ -6,6 +6,7 @@ css: /assets/css/text.css
 section:
     - "Background Information"
     - "Fabrication"
+    - "Measurement"
     - "Data Analysis"
 --- 
 
@@ -33,13 +34,13 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
         <h2>
             Background Information
         </h2>
-        <h3>
+        <h4>
             Field Effect Transistor 
-        </h3>
+        </h4>
 
-        <h3>
+        <h4>
             Graphene 
-        </h3>
+        </h4>
         <p>
             Proper monolayer graphene is a two dimensional, single layer of hexagonal honeycomb arrangement of carbon atoms. Due to this structure, graphene has some significant electronic properties such as high electron mobility on the order of 15,000 cm\(^2\)/Vs. Additionally, graphene is a semiconductor with zero-gap between the valence and conduction band (which in this case would make it more like a metal).
         </p> 
@@ -63,6 +64,27 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
             $$
             where \(\rho\) is the density of states and \(F(E)\) is the Fermi-Dirac distribution, as the Fermi energy sweeps through the conduction and valence bands, the cone shapes indicate that the number of charge carriers (holes for the valence band and electrons for the conduction band) will decrease as the Fermi energy approaches the Dirac points and increase as it moves further away.
         </p>
+
+        <h4>
+            Graphene FET 
+        </h4>
+        <p>
+            A graphene field effect transistor is a field effect transistor where the channel is replaced with a sample of graphene. 
+        </p>
+        <p>
+            When we apply a voltage to the gate, the electric field effect shifts the position of the Fermi energy by inducing a doping of electrons or holes in the graphene. The number of available states will in turn increase as the Fermi energy moves away from the Dirac points which increases the conductivity. Conversely, as the Fermi energy approaches the Dirac point, the number of states in principal approaches zero which means that the conductivity goes towards zero, or equivalently the resistance increases to infinity. 
+            
+            <!-- This idea is visualized in Figure \ref{fig:resistivity_curve} which gives the resistivity as a function of applied gate voltage which demonstrates a sharp peak \cite[pg. 667]{Novoselov} -->
+            
+            For few-layer graphene, the resistivity tends towards the order of 100 ohms for high gate voltage and tends towards orders of kilo-ohms as the resistivity approaches its peak [Novoselov].
+        </p>
+        <p>
+            A model describing this effect is presented in Novoselov et. al where the graphene is treated as a two dimensional metal with the conductance band and valence bands overlapping. When a gate voltage \(V_G\) is applied, the subsequent electric field induces a charge density \(n\) in the graphene where <i>n</i> is given by 
+            $$
+                n = \frac{\varepsilon_0 \varepsilon V_G}{te}
+            $$
+            with \(\varepsilon_0, \varepsilon\) are the permitivities of free space and Si\(\text{O}_2\), <i>e</i> is the charge of the electron, and <i>t</i> is the depth of the insulating layer. As \(V_G\) goes towards zero, <i>n</i> goes to zero and hence the resistivity increases towards infinity. Likewise, as \(V_G\) increases or decreases further away, <i>n</i> increases and the resistivity will instead decrease. 
+        </p>
 </div>
 
 
@@ -71,15 +93,28 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     <h2>
         Fabrication
     </h2>
+    <p>
+        
+    </p>
+
     <h4>
         Exfoliation of Highly Oriented Graphite (with Scotch tape!)
     </h4>
 
 
     <h4>
-
+        Photolithography
     </h4>
 
+    <h4>
+        Lift Off
+    </h4>
+</div>
+
+<div id = 'Measurement'>
+    <h2>
+        Measurement 
+    </h2>
 </div>
 
 
@@ -91,7 +126,12 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     </h2>
 
     <p>
-        Our goal was to measure the resistivity of the graphene FET as a function of applied gate voltage. 
+        Our goal was to measure the resistivity of the graphene FET as a function of applied gate voltage. After making corrections to our samples (after initial poor measurements), we got the following data, which we take and analyze using 
 
     </p>
 </div>
+
+
+<h2>
+    References. 
+</h2>
