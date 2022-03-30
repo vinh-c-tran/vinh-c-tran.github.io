@@ -3354,7 +3354,7 @@ body {
 	position: fixed;
 	left: 5vw;
 	right: 50vw; 
-	top: 15vw;
+	top: 18vw;
 	padding: 1vw;
 	width: 10vw;
 	line-height: 2;
@@ -3447,7 +3447,7 @@ body {
 .profile_pic img{
 	border-radius: 50%; 
 	margin-right: 6vw; 
-	width: 15vw; 
-	height: 15vw; 
+	width: 14vw; 
+	height: 14vw; 
 
 }
