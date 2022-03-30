@@ -7,6 +7,10 @@ section:
     - 'Neutron Star Introduction'
     - 'Stellar Oscillations'
     - "G-Modes and Sound Speed Difference"
+    - "Relativistic Mean Field Model"
+    - "Chemical Potentials"
+    - "Python: Numerical Non-Linear Solver"
+    - "Python: Sound Speed Difference"
 --- 
 
 <div id='Neutron Star Introduction'>
@@ -55,5 +59,36 @@ section:
 <div id = "G-Modes and Sound Speed Difference">
     <h2>
         G-Modes and Sound Speed Differences
+    </h2>
+</div>
+
+
+
+<div id = "Relativistic Mean Field Model">
+    <h2>
+        Relativistic Mean Field Model
+    </h2>
+</div>
+
+
+
+
+<div id = "Python: Numerical Non-Linear Solver">
+    <h2>
+        Python: Numerical Non-Linear Solver
+    </h2>
+    <p>
+        To make any progress, we need to start off by solving for the various values of the different particle momentas and field values as a function of baryon density \( n_B \). Each point \( n_B \) then traces out a trajectory in phase space that uniquely defines values for the meson fields, baryon and lepton momenta and fraction. To do this though, we need to solve our system of equations in the context of an RMF model. 
+    </p>
+    <p>
+        We are left with a system of <i>n</i> highly nonlinear and coupled equations and <i>n</i> unknown variables. In other words, we have a multivariate optimization problem. We can approach this using a Quasi-Newton method called Broyden's method. 
+     </p>
+</div>
+
+
+
+<div id = "Python: Sound Speed Difference">
+    <h2>
+        Python: Sound Speed Difference
     </h2>
 </div>
