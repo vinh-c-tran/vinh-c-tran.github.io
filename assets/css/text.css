@@ -3168,7 +3168,7 @@ input, select, textarea {
 /* Footer */
 
 	#footer {
-		padding: 5em 0 6em 0 ;
+		padding: 5em 0 6em 0em;
 		background-color: #fff;
 	}
 
@@ -3354,7 +3354,7 @@ body {
 	position: fixed;
 	left: 5vw;
 	right: 50vw; 
-	top: 14vw;
+	top: 15vw;
 	padding: 1vw;
 	width: 10vw;
 	line-height: 2;
@@ -3421,4 +3421,33 @@ body {
 	body {
 		font-size: 14px;
    }
+}
+
+
+/* Profile Pic */
+
+#header_container{
+	display: flex; 
+	justify-content: space-between;
+	align-items: flex-end; 
+	/* padding: 2vh;  */
+	margin: 0, 0, 2vh, 0; 
+}	
+
+#header_container2{
+	display: flex; 
+	flex-direction: column;
+}	
+
+#profile_pic{
+	flex:1; 
+}
+
+
+.profile_pic img{
+	border-radius: 50%; 
+	margin-right: 6vw; 
+	width: 15vw; 
+	height: 15vw; 
+
 }

@@ -3331,3 +3331,31 @@ input, select, textarea {
 
 		}
 
+
+/* Profile Pic */
+
+	#header_container{
+		display: flex; 
+		justify-content: space-between;
+		align-items: flex-end; 
+		padding: 2vh; 
+		margin: 0, 0, 2vh, 0; 
+	}	
+
+	#header_container2{
+		display: flex; 
+		flex-direction: column;
+	}	
+
+	#profile_pic{
+		flex:1; 
+	}
+
+	
+	.profile_pic img{
+		border-radius: 50%; 
+		margin-right: 6vw; 
+		width: 17vw; 
+		height: 17vw; 
+
+	}
