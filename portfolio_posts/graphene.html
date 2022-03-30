@@ -190,9 +190,21 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     </h2>
 
     <p>
-        Our goal was to measure the resistivity of the graphene FET as a function of applied gate voltage. After making corrections to our samples (after initial poor measurements), we got the following data, which we take and analyze using 
-
+        Our goal was to measure the resistivity of the graphene FET as a function of applied gate voltage. After making corrections to our samples (after initial poor measurements), we got the following data, which we take and analyze using Python. 
     </p>
+
+    <h4>
+        Curve Fitting
+    </h4>
+        <p>
+            Since resistivity versus gate voltage plot for graphene was expected to exhibit a shark peak around the Fermi energy, we tried to fit a "peak" function to the data. We ended up choosing a Lorentzian function, although a Gaussian could work as well (or even a Voigt function which is a convolution of a Gaussian and a Lorentzian). That is, we used a function of the following form
+            $$
+                L(x) =
+                \frac{1}{\pi}
+                \frac{\frac{1}{2}\Gamma}{(x-x_0)^2 + (\frac{1}{2}\Gamma)^2} + h
+            $$
+            with \(\Gamma, x_0, h\) as fittable parameters.
+        </p>
 </div>
 
 
@@ -204,5 +216,5 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
 </div>
 
 <h2>
-    References. 
+    References
 </h2>
