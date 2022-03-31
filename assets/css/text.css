@@ -3503,3 +3503,23 @@ body {
 	flex-wrap: auto;  
 	flex: 1; 
 }
+
+#intro-flex-container_reversed{
+	display: flex; 
+	justify-content:space-evenly; 
+	align-items:flex-start; 
+	flex-direction:row-reverse; 
+}
+
+.schottky_pic img{
+		/* margin-right: 6vw;  */
+		flex-shrink: 2; 
+		margin-right: 2vw; 
+		border-radius: 5%; 
+		max-width: 17vw; 
+		max-height: 17vw; 
+		width: auto; 
+		height: auto; 
+		/* max-width: 10em; 
+		max-height: 10vh;  */
+}
