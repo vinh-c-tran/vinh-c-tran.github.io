@@ -4,7 +4,7 @@ header: Au-Si Junction &#58; Schottky Diode
 title: Schottky Diode
 css: /assets/css/text.css 
 section:
-    - "Background Information"
+    - "Introduction"
     - "Fabrication"
     - "Measurement"
     - "Data Analysis"
@@ -16,21 +16,104 @@ section:
     <h2>
         Introduction
     </h2>
-    </div>
+</div>
+
     <div id='intro-flex-container_reversed'> 
     <div id='intro-flex-container-2'> 
+    <h4> Metal-Semiconductor Junction </h4>
     <p> 
-        A Schottky diode is a diode that forms when we put a semiconductor such as Si together with a metal such as Au, which is the metal-semiconductor junction that we explored below. As a rectifying diode, it exhibits a characteristic current versus voltage dependence. That is, for forward bias, current grows exponentially as forward voltage increases, but for reverse bias, current remains close to zero (until the breakdown voltage). This current versus voltage has a characteristic equation derived from thermionic emission theory. 
+        A Schottky diode is a diode that forms when we put a semiconductor such as Si together with a metal such as Au, which is the metal-semiconductor junction that we explored below. 
     </p> 
-
-    <p>
-        We explored the current dependency on voltage and temperature of an Au-Si junction, an example of a rectifying Schottky diode, whose characteristic feature is the potential barrier formed at the interface between the metal and semiconductor. We performed current measurements in two stages: first at room temperature and second by varying the temperature of the diode using a closed cycle cryostat or physical property measurement system (PPMS). From thermionic emission theory, we predict the overall shape of the current curve to follow an exponential curve for positive bias and be flat for reverse bias. We find that the general behavior of the IV curve both agrees the predicted expression from thermal emission theory (TET) as voltage is varied for fixed temperature as well as demonstrating the expected decrease in current magnitude for lower temperatures save for an anomalous increase in the magnitude from 295\:K to 255\:K where the magnitude instead increases slightly. Using the framework of TET we were able to extract various parameters such as the Schottky barrier height  of the sample which we find to be $0.3216\,\text{eV}$ at $-5$V and $0.2833\,$ eV at $-3$V. 
+    <p>   
+    When the two are placed into contact, electrons tend to flow from the semiconductor to the metal as to equilibriate the Fermi energy level for the two substances which forms a potential barrier which allows electrons to more easily flow from the semiconductor side over to the metal side but not so in the reverse direction. In particular, the potential barrier takes the following form 
+    $$
+        q\Phi = W_m - \chi 
+    $$
+    where \(q\Phi\) is the barrier height, \(W_m\) is the work function of the metal, and \(\chi\) is the electron affinity of the semiconductor. 
     </p> 
-    </p> 
-    To experimentally verify this behavior, we fabricated a graphene field effect transistor (FET) and measured the resistivity of the graphene channel as a function of the gate voltage. We fabricated two graphene FETs and performed back gate resistivity measurements and found that for one sample (3A) that there may be a resistivity dependence on \(V_G\) that weakly agrees with the expected behavior although curve appears to be broadened and our data is overall noisy. We then discuss the possible reasons: gate leakage in our samples, non ideal graphene samples, 
-    </p>
-    </div> 
-    <div class = "schottky_pic">
-        <img src='/images/au-si.jpeg'> 
     </div>
+        <div class = "schottky_pic">
+            <img src='/images/au-si.jpeg'> 
+        </div>
     </div> 
+
+
+
+
+    <div id='intro-flex-container'> 
+        <div id='intro-flex-container-2'> 
+            <h4> Rectifying Diode </h4>
+            <p>
+                As a rectifying diode, it exhibits a characteristic current versus voltage dependence. That is, for forward bias, current grows exponentially as forward voltage increases, but for reverse bias, current remains close to zero (until the breakdown voltage). This current versus voltage has a characteristic equation derived from thermionic emission theory, where the current density \(j\) is given by 
+                $$
+                    j = \frac{4\pi q m^* k^2}{h^3} T^2 \exp\left(-\frac{q\Phi}{k_BT}\right)
+                $$
+            </p> 
+
+            <h4> Goal of the Experiment </h4>
+            <p>
+                Thus with this experiment, our goals were two-fold:
+                <ul>
+                    <li>
+                        Measure the current as a function of applied voltage and as a function of temperature to see whether or not it does exhibit a dependence similar to the diode equation. 
+                    </li>
+                    <li>
+                        From the current versus voltage data, extract the Schottky barrier height using a Richardson linearized-log plot in our data analysis 
+                    </li>
+                </ul>
+            </p>
+            <p>
+                We performed current measurements in two stages: first at room temperature and second by varying the temperature of the diode using a closed cycle cryostat or physical property measurement system (PPMS). Using the framework of TET we were able to extract various parameters such as the Schottky barrier height  of the sample which we find to be 0.3216 eV  at -5V and 0.2833 eV at -3V. 
+            </p> 
+
+        </div> 
+
+        <div class = "neutron_pic">
+            <img src='/images/Schottky/diode.png'> 
+        </div>
+    </div> 
+
+
+    <div id = "Fabrication">
+        <h2>
+            Fabrication 
+        </h2>
+        <h4>
+            Deposition 
+        </h4>
+        <p>
+            The Schottky diode was fabricated by first constructing wafers of silicon into rectangles of about 1cm in length. Then half of the wafer was covered with tape and then placed into an evaporator which deposited 4nm of titanium and then 8nm of gold on the uncovered half to form the diode. 
+        </p>
+        <h4>
+            Wiring
+        </h4>
+    </div>
+
+
+
+
+    <div id = "Measurement" > 
+        <h2>
+            Measurement via LabView 
+        </h2>
+        <p>
+            We used a LabView program to interface with our equipment. 
+        </p>
+    </div>
+
+
+
+
+    <div id = "Data Analysis" > 
+        <h2>
+            Data Analysis 
+        </h2>
+    </div> 
+
+
+
+    <div id = "Troubleshooting">
+        <h2>
+            Troubleshooting
+        </h2>
+    </div>
