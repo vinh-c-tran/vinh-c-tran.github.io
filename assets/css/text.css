@@ -3473,8 +3473,33 @@ body {
 	flex-shrink: 2; 
 	margin-left: 2vw; 
 	border-radius: 5%; 
-	width: 70%;
-	height: 70%; 
+	max-width: 22vw; 
+	max-height: 22vw; 
+	width: auto; 
+	height: auto; 
 	/* max-width: 10em; 
 	max-height: 10vh;  */
+}
+
+.resistivity img{
+	align-self:center; 
+	background-color:rgba(88, 88, 88, 0.15)
+	padding: 5pw; 
+	margin: 5pw;
+	max-width: 45vw; 
+	max-height: 65vh; 
+	width: auto; 
+	height: auto; 
+	flex: 1.5; 
+}
+
+#resistivity_container{
+	display: flex;  
+	align-items:center;  
+	flex-direction:column;
+}
+
+#flex_item_1{
+	flex-wrap: auto;  
+	flex: 1; 
 }

@@ -196,6 +196,9 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     <h4>
         Curve Fitting
     </h4>
+
+    <div id = "resistivity_container"> 
+        <div id = "flex_item_1"> 
         <p>
             Since resistivity versus gate voltage plot for graphene was expected to exhibit a shark peak around the Fermi energy, we tried to fit a "peak" function to the data. We ended up choosing a Lorentzian function, although a Gaussian could work as well (or even a Voigt function which is a convolution of a Gaussian and a Lorentzian). That is, we used a function of the following form
             $$
@@ -203,8 +206,13 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
                 \frac{1}{\pi}
                 \frac{\frac{1}{2}\Gamma}{(x-x_0)^2 + (\frac{1}{2}\Gamma)^2} + h
             $$
-            with \(\Gamma, x_0, h\) as fittable parameters.
+            with \(\Gamma, x_0, h\) as fittable parameters and fitted it to the scattered points by minimizing the mean square error. In particular, we loaded in the data, which we have stored in CSV form from our LabView output as a <code> Pandas DataFrame </code>. Extracting the array data we then use <code> scipy.optimize.curve_fit </code> to find the parameters that best fit the data and then plot the resulting graphs with <code> Matplotlib.pyplot </code>. 
         </p>
+    </div>
+        <div class = 'resistivity'> 
+            <img src="/images/Graphene/resistivity.png">
+        </div>
+    </div>
 </div>
 
 
