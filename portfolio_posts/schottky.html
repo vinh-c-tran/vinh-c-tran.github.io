@@ -142,12 +142,16 @@ section:
                 To analyze our data, we load each of the data csv files into a <code>Pandas DataFrame</code> which gives us in essence a two dimensional array of data with for instance a specific row value specifying the voltage and a specific column specifying the temperature for a specific current value. Then we can either index row-wise or column-wise to explore the current dependence on one variable while holding the other fixed.
             </p>
             <p>
-                Then, using <code>Matplotlib.pyplot </code> we can plot both two dimensional and three dimensional scatter plots which allow us to better visualize the electronic behavior. In particular, we can visualize the following here.
+                Then, using <code>Matplotlib.pyplot</code> we can plot both two dimensional and three dimensional scatter plots which allow us to better visualize the electronic behavior.
             </p>
             <div id = "side_by_side">
                 <img src="/images/3D2.png">
                 <img src="/images/3D_warm2.png">
             </div>
+            <p>
+                We can also visualize the temperature dependence at fixed voltage more precisely if we slice column-wise. 
+            </p>
+            <img src="/images/fixed_voltage.png">
         </div>
 
 

@@ -209,7 +209,7 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
                 \frac{1}{\pi}
                 \frac{\frac{1}{2}\Gamma}{(x-x_0)^2 + (\frac{1}{2}\Gamma)^2} + h
             $$
-            with \(\Gamma, x_0, h\) as fittable parameters and fitted it to the scattered points by minimizing the mean square error. In particular, we loaded in the data, which we have stored in CSV form from our LabView output as a <code> Pandas DataFrame </code>. Extracting the array data we then use <code> scipy.optimize.curve_fit </code> to find the parameters that best fit the data and then plot the resulting graphs with <code> Matplotlib.pyplot </code>. 
+            with \(\Gamma, x_0, h\) as fittable parameters and fitted it to the scattered points by minimizing the mean square error. In particular, we loaded in the data, which we have stored in CSV form from our LabView output as a <code>Pandas DataFrame</code>. Extracting the array data we then use <code>scipy.optimize.curve_fit</code> to find the parameters that best fit the data and then plot the resulting graphs with <code>Matplotlib.pyplot</code>. 
         </p>
     </div>
         <div class = 'resistivity'> 

@@ -3545,10 +3545,10 @@ body {
 }
 
 .main_body img{
-	margin: 2vw; 
+	margin: 0 2vw 2vw 2vw; 
 	border-radius:1%;
 	padding: 1vw; 
-	background-color: #f3f3f3;
+	background-color: #f6f6f6 ;
 	max-width: 40vw; 
 	max-height: 40vw; 
 	width: auto; 
