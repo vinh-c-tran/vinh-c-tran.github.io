@@ -13,7 +13,7 @@ section:
 
 <div id= "Introduction">
     <p>
-        This is a lab project where we fabricated a graphene field effect transistor (FET) to measure the resistivity of the graphene channel as a function of applied gate voltage. Graphene's band structure and density of states predicts that the resistivity will exhibit a sharp peak at the Fermi level something we aimed to verify experimentally. Through this project, we got hands on experience with fabricating this FET via photolithography and automating measurements via equipment interfacing with LabView. 
+        This is a lab project where we fabricated a graphene field effect transistor (FET) to measure the resistivity of the graphene channel as a function of applied gate voltage. Graphene's band structure and density of states predicts that the graphene channel's resistivity would exhibit a sharp peak at the Fermi level. Applying a voltage to the gate would induce charge separation via the electric field effect and by sweeping through a range of voltage values the energy level should sweep from below to above the Fermi level allowing us to perhaps see this effect for ourselves. Through this project, we got hands on experience with fabricating this FET via photolithography and automating measurements via equipment interfacing with LabView. 
     </p>
 <h2>
     Introduction
@@ -22,14 +22,18 @@ section:
 <div id='intro-flex-container'> 
 <div id='intro-flex-container-2'> 
 <p>
-    Graphene is a two dimensional hexagonal arrangement of carbon atoms which has the properties that the energy band structure is linear rather than parabolic at low energies and is a zero-gap semiconductor. These two properties lead to a resistivity versus gate voltage curve that exhibits a sharp peak for undoped graphene at zero gate voltage (\(V_G\)) that then slopes down towards zero as \(V_G\) increases/decreases.
+    Graphene is a two dimensional hexagonal arrangement of carbon atoms. It has the unique properties of having an energy band structure that's linear rather than parabolic (at "low" energies) and is a zero-gap semiconductor. These two properties lead to a resistivity versus gate voltage curve that exhibits a sharp peak for undoped graphene at zero gate voltage (\(V_G\)) that then slopes down towards zero as \(V_G\) increases/decreases.
 </p> 
 </p> 
 To experimentally verify this behavior, we fabricated a graphene field effect transistor (FET) and measured the resistivity of the graphene channel as a function of the gate voltage. We fabricated two graphene FETs and performed back gate resistivity measurements and found that for one sample (3A) that there may be a resistivity dependence on \(V_G\) that weakly agrees with the expected behavior although curve appears to be broadened and our data is overall noisy. We then discuss the possible reasons: gate leakage in our samples, non ideal graphene samples, 
 </p>
 </div> 
 <div class = "neutron_pic">
-    <img src='/images/FET.JPG'> 
+    <figure><img src='/images/FET.JPG'>
+    <figcaption>
+        Microscope image of completed transistor post photolithography, deposition, and liftoff with the graphene sample at the center of the "crosshairs"
+    </figcaption>
+    </figure> 
 </div>
 </div> 
 
@@ -101,17 +105,25 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     <h4>
         Exfoliation of Highly Oriented Graphite (with Scotch tape!)
     </h4>
-    <p>
-        We prepared rectangular wafers approximately 1.5 cm by 2 cm in size from a 3 inch diameter silicon wafer marked with a grid of letters and numbers which allows for recalling the location of graphene samples. The silicon wafer consists of highly doped silicon (Si++) with a thin surface coat of silicon dioxide (SiO2) which acts as a dielectric. We made the cuts by scoring the wafers with a diamond tipped pen to then break the wafer along the scored lines using a small wire taped to a flat surface as a fulcrum.
-    </p>
-    <p>
-        Once washed, we exfoliated graphenium graphite, a type of highly oriented pyrolytic graphite which lends itself to exfoliation, onto the sample via the Scotch tape method where we loaded flakes of graphenium and pressed and distributed the graphite in scotch tape the goal of which is to lift and distribute layers of graphite and hopefully achieve an incredibly thin layer. After distributing the graphite we then place our wafer, face side down, into the tape as to transfer the graphite onto the wafer. 
-    </p>
-
-    <p>
-        Lastly, we looked for samples of graphene using a microscope, searching for patches with a color similar to the substrate, that is, a color that is a darker blue to purple. Though ideal candidates would appear nearly transparent. We found the following samples.
-    </p>
-
+    <div id = "exfoliation"> 
+    
+    <div>
+        <p>
+            We prepared rectangular wafers approximately 1.5 cm by 2 cm in size from a 3 inch diameter silicon wafer marked with a grid of letters and numbers which allows for recalling the location of graphene samples. The silicon wafer consists of highly doped silicon (Si++) with a thin surface coat of silicon dioxide (SiO2) which acts as a dielectric. We made the cuts by scoring the wafers with a diamond tipped pen to then break the wafer along the scored lines using a small wire taped to a flat surface as a fulcrum.
+        </p>
+        <p>
+            Once washed, we exfoliated graphenium graphite, a type of highly oriented pyrolytic graphite which lends itself to exfoliation, onto the sample via the Scotch tape method where we loaded flakes of graphenium and pressed and distributed the graphite in scotch tape the goal of which is to lift and distribute layers of graphite and hopefully achieve an incredibly thin layer. After distributing the graphite we then place our wafer, face side down, into the tape as to transfer the graphite onto the wafer.
+        </p>
+        <p>
+            Lastly, we looked for samples of graphene using a microscope, searching for patches with a color similar to the substrate, that is, a color that is a darker blue to purple. Though ideal candidates would appear nearly transparent.
+        </p>
+    </div>
+    <figure>
+        <img src = "/images/Graphene/sample.JPG">  
+        <figcaption>
+        </figcaption>
+    </figure>
+    </div>
 
     <h4>
         Photolithography
@@ -162,16 +174,45 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     <h4>
         Deposition
     </h4>
+    <div id = "main_body"> 
     <p>
         Next, we evaporated 4 nm of titanium and afterwards 40 nm of gold onto the wafers. The specific evaporator used is an electron beam evaporator. First, the samples are loaded via retaining pins into a dish which is then attached into the interior of the evaporator and small amounts of titanium and gold are loaded into their respective crucibles. The evaporator is then closed and a vacuum is applied. Then, via a tungsten filament, beam of electrons is sent towards the crucibles heating the metals up and turning them into vapors which then condense and form a thin film onto the wafer. 
+    </p>
+        <div id="side_by_side_smaller"> 
+            <figure>
+                <img src = "/images/Graphene/evaporator.jpeg"> 
+                <figcaption>
+                    Electron beam evaporator opened up
+                </figcaption>
+            </figure>
+            <figure>
+                <img src = "/images/Graphene/post_deposition.jpeg"> 
+                <figcaption>
+                    Wafers post deposition! How shiny! 
+                </figcaption>
+            </figure>
+            <figure>
+                <img src = "/images/Graphene/crucible.jpeg"> 
+                <figcaption>
+                    The crucible where gold pellets are loaded in. 
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <p>
     </p>
 
     <h4>
         Lift Off
     </h4>
+    <div id = "main_body_right_image">
     <p>
         Lastly, we perform the lift off wash for the wafers which removes the irrelevant gold, that is, the gold that lays on top of the photoresist, without removing the gold that forms the electrodes. As the photoresist used in this lab is acetone soluble, the lift off wash consists of placing the wafers into a dish of acetone which starts to eat away the photoresist. Then using a syringe, we applied more pressurized jets of acetone to encourage removal of more stubborn bits of gold.
     </p>
+    <figure>
+        <img src="/images/Graphene/acetone_needle.jpeg"> 
+    </figure>
+    </div>
 </div>
 
 <div id = 'Measurement'>
