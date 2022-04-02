@@ -1,0 +1,31 @@
+--- 
+layout: default 
+title: Vinh Tran
+header: Physics 540A Electrodynamics
+css: /assets/css/main.css
+--- 
+
+<!-- Main -->
+<div id="main">
+    <div class="inner">
+        <section class="tiles">
+
+            {% for portfolio_item in site.em_problemsets %}
+            <!-- First Tile -->
+            <article class="{{ portfolio_item.style }}">
+                <span class="image">
+                    <img src="{{ portfolio_item.image_path}}" alt="" />
+                </span>
+                <a href="{{ portfolio_item.link_path}}">
+                    <h2>{{ portfolio_item.title }}</h2>
+                    <div class="content">
+                        <p> 
+                            {{ portfolio_item.caption}}
+                        </p>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+    </div>
+</div>
