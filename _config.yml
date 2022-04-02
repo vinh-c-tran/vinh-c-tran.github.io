@@ -34,6 +34,7 @@ collections:
   portfolio: 
   teaching: 
   em_problemsets: 
+    order:
 
 # Build settings
 theme: minima
