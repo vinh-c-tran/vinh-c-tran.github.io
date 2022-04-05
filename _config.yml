@@ -35,6 +35,8 @@ collections:
   teaching: 
   em_problemsets: 
     order:
+  qm1_problemsets:
+  qm2_problemsets: 
 
 # Build settings
 theme: minima
