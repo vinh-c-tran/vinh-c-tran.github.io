@@ -1,6 +1,6 @@
 ---
 layout: blog 
-header: Thesis - Neutron Star Oscillations
+header: Thesis&#58; Neutron Star Oscillations
 title: Thesis 
 css: /assets/css/text.css 
 section:
@@ -45,9 +45,15 @@ section:
 </p> 
 
 <p>
-    In particular, we can write down a series of equations that model how the star, or more precisely, a fluid element of the star, will oscillate in time when displaced from its equilibrium position. The equations are derived from general relativity. These are usually too hard for us to solve fully, so we use the familiar trick of physicists! We introduce a set of quantities: the perturbed quantities and Taylor expand to first order about the equilibrium position. Then these give us a "linearized" set of equations to solve which yield the oscillatory equations of motion for $\xi$ which describes the perturbed position of a fluid parcel. 
+    In particular, we can write down a series of equations that model how the star, or more precisely, a fluid element of the star, will oscillate in time when displaced from its equilibrium position. The equations are derived from general relativity. These are usually too hard for us to solve fully, so we use the familiar trick of physicists! We introduce a set of quantities: the perturbed quantities and Taylor expand to first order about the equilibrium position. Then these give us a "linearized" set of equations to solve which yield the oscillatory equations of motion for \(\xi\) which describes the perturbed position of a fluid parcel. 
     $$
-        \frac{d\xi}{dr}
+    \begin{align}
+        - \frac{1}{e^{\lambda/2}r^2}\frac{\partial}{\partial r} 
+        [e^{\lambda/2} r^2 \xi_r] 
+        + \frac{\ell(\ell + 1)e^\nu}{r^2\omega^2} \frac{\delta p}{p + \epsilon} - \frac{\Delta p}{\gamma p} &= 0\\
+    \frac{\partial \delta p}{\partial r} + g\left(1 + \frac{1}{c_s^2}\right)\delta p 
+        + e^{\lambda - \nu}h(N^2 - \omega^2)\xi_r &= 0 
+    \end{align}
     $$
 </p>
 
@@ -60,6 +66,17 @@ section:
     <h2>
         G-Modes and Sound Speed Differences
     </h2>
+    <p>
+        The important thing though is that the equilibrium sound speed appears in the Brunt-Vaisala frequency which the g-mode oscillation is proportional to, hence the importance of this difference between sound speeds. 
+        $$
+            N^2 := g^2\left(\frac{1}{c_e^2} - \frac{1}{c_s^2}\right) e^{\nu-\lambda}
+        $$
+        where
+        $$
+            c_e^2 := \frac{dp}{d\epsilon} \qquad c_s^2 := 
+            \left(\frac{\partial p}{\partial \epsilon}\right)\bigg|_x
+        $$
+    </p>
 </div>
 
 
@@ -470,10 +487,19 @@ section:
     </pre>
 </div>
 
-
+<h3> Results </h3>
+<p> The results from the function can be easily visualized in <code>Jupyter</code> as the following <code>DataFrame</code> which we can then manipulate right away or save and store as a CSV. </p>
+<div id = result_data>
+<figure>
+    <img src = /images/data.png> 
+</figure>
+</div>
 
 <div id = "Python: Sound Speed Difference">
     <h2>
         Python: Sound Speed Difference
     </h2>
+    <p> 
+        The next import step is to actually calculate the sound speed difference. 
+    </p>
 </div>

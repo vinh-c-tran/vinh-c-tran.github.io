@@ -37,6 +37,7 @@ collections:
     order:
   qm1_problemsets:
   qm2_problemsets: 
+  dft: 
 
 # Build settings
 theme: minima

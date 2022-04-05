@@ -3645,3 +3645,11 @@ body {
 	text-align: center;  
 }
 
+#result_data img{
+	max-width: 65vw; 
+	width: auto; 
+	height: auto; 
+	align-self:center; 
+	margin: 0.75vw; 
+}
+
