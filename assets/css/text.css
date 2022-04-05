@@ -3653,3 +3653,12 @@ body {
 	margin: 0.75vw; 
 }
 
+
+
+
+#list_right_item{
+	display:flex; 
+}
+
+#list_right_item img{
+}

@@ -171,6 +171,86 @@ As we see from our results that convergence occurs rather quickly as `ecutwtc` i
 </ol>
 </p>
 
+<h3> Solution </h3>
+
+<p>
+
+<h3>Background Information</h3>
+
+<p>
+    This problem tests convergence with respect to k-points; so it's similar to problem 1 except we just change the thing that we vary. So we proceed in the same manner.
+    <ul>
+        <li>We set up a standard SCF calculation in quantum espresso for a specified structure (and get the absolute energy).</li>
+         <li>Scripting to automate the changing/iteration of the cut off energies. We start with a template input file and use Python to update the k-points attribute at each run and then call `pw.x` via command line tools in python.</li>
+         <li>Read out the data to a file for plotting the energy versus number of k-points used.</li>
+    </ul>
+</p>
+
+
+
+<h3>Input File</h3>
+
+The core of each PW scf calculation starts with an input file that we can call `ge.scf.in` for our case of a scf calculation for Ge. To run this calculation, we would call <code>pw.x -in ge.scf.in > ge.scf.out</code> where `ge.scf.out` is the output file (assuming that `pw.x` is in our path). In particular, the input file that we use will look like 
+
+<pre>
+    <code>
+        &control
+            calculation = 'scf'
+            prefix = 'Germanium',
+            pseudo_dir = '.',
+            outdir = '.',
+        /
+        &system
+            ibrav = 2,
+            celldm(1) = 10.690181,
+            nat = 2,
+            ntyp = 1,
+            ecutwfc = 80.0,
+        /
+        &electrons
+        /
+        ATOMIC_SPECIES
+         Ge 72.64 ge_pbe_v1.4.uspp.F.UPF
+        ATOMIC_POSITIONS
+         Ge 0.00 0.00 0.00
+         Ge 0.25 0.25 0.25
+        K_POINTS automatic
+         8 8 8 0 0 0
+    </code>
+</pre>
+
+
+<h3>Python Scripting in Jupyter </h3>
+
+<h3>Parsing Function</h3>
+We want to parse the output file and extract the energy. We can do this using the following function which goes line by line in the output file to find the correct line, converts the line into an array of strings (using Python split), and selects the correct element in the array to be stored in a dictionary which is returned. 
+
+
+<pre>
+    <code>
+        def parse_output(outfile):
+            """ Parses the quantum espresso output file """
+    
+            with open(outfile, 'r') as outf:
+                for line in outf:
+                    if (line.lower().startswith('     lattice parameter (alat)')):
+                        lattice_constant = float(line.split()[-2]) * 0.529177
+                    if (line.lower().startswith('!    total energy')):
+                        total_energy = float(line.split()[-2]) * 13.605698066
+    
+            result = {'energy': total_energy, 'lattice': lattice_constant}
+            return result
+    </code>
+</pre>
+
+
+
+## Results 
+<p align = center> 
+<img width="600" alt="Screen Shot 2022-03-23 at 7 13 20 PM" src="https://user-images.githubusercontent.com/76876169/159828383-f2d16621-3176-42f5-89e9-36d5457d5ea8.png">
+    </p>
+
+</p>
 
 
 

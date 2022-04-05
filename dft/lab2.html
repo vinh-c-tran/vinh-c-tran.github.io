@@ -1,0 +1,94 @@
+---
+layout: blog 
+header: First Principles Energy Methods 
+title: Harvard APPHY 275 Lab&#58; First Principles Energy Methods 
+css: /assets/css/text.css 
+section:
+    - "Problem 1"
+    - "Problem 2"
+    - "Problem 3"
+--- 
+
+
+
+
+
+
+
+<div id = "Problem 1"> 
+</div>
+<h2>
+    Problem 1: Iron - Stability Under Pressure and Magnetism 
+</h2>
+<p>
+    Calculate energies of different structures using the PBE-GGA exchange correlation functional. Use a wavefunction cutoff of 30 Ry along with a charge density cutoff 300 Ry. A good k-point mesh is not given to you; you'll have to find this yourself. 
+</p>
+<p>
+    <ol>
+        <li>Using PWscf, optimize the lattice parameters for both BCC and HCP Fe (i.e., a for BCC and a and c for HCP). Plot the ground state energy of Fe in both structures as a function of k-points. You may choose to do automatic optimization or directly scan a range of lattice parameters.</li>
+        <li>
+            Plot the energy as a function of unit cell volume for the two structures and find when the HCP structure becomes more favorable than the BCC one. (note that: At pressure greater than 15 GPa the HCP-Fe phase is more stable [see “Possible thermal and chemical stabilization of body-centred-cubic iron in the Earth’s core”, Vocadlo L. et al. Nature, 424 (2003) 536; Xianwei Sha and RE Cohen PRB, 73 (06) 104303]). Further, note that it is important when comparing energies that the k-point samplings for both systems are comparable and converged.
+        </li>
+        <li>
+            Using PWscf, calculate and compare the total energy for the BCC structure in the ferromagnetic, antiferro-magnetic, and nonmagnetic states. Think about which unit cells and initial conditions to use. What is the ground state magnetic ordering?
+        </li>
+    </ol>
+</p>
+
+
+
+<div id = "Problem 2"> 
+</div>
+<h2>
+    Problem 2: Stability of the Perovskite - Lead Titanate 
+</h2>
+<p>
+    PbTiO3 is a perovskite oxide which is ferroelectric. The ferroelectric response of PbTiO3 is the result of a displacive transition where a low temperature tetragonal phase is preferred over the cubic phase. In this problem, we will study the energetics of cubic PbTiO3 and use first principles calculations to gather information pertaining to the displacive transition to the tetragonal phase.
+    <ol>
+        <li>
+            Calculate and plot the energy of cubic PbTiO3 as a function of lattice parameter. Use a 4 × 4 × 4 k-point mesh with a 1,1,1 offset (see example script in the handout). Sample lattice parameters with a sufficiently fine grid to get a reliable value for the equilib- rium lattice constant. To get an idea where to begin, note that the room-temperature experimental lattice constant is about 3.97 ̊A.
+        </li>
+        <li>
+            Using the equilibrium lattice parameter from part (A), plot the energy as a function of displacement of the Ti atom along one of the cubic lattice directions, allowing the O atoms to fully relax for each displacement. Report the Ti displacement at which the total energy is at a minimum. What is the energy difference between this configuration and the minimum-energy configuration from part (A)? Be aware that for PbTiO3, the Ti displacement will be very small.
+        </li>
+        <li>
+            Now allow both the Ti atom and the O atoms to relax and find the minimum energy structure, using the minimum-energy Ti displacement from part (B) as your starting configuration. Report the final atomic positions and final energy. 
+        </li>
+        <li>
+            Which phase is the most energetically stable for PbTiO3 and how does that relate to the ferroelectric behavior of this material?
+        </li>
+    </ol>
+</p>
+
+
+
+
+
+<div id = "Problem 3"> 
+</div>
+<h2>
+    Problem 3: Stability of the CuAu Alloy 
+</h2>
+<p>
+    <ol>
+        <li>
+            Calculate the equilibrium lattice parameters for FCC Cu and Au, with energy- differences converged to 0.3mHa/atom
+            Explore the convergence of k-point sampling for FCC Cu and Au using LDA ultrasoft pseudopotentials with a plane-wave energy cutoff ecutwfc=40 Ryd and charge density cutoff ecutrho=320 Ryd.
+        </li>
+        <li>
+            Different unit-cell representations of the 50-50% solution of CuAu
+            L10 is the name associated to the ordered phase of CuAu corresponding to a solution of 50% Cu and 50% Au. One possible representation of L10 CuAu is the pseudo-face- centered tetragonal (pfct) unit-cell shown (’pseudo’ refers to the fact that the unit-cell has two different types of atoms in the middle of the faces). Show how you can describe the L10 CuAu structure by using a smaller body centered tetragonal (bct) unit-cell in- stead of the the unit-cell shown above. Show how the lattice parameters c and a of the new bct cell relate to the lattice parameters c and a of the pfct unit-cell reported above.
+        </li>
+        <li>
+            At 0K, will a 50-50% solution of CuAu be segregated into pure elements or will be ordered?
+            Explore relaxation of the L10 CuAu, including both lattice parameters and atom posi- tions using calculation=’vc-relax’. Use the body-centered tetragonal unit cell with two atoms, for which the lattice constants are a = b ̸= c. How do the lattice con- stants a and c compare to the lattice constants of the pure elements? At the relaxed lattice parameters, check the convergence of the energy with respect to k-point sampling.
+            Calculate the formation energy of the alloy structure
+            $$
+                \Delta H_f (CuAu) = \frac{1}{2}(E_\text{tot}(CuAu) − E_b(Cu) - E_b(Au))
+            $$
+            where Eb(Cu) and Eb(Au) are the total energies for Cu and Au in their equilibrium FCC bulk structures, respectively. The total energy of CuAu, Etot(CuAu), must correspond to fully relaxed equilibrium lattice parameters and internal coordinates of the alloy unit cell. For optimal cancellation of errors, use the same calculation settings for all energies. Is the alloy structure stable at zero temperature?
+        </li>
+    </ol>
+</p>
+
+
