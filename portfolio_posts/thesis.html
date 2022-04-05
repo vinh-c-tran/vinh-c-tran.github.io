@@ -68,6 +68,21 @@ section:
     <h2>
         Relativistic Mean Field Model
     </h2>
+    <p>
+        To make numerical progress, we need to actually specify a particular model or framework (which describes how the particles interact with one another) in which to work. Some popular ones include: MIT Bag models, NJL Models, or the one we use here in this thesis, a Walecka type relativistic mean field (RMF) model. 
+    </p>
+    <p>
+        In this sort of model, an effective quantum field theory model, baryons such as nucleons and hyperons interact via different meson carriers. The interacting part of the Lagrangian describing these sort of interactions can take the following form (many other Lagrangians in this sort of model exist!)
+        $$
+            \mathcal{L}_\text{int} = \sum_{B} \bar{\psi}_B 
+            \left[g_\sigma \sigma - g_\omega \gamma^\mu \omega_\mu - \frac{1}{2}g_\rho \gamma^\mu \vec{\tau} \vec{\rho}_\mu \right] \psi_B
+            - \frac{1}{2} bm(g_\sigma\sigma)^3 - \frac{1}{4}c(g_\sigma \sigma)^4 
+        $$
+        where of note are the meson fields: \(\sigma, \rho, \omega\) and the coupling constants \(g_\sigma, g_\omega, g_\rho\) which are what describes how the baryons and mesons couple to one another. 
+    </p>
+    <p>
+        It's from this Lagrangian (and the free part) that we can apply the Euler-Lagrange equations to get the equations of motion for the various particle fields. But as we can see, we end up getting equations of motion that are highly nonlinear! And coupled! So it becomes quite a nightmare to deal with. But alas! We usually don't need to deal with the equations in this form. When we're interested in stars, we're interested in a system at equilibrium in its ground state which allows us to apply a simplifying approximation: the mean field approximation. The meson fields don't vary much in time or space in equilibrium so we can ignore their time and spatial variations (ie, derivative terms with respect to \(t,\vec{r}\))
+    </p>
 </div>
 
 
