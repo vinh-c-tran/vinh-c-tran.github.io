@@ -1,0 +1,299 @@
+---
+layout: blog 
+header: Problem Set 7 &#58; Radiation
+title: Problem Set 7
+css: /assets/css/text.css 
+section:
+    - "Problem 1"
+    - "Problem 2"
+    - "Problem 3"
+    - "Problem 4"
+--- 
+<p>
+    Solutions that I've written for problem sets as a graduate teaching assistant.
+</p>
+<div id = "Problem 1"> 
+<h2>
+    Problem 1: Larmor Radiation 
+</h2>
+<p>
+    A non-relativistic charged particle moves under a uniform transverse magnetic field \(B\). Using the Larmor formula, prove that the logarithmic rate at which the particle's kinetic energy \(K\) diminishes on account of radiation is given by
+    $$
+        \frac{\dot{K}}{K} = - \frac{e^4 B^2}{3\pi \epsilon_0 c^3 m^3}
+    $$
+    How long will it take for a 10-fold reduction in the kinetic energy given \(B = 1\) Tesla if the particle is (a) an electron (b) a proton? 
+</p>
+<p>
+    <i><b> Solution </b>  </i>
+</p>
+<p>
+    A non-relativistic particle moving under a uniform transverse magnetic field \(\vec{B}\) experiences a Lorentz force with magnitude given by 
+    $$
+    \begin{align}
+        F &= qvB\sin\theta = qvB 
+    \end{align}
+    $$
+    where for a transverse field we have \(\theta = \pi/2\). Then using Newton's second law, we have the acceleration given by
+    $$
+    \begin{align}
+        F &= ma \implies qvB = ma \implies a = \frac{qvB}{m} 
+    \end{align}
+    $$
+    Inserting this expression for the acceleration into the Larmor formula for the force gives us
+    $$
+    \begin{align}
+        P = \frac{q^2a^2}{6\pi \epsilon_0 c^3} =
+        \frac{e^2}{6\pi\epsilon_0 c^3}\left(\frac{evB}{m}\right)^2 = 
+        \frac{e^4 v^2 B^2}{6\pi \epsilon_0 c^3 m^2}
+    \end{align}
+    $$
+    This is the power radiated by the particle and is the negative of the rate of change of the kinetic energy of the particle with respect to time so we have
+    $$
+    \begin{align}
+        \dot{K} &= - P = - \frac{e^4 v^2 B^2}{6\pi \epsilon_0 c^3 m^2}
+    \end{align}
+    $$
+    But the kinetic energy \(K=1/2mv^2\) so dividing \(\dot{K}\) by \(K\) gives us our desired result
+    $$
+    \begin{align}
+        \frac{\dot{K}}{K} &= - \frac{e^4 v^2 B^2}{6\pi \epsilon_0 c^3 m^2}
+        \frac{1}{1/2mv^2} = -\frac{e^4B^2}{3\pi \epsilon_0 c^3 m^3}
+    \end{align}
+    $$
+    
+    <h4>10-Fold Reduction in Kinetic Energy</h4>
+
+
+    The solution to the above equation is an exponential (the kinetic energy undergoes exponential decay)
+    $$
+    \begin{align}
+        \dot{K} &= - \frac{e^4B^2}{3\pi \epsilon_0 c^3 m^3}K\\
+        \implies K(t) &= K_0 \exp\left(- \frac{e^4B^2}{3\pi \epsilon_0 c^3 m^3} t
+        \right)
+    \end{align}
+    $$
+    We want to solve for the time $t$ such that \(K = K_0/10\). This is given by
+    $$
+    \begin{align}
+        \frac{K_0}{10} &= K_0\exp\left(- \frac{e^4B^2}{3\pi \epsilon_0 c^3 m^3} t
+        \right)\\
+        \implies \frac{1}{10} &= \exp\left(- \frac{e^4B^2}{3\pi \epsilon_0 c^3 m^3} t
+        \right)\\
+        \implies t &= - \frac{3\pi\epsilon_0 c^3 m^3}{e^4 B^2}\ln\frac{1}{10}
+    \end{align}
+    $$
+
+   
+        <ol>
+            <li>
+                Electron. For an electron, we have \(m = 9.109\times 10^{-31}\) kg. The time \(t\) until the kinetic energy has reduced by a factor of 10 is then
+                \begin{align}
+                    t &=  \frac{3\pi(8.854\times10^{-12})}{(1.609\times10^{-19})^4}(3\times 10^8)^3(9.109\times 10^{-31})^3(2.3025)
+                    = \boxed{5.8501\,s}
+                \end{align}
+            </li>
+            <li>
+                Proton. For a proton, we have \(m = 1.6726\times10^{-27}\) kg. The time \(t\) is
+                \begin{align}
+                    t &=
+                    \frac{3\pi(8.854\times10^{-12})}{(1.609\times10^{-19})^4}(3\times 10^8)^3(1.6726\times10^{-27})^3(2.3025)
+                    = \boxed{3.621\times 10^{10}\,s}
+                \end{align}
+            </li>
+        </ol>
+
+    So we see that an electron will radiate its energy away much quicker than a proton does due to the mass of the proton being much heavier.
+</p>
+</div>
+
+
+
+
+<div id = "Problem 2"> 
+    <h2>
+        Problem 2: Radiation and Collisions
+    </h2>
+    <p>
+        A non-relativistic proton of charge \(+e\) and mass \(m\) makes a head-on collision with a nucleus of charge \(+Ze\) and is reflected back. If the proton's velocity of approach when far from the nucleus was \(v_0\), prove tha tthe total energy radiated during the collision process is 
+        $$
+            E = \frac{8}{45} \left(\frac{v_0}{c}\right)^3 \frac{mv_0^2}{Z} 
+        $$
+    </p>
+
+    <p>
+        <i><b>
+            Solution 
+        </b></i>
+    </p>
+    <p>
+                We can start from Larmor's formula for the power radiated which can be written in the following form 
+                $$
+        \begin{align}
+            P &= 
+            \frac{2}{3}\frac{e^2}{m^2 c^3}
+            \left(\frac{dp}{dt}\right)^2 = \frac{2}{3}\frac{e^2}{m^2 c^3}
+            \left(\frac{dE}{dx}\right)^2
+        \end{align}
+        $$
+
+        where \(p\) is the particle's momentum and \(E\) is the particle's energy. In the case a Coulomb potential \(U = Ze^2/r^2\), the power be re-written as (either by using Newton's second law or directly calculating the gradient of \(U\))
+        $$
+        \begin{align}
+            P &= \frac{2}{3}\frac{e^2}{m^2 c^3}
+            \left(\frac{Ze^2}{r^2}\right)^2
+        \end{align}
+        $$
+        Then to get the total energy radiated we would want to integrate \(P\) over the entire scattering time. However, working with time is harder (not sure how to define an initial and ending time of the scattering) so we would want to change variables to perform the integral over space instead. That is
+        $$
+        \begin{align}
+            W &= 
+            \int P\,dt = \int P\frac{dt}{dr}\cdot dr = \int P \frac{dr}{v}
+        \end{align}
+        $$
+        where \(v = v(r(t)\) is the velocity of the particle.
+
+        In this case, we know that the particle initially has a velocity \(v_0\) and because the Coulomb interaction is conservative, by conservation of energy, we have the velocity of the particle as a function of \(r\) (and implicitly of \(t\)) given by 
+        $$
+        \begin{align}
+            U + K = E \qquad \implies U + 
+            \frac{1}{2}mv^2 = E \quad \implies \quad 
+            v(r(t)) = \sqrt{\frac{2}{m}}\sqrt{E-U(r)}
+        \end{align}
+        $$
+        Inserting this back in, our work expression becomes (adding a factor of two for the round trip)
+        $$
+        \begin{align}
+            W &= 2 \cdot \frac{2}{3}\frac{Z^2e^6}{m^2 c^3}
+            \sqrt{\frac{m}{2}} 
+            \int_{r_\text{min}}^\infty \frac{1}{r^4\sqrt{E- U(r)}}\,dr
+        \end{align}
+        $$
+        where \(r_\text{min}\) is such that \(U(r_\text{min}) = E\) (and \(E = 1/2mv_0^2\) by conservation of energy).
+
+        Evaluating this integral in Wolfram Alpha/Mathematica gives the following result (for the indefinite integral). 
+        $$
+        \begin{align}
+            I = \int \frac{1}{r^4\sqrt{E - Ze^2/r}}\,dr = 
+            \left(\frac{16}{15}\frac{E^2}{(Ze^2)^3} + 
+            \frac{8E}{15 (Ze^2)^2 r} + \frac{2}{5Ze^2r^2}\right)\sqrt{\frac{Er - Ze^2}{r}}
+        \end{align}
+        $$
+        There is a discontinuity at the lower bound \(r_\text{min}\) but that term evaluates to zero using its Cauchy principal value, so we only need to consider the upper bound \(r = +\infty\) limit. In that limit, we have
+        $$
+        \begin{align}
+            I &= \frac{16}{15}\frac{E^2}{(Ze^2)^3}\sqrt{E} = 
+            \frac{16}{15}\frac{(1/2mv_0^2)^{5/2}}{(Ze^2)^3}
+        \end{align}
+        $$
+        Inserting this integral result back in and after some algebraic simplifications, we get our answer 
+        $$
+        \begin{align}
+            W &= 
+            \frac{4Z^2 e^6}{3 m^2 c^3}\sqrt{\frac{m}{2}} \cdot 
+            \left[ \frac{16}{15}\frac{(1/2mv_0^2)^{5/2}}{(Ze^2)^3}\right]\\
+            &= \frac{(1/2)^{5/2}}{\sqrt{2}}
+            \frac{64}{45}\frac{Z^2 e^6}{Z^3 e^6}\frac{\sqrt{m} m^{5/2}}{m^2 c^3}
+            \left[ v_0^5\right]\\
+            &= \frac{64\sqrt{2}}{8\cdot 45 \sqrt{2}}
+            \frac{1}{Z}\frac{m}{c^3}v_0^5\\
+            &= \frac{8}{45}\left(\frac{v_0}{c}\right)^3 \frac{mv_0^2}{Z} \qquad \checkmark 
+        \end{align}
+        $$
+    </p>
+</div>
+
+
+
+
+
+
+<div id = "Problem 3"> 
+    <h2>
+        Problem 3: Simple Charged Pendulum Radiation    </h2>
+    <p>
+    </p>
+        A pendulum has a bob of mass \(M\) which carries a charge \(Q\). The distance from the center of mass of the bob to the support is \(\ell\). The system is dispalced from the vertical by a small angle \(\delta\theta\) and allowed to oscillate freely. Estimate how long before it comes to rest. Ignore air resistanct and any other source of dissipation except electromagnetic radiation. 
+    <p>
+        <i><b>
+            Solution 
+        </b></i>
+    </p>
+    The system is a simple pendulum, so the equation of motion of the mass is given by (applying the small angle approximation)
+    $$
+    \begin{align}
+        \ddot{\theta} + \frac{g}{\ell}\sin\theta &= 0 \qquad \implies \qquad  \ddot{\theta} + \frac{g}{\ell}\theta = 0
+    \end{align}
+    $$
+    which has solutions
+    $$
+    \begin{align}
+        \theta(t) = A\cos(\omega t ) + B\sin(\omega t)  \qquad \omega = \sqrt{\frac{g}{\ell}}
+    \end{align}
+    $$
+    For our initial conditions: \(\theta(0) = \delta \theta\) and \(\dot{\theta}(0) = 0\) we get 
+    $$
+    \begin{align}
+        \theta(t) = \delta \theta \cos(\omega t ) 
+    \end{align}
+    $$
+
+    This gives us the (linear) acceleration of the mass as
+
+    $$
+    \begin{align}
+        a(t) = - \frac{g}{\ell}\theta = 
+        a(t) = - \frac{g}{\ell} \delta \theta \cos(\omega t ) 
+    \end{align}
+    $$
+
+    Knowing \(a\) then fully specifies \(dE/dt\)
+
+    $$
+    \begin{align}
+        \frac{dE}{dt} &= 
+        \frac{2Q^2 a(t)^2}{3c^3}
+        = 
+        \frac{2Q^2}{3c^3} 
+        \left( \frac{g}{\ell} \delta \theta \cos(\omega t ) \right)^2
+    \end{align}
+    $$
+
+    Integrating this gives us the total energy radiated away at a time \(t\)
+
+    $$
+    \begin{align}
+        E(t) &= 
+        \frac{2Q^2}{3c^3}
+        \left(
+        \frac{g\delta\theta}{\ell}\right)^2 
+        \left[\frac{2\omega t + \sin(2\omega t)}{4\omega}\right] 
+    \end{align}
+    $$
+
+    It initially has energy \(E\) equal to the gravitational potential energy: \(E_0 = mg\ell(1-\cos\delta \theta)\) so equating \(E(t) = E_0\) allows us to solve for \(t\), the time the pendulum should come to a stop having radiated away all of its energy. 
+    $$
+    \begin{align}
+        \frac{2Q^2}{3c^3}
+        \left(
+        \frac{g\delta\theta}{\ell}\right)^2 
+        \left[\frac{2\omega t + \sin(2\omega t)}{4\omega}\right] 
+        &= mg\ell(1-\cos\delta \theta) 
+    \end{align}
+    $$
+    I don't know if this sort of expression can be solved analytically because of the \(\omega t + \sin(2\omega t)\) so we can try using the approximation that \(\omega t\) is small which would reduce this expression to 
+    $$
+    \begin{align}
+        \frac{2Q^2}{3c^3}
+        \left(
+        \frac{g\delta\theta}{\ell}\right)^2 
+        \left[\frac{2\omega t + 2\omega t}{4\omega}\right] 
+        &= mg\ell(1-\cos\delta \theta)\\
+        \implies t &= 
+        mg\ell(1-\cos\delta \theta)
+        \frac{3c^3}{2Q^2}\left(\frac{\ell}{g\delta\theta}\right)^2
+    \end{align}
+    $$
+    
+    <p>
+    </p>
+</div>

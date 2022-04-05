@@ -1,7 +1,7 @@
 ---
 layout: blog 
-header: Problem Set 4
-title: Problem Set 4
+header: Problem Set 6 &#58; Radiation
+title: Problem Set 6
 css: /assets/css/text.css 
 section:
     - "Problem 1"
@@ -9,25 +9,73 @@ section:
     - "Problem 3"
     - "Problem 4"
 --- 
+
+<p>
+    Solutions that I've written for problem sets as a graduate teaching assistant.
+</p>
+
+
 <div id = "Problem 1"> 
 <h2>
-    Problem 1
+    Problem 1: Larmor Radiation 
 </h2>
 <p>
-    Prove explicitly that the energy-momentum tensor given below, which we motivated physically in class, is a symmetric tensor. 
-    $$
-        T^{\mu\alpha} = \frac{1}{4\pi} 
-        \left(F^{\mu\nu}{F^\alpha}_\nu - \frac{g^{\mu\alpha}}{4} F^{\nu\beta}F_{\nu\beta}\right )
-    $$
+    The Larmor formula can be applied just as well to a magnetic dipole by simply replacing the electric dipole moment \(\vec{p}\) by the magnetic dipole moment \(\vec{m}\). Given that the Earth has a magnetic dipole moment with magnitude \( 8.1 \times 10^{25}\) ergs/Gauss and direction \(11^\circ\) to the Earth's axis of rotation, find the total power radiated in CGS units (ergs/sec). You will need the unit conversion (1 Gauss)\(^2\) = \(8\pi\) ergs/cm\(^3\).  
 </p>
 <p>
     <i><b> Solution </b>  </i>
 </p>
 <p>
+    The magnetic dipole moment can be written down in spherical coordinates as: \(\vec{m} = m_0\,\hat{n}(t)\) where \(\hat{n}(t)\) is the unit normal vector pointing in the direction of \(\vec{m}\). For our case, the earth is rotating (about its axis of rotation) so the polar angle is fixed and the azimuthal angle \(\varphi = \omega t\) is free to evolve where \(\omega = 2\pi/24\,\)hours.  
+    $$ 
+\begin{align}
+    \hat{n}(t) = 
+        \cos(\omega t) \sin(11^\circ) \hat{x} + 
+        \sin(\omega t) \sin(11^\circ) \hat{y} + 
+        \cos(11^\circ) \hat{z} 
+\end{align}
+$$
+Then differentiating this twice gives us
+$$
+\begin{align}
+    \dot{\hat{n}}(t) &= 
+    -\omega\sin(\omega t )\sin(11^\circ) \hat{x} +
+    \omega\cos(\omega t)\sin(11^\circ)\hat{y}\\
+    \ddot{\hat{n}}(t) &= -\omega^2\cos(\omega t)\sin(11^\circ)\hat{x} - \omega^2 \sin(\omega t )\sin(11^\circ)\,\hat{y}
+\end{align}
+$$
+Then the second derivative of the magnetic dipole moment becomes
+$$
+\begin{align}
+    \ddot{\vec{m}} = -m_0\omega^2 \sin(11^\circ) (\cos\omega t \hat{x} + \sin\omega t \hat{y})
+\end{align}
+$$
+Inserting this into the magnetic dipole moment and into the Larmor formula gives us
+$$
+\begin{align}
+    P = \frac{2}{3c^3}\ddot{\vec{m}} &= 
+    \frac{2m_0^2\omega^4}{3c^3}
+    \left(\cos^2\omega t + \sin^2\omega t\right)\sin^2(11^\circ)\\
+    &= 
+    \frac{2m_0\omega^4}{3c^3}\sin^2(11^\circ)
+\end{align}
+$$
+Then using \(m_0 = 8.1\times10^{25}\) ergs/Gauss, \(\omega = 2\pi/86400\) s\(^{-1}\), \(c = 3\times 10^{10}\) cm/s, we get
+$$
+\begin{align}
+    P &= 164.959 \,\frac{\text{ergs}^2}{\text{Gauss}^2\cdot \text{s}\cdot \text{cm}^3} = 
+    \frac{164.959}{8\pi} \, 
+    \frac{\text{ergs}}{\text{s}}
+    = 6.564\, 
+    \frac{\text{ergs}}{\text{s}}
+\end{align}
+$$
 </p>
 </div>
 
+<br>
 
+</br> 
 
 
 <div id = "Problem 2"> 
@@ -38,11 +86,237 @@ section:
     </p>
     A charged particle \(q\) traveling on the \(x\)-axis with a non-relativistic velocity approaches the origin from the left (ie, along the \(+\hat{x})\) direction). It decelerates at a constant rate \(a\) coming to a complete stop at the origin at \(t=0\). 
     <p>
+    <p>
+        Using the expressions for \(E_\text{rad}\) for a non-relativistic charge derived from the LW potentials, prove that the radiative part of the electirc field at the point (\(x = 0, y = b\)) at \(t=0\) is given by
+        $$
+            E_x = \frac{qab^2}{c^2 R^3}
+        $$
+        and 
+        $$
+            E_y = - \frac{qa^2 b}{2Rc^4}
+        $$
+        where \( R = |\vec{r} - \vec{r}'(t')| \). Find an expression for \(R\) in terms of \(a,b\) and the speed of light \(c\) only. 
+    </p>
         <i><b>
             Solution 
         </b></i>
     </p>
     <p>
+        The radiation part of the electric field, from the LW potentials, is given by 
+        $$
+\begin{align}
+    \vec{E}_\text{rad} &=
+    \frac{q}{c}
+    \left[\frac{\hat{n} \times [(\hat{n}-\vec{\beta} ) \times \dot{\vec{\beta}}]}{(1-\vec{\beta}\cdot\hat{n})^3 R}\right]_{t=t'}
+\end{align}
+$$
+where \(\hat{n}\) is a unit vector in the \(\vec{r} - \vec{r}_0\) direction (\(\vec{r}\) is the position of the observer, \(\vec{r}_0\) is the position of the source), \(\beta = d\vec{r}_0/dt\), \(R\) is the magnitude \(R = |\vec{r}-\vec{r}_0(t')|\), and \(t'\) is the retarded time.
+
+
+In the non-relativistic limit \(\beta \ll 1\) so this expression reduces to 
+$$
+\begin{align}
+    \vec{E}_\text{rad} = \frac{q}{c}
+   \left[\frac{\hat{n} \times [(\hat{n}-\vec{\beta} ) \times \dot{\vec{\beta}}]}{R}\right]_{t=t'}
+\end{align}
+$$
+We can start by writing down the various quantities.
+
+    <ul>
+        <li>
+            First, we can find \(\hat{n} = \vec{R}/R = (\vec{r} - \vec{r}_0)/|\vec{r}-\vec{r}_0|\).
+            \begin{align}
+                \vec{R} = \vec{r} - \vec{r}_0 = \begin{pmatrix}
+                    0\
+                    b
+                \end{pmatrix}
+                - \begin{pmatrix}
+                    - \frac{1}{2}at^2\
+                    0
+                \end{pmatrix} =
+                \begin{pmatrix}
+                    \frac{1}{2}at^2\
+                    b
+                \end{pmatrix}
+            \end{align}
+            This then gives us
+            \begin{align}
+                R = \sqrt{(at^2/2)^2 + b^2}
+            \end{align}
+            which together gives us
+            \begin{align}
+                \hat{n} &=
+                \frac{\frac{1}{2}at^2\hat{x} + b\hat{y}}{\sqrt{(at^2/2)^2 + b^2}}
+                =   \frac{1}{R}\left(\frac{1}{2}at^2\hat{x} + b\hat{y}\right)
+            \end{align}
+        </li>
+        
+        <li>
+            Next, we can write down \(\vec{\beta}\) and \(\dot{\vec{\beta}}\)
+            $$
+            \begin{align}
+                \vec{\beta} = \frac{\vec{v}}{c} = \frac{1}{c}\frac{d\vec{r}_0(t)}{dt} = \begin{pmatrix}
+                    - at/c\
+                    0
+                \end{pmatrix}
+            \end{align}
+            $$
+            and
+            $$
+            \begin{align}
+                \dot{\vec{\beta}} &=
+                \begin{pmatrix}
+                    a/c\
+                    0
+                \end{pmatrix}
+            \end{align}
+            $$
+        </li>
+    </ul>
+
+
+
+At this point, we can start to calculate things. In the following steps, we aim to calculate the numerator inside of the brackets \(\hat{n}\times[(\hat{n} - \vec{\beta}) \times \dot{\vec{\beta}}]\). 
+
+
+
+    <ol>
+        <li>
+            First finding \(\hat{n} - \vec{\beta}\)
+            $$
+            \begin{align}
+            \hat{n} - \vec{\beta} &= \frac{1}{R}\left(\frac{1}{2}at^2\hat{x} + b\hat{y}\right)
+            - (-at/c \hat{x} )\
+            &= \frac{1}{R}
+            \begin{pmatrix}
+                \frac{1}{2}at^2 +  Rat/c\
+                b
+            \end{pmatrix}
+            \end{align}
+            $$
+        </li>
+        
+        <li>
+            Next, finding \( (\hat{n} \times \vec{\beta}) \times \dot{\vec{\beta}}\)
+            $$
+            \begin{align}
+            (\hat{n} \times \vec{\beta}) \times \dot{\vec{\beta}} &=
+            \frac{1}{R}
+              \begin{pmatrix}
+                \frac{1}{2}at^2 +  Rat/c\
+                b \
+                0
+            \end{pmatrix}
+            \times
+            \begin{pmatrix}
+                a/c\
+                0\
+                0
+            \end{pmatrix} =
+            -\frac{ab}{Rc}\hat{z}
+            \end{align}
+            $$
+        </li>
+        <li>
+            Finally getting \(  \hat{n} \times [   (\hat{n} \times \vec{\beta}) \times \dot{\vec{\beta}}]\)
+            $$
+            \begin{align}
+            \hat{n} \times [   (\hat{n} \times \vec{\beta}) \times \dot{\vec{\beta}}]
+            &=  \frac{1}{R}
+              \begin{pmatrix}
+                \frac{1}{2}at^2\
+                b \
+                0
+            \end{pmatrix}
+            \times
+            \begin{pmatrix}
+                0\
+                0\
+                -\frac{ab}{Rc}
+            \end{pmatrix}
+            =
+            \frac{1}{R^2c}
+            \begin{pmatrix}
+                -ab^2\
+                \frac{1}{2}a^2bt^2\
+                0
+            \end{pmatrix}
+            \end{align}
+            $$
+        </li>
+    </ol>
+
+
+
+Putting this all back together gives us the components of the radiation field as
+$$
+\begin{align}
+    \vec{E}_\text{rad} &= 
+    \frac{q}{c}
+   \left[\frac{\hat{n} \times [(\hat{n}-\vec{\beta} ) \times \dot{\vec{\beta}}]}{R}\right]_{t=t'} = 
+    \frac{q}{R^3c^2}
+    \begin{pmatrix}
+        -ab^2\\
+        \frac{1}{2}a^2bt^2\\
+        0
+    \end{pmatrix}
+    \bigg|_{t=t'}
+\end{align}
+$$
+Next, we can recall that these terms are evaluated at \(t =t'\) so using
+$$
+\begin{align}
+    t' = \cancel{t} - \frac{|\vec{r}-\vec{r}'(t')|}{c} \qquad \implies \qquad  t' = - \frac{R}{c}
+\end{align}
+$$
+we arrive at 
+$$
+\begin{align}
+       \vec{E}_\text{rad} &= 
+    \frac{q}{R^3c^2}
+    \begin{pmatrix}
+        -ab^2\\
+        \frac{1}{2}a^2bR^2/c^2
+    \end{pmatrix}
+\end{align}
+$$
+or in component form
+$$
+\begin{align}
+    \boxed{
+    E_x = -\frac{qab^2}{c^2 R^3} \qquad E_y = \frac{qa^2 b}{2Rc^4}}
+\end{align}
+$$
+
+
+<h4>Expression for \(R\)</h4>
+To find an expression for \(R\) in terms of \(a,b,c\), we can start from our current expression for \(R\)
+$$
+\begin{align}
+    R = |\vec{r} - \vec{r}'(t')| = 
+    \sqrt{\left(\frac{at'^2}{2}\right)^2 + b^2} 
+\end{align}
+$$
+Next, we'll solve for \(t'\) from the implicit equation defining the retarded time (at \( t = 0\))
+$$
+\begin{align}
+    t' &= \cancel{t} - \frac{|\vec{r} - \vec{r}'(t')|}{c} = - \frac{\sqrt{(at'^2/2)^2 + b^2}}{c}
+\end{align}
+$$
+We can solve this for \(t'\) to find (using Mathematica)
+$$
+\begin{align}
+    t' &= \pm 
+    \sqrt{2}\left[\left(\frac{c}{a}\right)^2 \pm \frac{\sqrt{c^4 - a^2 b^2}}{a^2}\right]^{1/2}
+\end{align}
+$$
+Then inserting this back into the expression for \(R\) we find
+$$
+\begin{align}
+    R &= \sqrt{b^2 + \frac{a^4}{4}\left(2\left[\left(\frac{c}{a}\right)^2 \pm \frac{\sqrt{c^4 - a^2 b^2}}{a^2}\right]\right)^2}\\
+    &= \sqrt{b^2 + a^4 \left[\left(\frac{c}{a}\right)^2 \pm \frac{\sqrt{c^4 - a^2 b^2}}{a^2}\right]^2}
+\end{align}
+$$
     </p>
 </div>
 
@@ -56,9 +330,141 @@ section:
         Problem 3: Cherenkov and Bremsstrahlung Radiation    </h2>
     <p>
     </p>
+        <ol>
+            <li>
+                An electron zips by a stationary ion (charge \(Ze\)) traveling in a straight line with an impact parameter \(b > 0\). Given the formula for instantaneous power radiated by the electron (in CGS units)
+                $$
+                    P(t) = \frac{2}{3}\frac{e^2a_\perp(t)}{c^3}
+                $$
+                where \(a_\perp\) is the instaneous veritcal component of the acceleration, show that in the approximation taht electron velocity is almost constant (ie energy loss is small), the total energy radiated away \(W = \int_0^\infty P(t)\,dt\) is
+                $$
+                    W = \frac{\pi Z^2 e^6}{4m_e^2 c^3}\left(\frac{1}{b^3 v}\right)
+                $$
+            </li>
+            <li>
+                The index of refraction of Lucite (a type of resin) is 1.5. What is the angle of emission of Cherenkov radiation from a protion moving in a slab of lucite with kinetic energy 3760 MeV? The mass of a proton is 940 MeV. 
+            </li>
+        </ol>
     <p>
         <i><b>
             Solution 
         </b></i>
     </p>
+    <p>
+        <h4>Part A </h4>
+We can start by finding the perpendicular part of the acceleration.
+
+<ul>
+    <li>
+        First, we can get the total acceleration vector by using Coulomb's law and Newton's second law together. The perpendicular part in this case would be the \(y\) component.
+        \begin{align}
+            \vec{F} &=
+            \frac{Ze^2}{r^2}(\cos\theta\hat{x} + \sin\theta\hat{y})
+            \qquad \implies \qquad a_\perp =
+            \frac{\vec{F}_\perp}{m} = \frac{Ze^2}{mr^2}\sin\theta
+        \end{align}
+        Thinking ahead to when we perform the integral to get the total work, we would want to re-write \(r\) in terms of \(\theta\)
+        \begin{align}
+            r\sin\theta = b \qquad \implies \qquad r = \frac{b}{\sin\theta}
+        \end{align}
+        which gives \(a_\perp\) as
+        \begin{align}
+            a_\perp =\frac{Ze^2}{mb^2}\sin^3\theta
+        \end{align}
+    </li>
+</ul>
+
+
+
+
+Now that we have \(a_\perp\), we can insert it into the work integral 
+$$
+\begin{align}
+    W &= \int_0^\infty P(t)\,dt = 
+    \int_0^\infty 
+    \frac{2e^2}{3c^3}\left(\frac{Ze^2}{mb^2}\sin^3\theta\right)^2\,dt 
+\end{align}
+$$
+But this is an integral over \(t\) which is a little inconvenient, so we can change variables to integrate over \(\theta\) rather than \(t\), ie, we would want to use \(dt = dt/d\theta \cdot d\theta\). 
+
+
+<ul>
+    
+    <li>
+        In particular, we can use the fact that the particle's velocity \(v\) is almost constant to write down its position in terms of \(v, b, t\)
+        $$
+        \begin{align}
+            \vec{r}(t) = v t\hat{x} + b\hat{y} \qquad \implies \qquad
+            r(t) = \sqrt{v^2 t^2 + b^2}
+        \end{align}
+        $$
+        But we also have \( r = b/\sin\theta\) so equating the two expressions gives us
+        $$
+        \begin{align}
+            \frac{b}{\sin\theta} &= \sqrt{v^2t^2 + b^2}
+        \end{align}
+        $$
+        and solving for \(t\) gives us
+        $$
+        \begin{align}
+                 v^2 t^2 + b^2 &=
+                 \left(\frac{b}{\sin\theta}\right)^2\
+                 t^2 &=
+                 \frac{b^2}{v^2}
+                 \left[\frac{1}{\sin^2\theta} - 1\right] =
+                 \frac{b^2}{v^2}\frac{\cos^2\theta}{\sin^2\theta}\
+                 t &= \pm \frac{b}{v}\frac{\cos\theta}{\sin\theta}
+        \end{align}
+        $$
+        We can differentiate this with respect to \(\theta\) to give us
+        $$
+        \begin{align}
+            \frac{dt}{d\theta} &= \pm
+            \frac{b}{v}\frac{1}{\sin^2\theta}
+        \end{align}
+        $$
+    </li>
+</ul>
+
+
+
+With this result, our change-of-variables integral becomes
+$$
+\begin{align}
+    W &= 
+    \int_0^\pi 
+    \frac{2e^2}{3c^3}\left(\frac{Ze^2}{mb^2}\sin^3\theta\right)^2\,\left(\frac{b}{v}\frac{1}{\sin^2\theta}\right)\,d\theta\\
+    &= 
+    \frac{2e^6 Z^2}{3c^3 m^2}\frac{1}{b^3 v}
+    \int_0^\pi \sin^4(\theta)\,d\theta\\
+    &=  \frac{2e^6 Z^2}{3c^3 m^2}\frac{1}{b^3 v}
+   \left(\frac{3\pi}{8}\right)\\
+   &= \boxed{\frac{\pi Z^2 e^6}{4m_e^2 c^3}\frac{1}{b^3 v}} \qquad \checkmark 
+\end{align}
+$$
+
+
+
+<h4>Part B</h4>
+The emission angle for Cherenkov radiation is given by
+$$
+\begin{align}
+    \cos \theta = \frac{1}{n\beta}
+\end{align}
+$$
+We want to find \(\beta\). A proton that has kinetic energy \(3760\) MeV will have total energy \(4700\) MeV. Then from \(E_\text{tot} = \gamma E_\text{rest}\) we can solve for \(\gamma\) to find
+$$
+\begin{align}
+    \gamma &= 
+    \frac{1}{\sqrt{1-\beta^2}} = \frac{4700}{940} 
+    \quad \implies \quad \beta = \frac{2\sqrt{6}}{5}
+\end{align}
+$$
+Then the emission angle (for \(n = 1.5\)) is
+$$
+\begin{align}
+     \theta = \arccos\left(\frac{2}{3}\frac{5}{2\sqrt{6}}\right) \approx 47.12^\circ 
+\end{align}
+$$
+</p>
 </div>

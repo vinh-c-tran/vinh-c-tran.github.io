@@ -49,6 +49,34 @@ section:
         </b></i>
     </p>
     <p>
+        Generalizing the covariant derivative of a vector to a rank 2 tensor, we have the covariant derivative of the metric tensor given by
+        \begin{align}
+            g_{ij;k} &= 
+            \frac{\partial g_{ij}}{\partial q^k}
+            - g_{i\alpha}\Gamma^\alpha_{jk} 
+            - g_{j\beta}\Gamma^\beta_{ik}
+            \label{eq1}
+        \end{align}
+        Next, we can use the product rule to re-write $\partial g_{ij}/\partial q^k$
+        \begin{align}
+            \frac{\partial g_{ij}}{\partial q^k} &= 
+            \frac{\partial (\epsilon_i \cdot \epsilon_j)}{\partial q^k} = \frac{\partial\epsilon_i}{\partial q^k}\cdot \epsilon_j + \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
+        \end{align}
+        Inserting this expression back into \ref{eq1} and re-writing the Christoffel symbols using $\Gamma_{ij}^k = \epsilon^k \cdot \frac{\partial \epsilon_i}{\partial q^j}$ gives us
+        \begin{align}
+            g_{ij;k} &= 
+            \frac{\partial\epsilon_i}{\partial q^k}\cdot \epsilon_j + \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
+            - g_{i\alpha}\left[\epsilon^\alpha \cdot \frac{\partial \epsilon_j}{\partial q^k}\right] 
+            - g_{j\beta}\left[\epsilon^\beta \cdot \frac{\partial \epsilon_i}{\partial q^k}\right] 
+        \end{align}
+        Then, we can use the lowering and raising properties of the metric tensor to re-write the last two terms as the first line. Then we see that the sum cancels out piece-wise. 
+        \begin{align}
+            g_{ij;k} &= 
+            \frac{\partial\epsilon_i}{\partial q^k}\cdot \epsilon_j + \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
+            - \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
+            - \epsilon_j \cdot \frac{\partial \epsilon_i}{\partial q^k}\\
+            &= 0 
+        \end{align}
     </p>
 </div>
 
