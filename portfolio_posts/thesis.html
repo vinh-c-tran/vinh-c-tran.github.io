@@ -75,16 +75,384 @@ section:
 
 <div id = "Python: Numerical Non-Linear Solver">
     <h2>
-        Python: Numerical Non-Linear Solver
+        Python: Data Generation and Numerical Non-Linear Solver
     </h2>
     <p>
         To make any progress, we need to start off by solving for the various values of the different particle momentas and field values as a function of baryon density \( n_B \). Each point \( n_B \) then traces out a trajectory in phase space that uniquely defines values for the meson fields, baryon and lepton momenta and fraction. To do this though, we need to solve our system of equations in the context of an RMF model. 
     </p>
     <p>
-        We are left with a system of <i>n</i> highly nonlinear and coupled equations and <i>n</i> unknown variables. In other words, we have a multivariate optimization problem. We can approach this using a Quasi-Newton method called Broyden's method. 
+        We are left with a system of <i>n</i> highly nonlinear and coupled equations and <i>n</i> unknown variables. In other words, we have a multivariate optimization problem. We can approach this using a Quasi-Newton method called Broyden's method. The structure and tasks are as follows
      </p>
+     <ol>
+        <li>
+            First, from a defined system of particles (ie, specify the exact species of nucleons, hyperons, leptons, and mesons) that we want present, generate the RMF equations of motion. For the sake of verification that the equations are correct, we do this symbolically in <code> Sympy </code>. 
+            
+            <ul><li>There is one small subtlety: not all of the species will be present "at the beginning" when the total baryon density \(n_B\) is small, so we need to check whether or not the conditions for another heavier particle to enter the picture is satisfied or not. This is the threshold condition and is given by \(\mu_n + q_B \mu_e \geq m_B^*\)</li></ul>
+        </li>
+        <li>
+            Solve the system of non-linear equations using a Broyden's method that interfaces with the symbolic sympy expressions. 
+        </li>
+     </ol>
+
+     <h3>
+        Data Generation Code
+     </h3>
+     <h4>
+        Particle Classes
+     </h4>
+     <p>
+         Due to the nature of our project, we are dealing with particles. Each particle has a mass, a charge, an isospin, a Fermi momenta, a fraction, etc and etc. To manage these attributes in an organized way that allows for generalizing to systems of different composition, we define various particle classes. For example, we have a <code> Baryon </code> class specified as follows
+     </p>
+
+     <pre>
+         <code>
+        class baryon:
+            # baryon class, stores both symbolic and numeric values in a single class 
+            # baryon particle 
+            def __init__(self, name, spin, isospin, charge, kind, var_type,\
+                sym_mass, sym_mass_eff, sym_density, sym_frac, sym_kf, sym_ef, sym_chem_pot,\
+                num_mass = 0.0, num_mass_eff = 0.0, num_density = 0.0, num_frac = 0.0,\
+                num_kf = 0.0, num_ef = 0.0, num_chem_pot = 0.0):
+
+        # variables common to both classes
+        self.name = name
+        self.kind = kind
+        self.var_type = var_type
+        self.charge = charge
+        self.spin = spin
+        self.isospin = isospin
+        self.type = 'Baryon'
+
+        # variables to be established at baryon declaration
+        self.sym_mass = sym_mass
+        self.num_mass = num_mass
+        
+        # variables to be stored later
+        self.sym_mass_eff = sym_mass_eff
+        self.sym_num_density = sym_density
+        self.sym_frac = sym_frac
+        self.sym_kf = sym_kf
+        self.sym_ef = sym_ef
+        self.sym_chem_pot = sym_chem_pot
+        self.num_mass_eff = num_mass_eff
+        self.num_num_density = num_density
+        self.num_frac = num_frac
+        self.num_kf = num_kf
+        self.num_ef = num_ef
+        self.num_chem_pot = num_chem_pot
+        
+        # coupling constants
+        self.sym_g_sigma = 0.0
+        self.sym_g_omega = 0.0
+        self.sym_g_rho = 0.0
+        self.sym_g_phi = 0.0
+        self.num_g_sigma = 0.0
+        self.num_g_omega = 0.0
+        self.num_g_rho = 0.0
+        self.num_g_phi = 0.0
+         </code>
+     </pre>
     
-     
+     <h4>
+         Generating the various important quantities
+     </h4>
+     <p>
+         Next, we would need a few functions that take these objects and generate/calculate a few important quantities that ultimately lead to the equations of motion. In particular, we write functions that generate quantities such as the vector and scalar densities \(n_s^i\) defined as 
+         $$
+            n^s_i = \frac{m_i^*}{2\pi} \left[k_{F_i}E_{F_i} - {m_i^*}^2\ln \frac{k_{F_i} + E_{F_i}^*}{m_i^*}\right] 
+         $$
+         or the mesonic equations of motion such as 
+         $$
+            m_\sigma^2 \sigma + \frac{\partial U}{\partial \sigma} = \sum_i g_{\sigma i} n_i^s 
+         $$
+     </p>
+     <pre>
+         <code>
+            def scalar_density(baryon):
+            """ returns scalar density n_s for a given baryon
+                note: we modify the argument of the natural log as to be positive definite to avoid complex numbers 
+                this is a symbolic expression (sympy)
+            """ 
+            coeff_1 = (2*baryon.spin + 1)/(2*Pi**2)
+            coeff_2 = baryon.sym_mass_eff
+            term_2 = baryon.sym_ef*baryon.sym_kf 
+            term_2_2 = sym.sqrt(((baryon.sym_ef + baryon.sym_kf)/baryon.sym_mass_eff)**2)
+            term_3 = sym.log(term_2_2)
+            
+            return coeff_1*coeff_2*(term_2 - baryon.sym_mass_eff**2*term_3)/2
+         </code>
+     </pre>
+     <p>
+         We also have other equations to consider in our system of equations which take the form of constraints such as charge neutrality, baryon number conservation, and beta equilibrium conditions (on chemical potentials). 
+         
+         <ol>
+             <li>In particular though, we write them as take advantage of each particles' relevant attributes to generate this condition from just a list of particles, rather than hard code this in for each specific case.</li>
+             <li>
+                 For example, each particle has a <code>particle.charge</code> attribute. Charge neutrality requires that the number of positively charged particles is equal to the number of negatively charged particles. Mathematically, this is written as 
+                 $$
+                    \sum_i q_i n_i = 0 \qquad i \in \text{all particles}
+                 $$
+                 So from a list of particles in our active system, using particle objects and classes, we could simply loop over and just extract each particle's charge attribiute which makes for easier and cleaner code. 
+             </li>
+        </ol>  
+     </p>
+     <pre>
+         <code>
+            def charge_conservation(baryon_list, lepton_list):
+
+            """ gives charge conservation equation condition on fermi momentum """
+
+            particles = baryon_list + lepton_list 
+            expression = 0 
+        
+            for particle in particles:
+                if (particle.charge > 0):
+                    expression += particle.sym_kf**3
+                elif (particle.charge < 0):
+                    expression -= particle.sym_kf**3
+            
+            return expression 
+         </code>
+     </pre>
+
+     <h4>
+        Generating a system of equations in matrix form
+     </h4>
+     <p>
+        In the end, to pass the system of equations to a Newton or quasi-Newton method, we need the system of equations in a matrix form as to calculate the Jacobian (or quasi-Jacobian). With our previously defined functions, we consolidate them all into a single <code>system generating</code> function. 
+     </p>
+     <pre>
+        <code>
+    def sys_eqn_gen(baryon_list, meson_list, lepton_list):
+    """ 
+        function to generate all our equations and to store in an array
+        called sys_eqn_gen
+    """
+
+    meson_eqn = [] 
+    for meson in meson_list:
+        if (meson.name == 'sigma'):
+            meson_eqn.append(sigma_eom)
+        elif (meson.name == 'omega'):
+            meson_eqn.append(omega_eom) 
+        elif (meson.name == 'rho'):
+            meson_eqn.append(rho_eom)
+        elif (meson.name == 'phi'):
+            meson_eqn.append(phi_eom) 
+    
+    other_func_gen = [beta_equilibrium, charge_conservation, baryon_num_conservation]
+    
+    if(len(lepton_list) != 1):
+        func_gen = meson_eqn + other_func_gen + [beta_equilibrium_lep]
+    else:
+        func_gen = meson_eqn + other_func_gen
+
+    sys_eqn = []
+    
+    for function in func_gen:
+        if (function == charge_conservation):
+            # since charge conservation depends on both baryons and leptons, we need to 
+            # pass to it both baryon and lepton lists 
+            sys_eqn.append(function(baryon_list, lepton_list))
+        elif (function == beta_equilibrium):
+            # beta condition function returns an array with (possibly) multiple equations
+            # we unload those functions and append to array 
+            beta_conditions = function(baryon_list, meson_list)
+            for equation in beta_conditions:
+                sys_eqn.append(equation)
+        elif (function == beta_equilibrium_lep):
+            sys_eqn.append(function(lepton_list))
+        else:
+            sys_eqn.append(function(baryon_list))
+            
+    return sys_eqn
+        </code>
+     </pre>
+
+    <h4>
+        Data Parsing 
+    </h4>
+    <p>
+        One last task to do is that of data storage. Our aim to recap is to calculate field values and momenta all as a function of baryon density \(n_B\). Then a natural object would be a two-dimensional array or matrix where each row will correspond to all the relevant values for a given specific \(n_B\). 
+    </p>
+    <p>
+        So with this in mind we write a function here that takes the data and stores it in a <code>Pandas DataFrame</code> which has the following benefits
+        <ol>
+            <li>
+                Natural two dimensional storage and visualization, especially in a <code>Jupyter Notebook</code>
+            </li>
+            <li>
+                Support for naming of columns 
+            </li>
+            <li>
+                Established data analysis functions and tools in the <code>Pandas</code> library, especially easy extraction of arrays from columns, etc. 
+            </li>
+        </ol>
+        and in particular, we structure the code as to generate column names in an organized, dynamic way adaptable to different systems with differing number of particles. 
+    </p>
+    <pre>
+        <code>
+    def column_name(baryon_list, meson_list, lepton_list):
+        """
+        generate column names
+        this is used to create the Dataframe in which we store our values
+        Data frame is well suited to Jupyter visualization which is great! 
+        can convert/extract to numpy array too
+        """
+
+    columns = ['nB/n0']
+    
+    for meson in meson_list:
+        columns.append(meson.name + " " + 'field (MeV)')
+    
+    columns.append(Neutron.name + " " + 'kF (MeV)')
+    columns.append(Proton.name + " " + 'kF (MeV)')
+    columns.append(electron.name + " " + 'kF (MeV)')
+
+    for lepton in lepton_list:
+        if (lepton != electron):
+            columns.append(lepton.name + " " + "kF (MeV)")
+    
+    for baryon in baryon_list:
+        if (baryon != Proton and baryon != Neutron):
+            columns.append(baryon.name + " " + "kF (MeV)")
+    
+    columns.append(Neutron.name + " " + 'frac')
+    columns.append(Proton.name + " " + 'frac')
+    columns.append(electron.name + " " + 'frac')
+
+    for lepton in lepton_list:
+        if (lepton != electron):
+            columns.append(lepton.name + " " + "frac")
+    
+    for baryon in baryon_list:
+        if (baryon != Proton and baryon != Neutron):
+            columns.append(baryon.name + " " + "frac")
+    
+    
+    return columns
+        </code>
+    </pre>
+    <h4>
+        Black Box Solver 
+    </h4>
+    <p>
+        We can then consolidate everything into a single function that performs the task of interest: given a <code>Baryon</code> list, <code>Lepton</code> list, <code>Meson</code> list, and <code>Equation of State </code> object, calculate the various quantities of interest especially particle momenta, fraction, and meson field values. 
+    </p>
+    <pre>
+        <code>
+    def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, solver_method = 'broyden'):
+    # full solver 
+    
+    # initialize all things... 
+    init(eos, baryon_list, meson_list)
+    
+    # create nB array 
+    nB = np.arange(0.27, 8.0, 0.01) #nB/n0
+    nB_mev = nB*eos.n0*hc**3 #nB_mev in mev+3 
+    
+    # create data array (pre-allocate)
+    row_size = len(nB)
+    column_size = len(meson_list) + 2*len(baryon_list + lepton_list) + 1 
+    data = np.zeros((row_size, column_size), dtype = 'float') 
+    data[:,0] = nB 
+    
+    # create first system: NPE
+    current_baryons = [Neutron, Proton]
+    current_leptons = [electron] 
+    
+    # create lists for potential particles 
+    potential_baryons = potential_baryon_gen(baryon_list)
+    potential_leptons = potential_lepton_gen(lepton_list) 
+    
+
+    # independent variables
+    ind_vars = ind_variable(current_baryons, current_leptons, meson_list)
+    
+    # initial guess for NPE matter 
+    # x_guess = [8.00, 4.50, 210.0, 45.0, 45.0] 
+    #x_guess = [] 
+    #for i in range(len(ind_vars)):
+    #    x_guess.append(20.0) 
+    x_guess = npe_guess
+    
+    # iterate through baryon density nB 
+    for i in range(len(nB_mev)): 
+        
+        # update our system: 
+        
+        if (potential_baryons[0] != 'None'):
+            Bool = baryon_threshold(potential_baryons[0], meson_list) 
+            if (Bool):
+                current_baryons.append(potential_baryons[0])
+                potential_baryons.remove(potential_baryons[0])
+                x_guess = np.append(x_guess, 27.0)
+        
+        if (potential_leptons[0] != 'None'):
+            Bool = lepton_threshold(potential_leptons[0])
+            if (Bool):
+                current_leptons.append(potential_leptons[0])
+                potential_leptons.remove(potential_leptons[0])
+                x_guess = np.append(x_guess, 2.0)
+        
+        # 
+        init(eos, baryon_list, meson_list)
+            
+        # generate system of equations 
+        sys_eqn = sys_eqn_gen(current_baryons, meson_list, current_leptons)
+        subs(sys_eqn, nB_mev[i], current_baryons, meson_list, current_leptons)
+        
+        # generate independent variables 
+        ind_vars = ind_variable(current_baryons, current_leptons, meson_list)
+        
+        # call solver, broyden returns a vector with solutions to independent variables
+        # very importantly, the independent variables are ordered: sigma, omega, rho, phi
+        if (solver_method == 'broyden'):
+            answer = broyden(sys_eqn, ind_vars, x_guess)
+        elif (solver_method == 'newton'):
+            answer = Newton(sys_eqn, ind_vars, x_guess)
+        
+        # append values to data file 
+        #for j in range(column_size - len(current_baryons + current_leptons) - 1):
+        #    data[i][j+1] = answer[j]
+        for j in range(len(ind_vars)):
+            data[i][j+1] = answer[j]
+        
+        # update important values
+        pseudo_dict = [ind_vars, answer]
+        for k in range(len(ind_vars)):
+            if (pseudo_dict[0][k] == sigma.sym_field):
+                sigma.num_field = answer[k]
+            elif (pseudo_dict[0][k] == omega.sym_field):
+                omega.num_field = answer[k]
+            elif (pseudo_dict[0][k] == rho.sym_field):
+                rho.num_field = answer[k]
+            elif (pseudo_dict[0][k] == phi.sym_field):
+                phi.num_field = answer[k]
+            elif (pseudo_dict[0][k] == Neutron.sym_kf):
+                Neutron.num_kf = answer[k]
+            elif (pseudo_dict[0][k] == electron.sym_kf):
+                electron.num_kf = answer[k]
+        
+        # update x_guess
+        x_guess = answer 
+        
+    # fill in fractions 
+    for rem in range(len(nB)):
+        for emilia in range(len(ind_vars) - len(meson_list)):
+            data[rem][emilia + len(meson_list + baryon_list + lepton_list) + 1]\
+                = frac(data[rem][emilia + len(meson_list) + 1], data[rem][0]*eos.n0*hc**3)
+         
+    # convert data array to dataframe 
+    data_frame = pd.DataFrame(data, columns = column_name(baryon_list, meson_list, lepton_list))
+    
+    
+    # write out dataframe to csv file 
+    data_frame.to_csv('data.csv', float_format = '{:.8f}'.format)
+    
+    return data_frame 
+        </code>
+    </pre>
 </div>
 
 
