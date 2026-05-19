@@ -1,0 +1,12 @@
+---
+layout: blog 
+header: Graphene Field Effect Transistor
+title: Graphene Field Effect Transistor
+css: /assets/css/text.css 
+section:
+    - "Background Information"
+    - "Fabrication"
+    - "Measurement"
+    - "Data Analysis"
+    - "Troubleshooting"
+--- 
