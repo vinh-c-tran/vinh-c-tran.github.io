@@ -1,31 +1,29 @@
---- 
-layout: default 
-title: Vinh Tran
-header: Physics 550A Quantum Mechanics I
-css: /assets/css/main.css
---- 
-
-<!-- Main -->
-<div id="main">
-    <div class="inner">
-        <section class="tiles">
-
-            {% for portfolio_item in site.qm1_problemsets %}
-            <!-- First Tile -->
-            <article class="{{ portfolio_item.style }}">
-                <span class="image">
-                    <img src="{{ portfolio_item.image_path}}" alt="" />
-                </span>
-                <a href="{{ portfolio_item.link_path}}">
-                    <h2>{{ portfolio_item.title }}</h2>
-                    <div class="content">
-                        <p> 
-                            {{ portfolio_item.caption}}
-                        </p>
-                    </div>
-                </a>
-            </article>
-            {% endfor %}
-        </section>
-    </div>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Quantum mechanics I | Vinh Tran</title>
+<meta name="description" content="Fall 2021 · Graduate teaching assistant course.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html" aria-current="page">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/index.html">Home</a>
+<h1>Quantum mechanics I</h1>
+<p>Fall 2021 · Graduate teaching assistant course.</p></header>
+<div class="resource-list">
+<article class="resource">
+<h2>Course topics</h2>
+<p>Mathematical formalism, one-dimensional problems, time evolution, and angular momentum.</p></article>
+<article class="resource">
+<h2>Course materials</h2>
+<p>Quantum mechanics problem sets are not currently published here.</p></article>
+<article class="resource">
+<h2>Other teaching materials</h2>
+<p>Electrodynamics problem sets and midterm solutions are available.</p><a class="text-link" href="/electrodynamics/em.html">Browse electrodynamics</a></article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>

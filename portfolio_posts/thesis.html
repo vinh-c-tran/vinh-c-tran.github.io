@@ -1,77 +1,83 @@
----
-layout: blog 
-header: Thesis&#58; Neutron Star Oscillations
-title: Thesis 
-css: /assets/css/text.css 
-section:
-    - 'Neutron Star Introduction'
-    - 'Stellar Oscillations'
-    - "G-Modes and Sound Speed Difference"
-    - "Sound Speed Difference Methods"
-    - "Relativistic Mean Field Model"
-    - "Chemical Potentials"
-    - "Python: Numerical Non-Linear Solver"
-    - "Python: Sound Speed Difference"
---- 
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Neutron-star oscillations | Vinh Tran</title>
+<meta name="description" content="Numerical modeling of sound-speed differences and g-modes as probes of neutron-star core composition.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research" aria-current="page">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/index.html#research">All research</a>
+<h1>Neutron-star oscillations</h1>
+<p>Numerical modeling of sound-speed differences and g-modes as probes of neutron-star core composition.</p>
+<div class="detail-meta"><span>Python</span><span>SymPy</span><span>Numerical modeling</span></div></header>
+<div class="article-grid">
+<nav class="article-nav" aria-label="On this page"><strong>In this project</strong><a href="#section-1">Neutron Star Introduction</a><a href="#section-2">Stellar Oscillations</a><a href="#section-3">G-Modes and Sound Speed Differences</a><a href="#section-4">Sound Speed Difference Methods</a><a href="#section-5">Relativistic Mean Field Model</a><a href="#section-6">Python: Data Generation and Numerical Non-Linear Solver</a><a href="#section-7">Python: Sound Speed Difference</a><a href="/index.html#research">Back to all research</a></nav>
+<article class="article-body">
 <div id='Neutron Star Introduction'>
-<h2>
+<h2 id="section-1">
     Neutron Star Introduction
 </h2>
 </div>
-<div id='intro-flex-container'> 
-<div id='intro-flex-container-2'> 
+<div id='intro-flex-container'>
+<div id='intro-flex-container-2'>
 <p>
-    Neutron stars, remnants of supernovae of supermassive stars, are some of the densest objects in the universe! Some pretty novel physics occurs when things get so dense which leads to some remaining unanswered questions about these things. One of the main problems is that of mass-radius relations. Another though is that of the state of matter inside of neutron star cores. 
+    Neutron stars, remnants of supernovae of supermassive stars, are some of the densest objects in the universe! Some pretty novel physics occurs when things get so dense which leads to some remaining unanswered questions about these things. One of the main problems is that of mass-radius relations. Another though is that of the state of matter inside of neutron star cores.
 </p>
-<h4>
-    Core Composition Problem 
-</h4>
-</p> 
-    It's commonly accepted that towards the surface of the star that matter exists in the form of free neutrons, protons and electrons all existing in chemical equilibrium (this is called beta equilibrium!). However, as we go deeper into the core of the star and density and pressure rises, it is possible for matter to transition to different phases. One of the first things that could happen is the introduction of new particles such as heavier baryons like Hyperons. 
+<h3>
+    Core Composition Problem
+</h3>
 </p>
-</div> 
-<div class = "neutron_pic">
-    <img src='/images/neutron.jpeg'> 
+    It's commonly accepted that towards the surface of the star that matter exists in the form of free neutrons, protons and electrons all existing in chemical equilibrium (this is called beta equilibrium!). However, as we go deeper into the core of the star and density and pressure rises, it is possible for matter to transition to different phases. One of the first things that could happen is the introduction of new particles such as heavier baryons like Hyperons.
+</p>
 </div>
-</div> 
+<div class = "neutron_pic">
+    <img src='/images/neutron.jpeg' alt="Neutron-star oscillations — project figure" loading="lazy">
+</div>
+</div>
 
 
 <div id="Stellar Oscillations">
-<h2>
+<h2 id="section-2">
     Stellar Oscillations
 </h2>
 <p>
-    One possible approach to this problem is to rely on the frequency spectra of stellar oscillations. Stellar oscillations and stellarseismology as a whole mirror geoseismology in the idea that through earthquakes (or in this case starquakes), we can learn more about the internal structure of the object! 
-</p> 
+    One possible approach to this problem is to rely on the frequency spectra of stellar oscillations. Stellar oscillations and stellarseismology as a whole mirror geoseismology in the idea that through earthquakes (or in this case starquakes), we can learn more about the internal structure of the object!
+</p>
 
 <p>
-    In particular, we can write down a series of equations that model how the star, or more precisely, a fluid element of the star, will oscillate in time when displaced from its equilibrium position. The equations are derived from general relativity. These are usually too hard for us to solve fully, so we use the familiar trick of physicists! We introduce a set of quantities: the perturbed quantities and Taylor expand to first order about the equilibrium position. Then these give us a "linearized" set of equations to solve which yield the oscillatory equations of motion for different quantities, one of which being \(\xi\) which describes the perturbed position of a fluid parcel. 
-</p> 
-<p> 
-    Different modes of oscillation due to different restorative forces and different symmetries will yield different equations of motion. One example, the g-mode, has the following coupled set of  differential equations for the different perturbed quantities. 
+    In particular, we can write down a series of equations that model how the star, or more precisely, a fluid element of the star, will oscillate in time when displaced from its equilibrium position. The equations are derived from general relativity. These are usually too hard for us to solve fully, so we use the familiar trick of physicists! We introduce a set of quantities: the perturbed quantities and Taylor expand to first order about the equilibrium position. Then these give us a "linearized" set of equations to solve which yield the oscillatory equations of motion for different quantities, one of which being \(\xi\) which describes the perturbed position of a fluid parcel.
+</p>
+<p>
+    Different modes of oscillation due to different restorative forces and different symmetries will yield different equations of motion. One example, the g-mode, has the following coupled set of  differential equations for the different perturbed quantities.
     $$
     \begin{align}
-        - \frac{1}{e^{\lambda/2}r^2}\frac{\partial}{\partial r} 
-        [e^{\lambda/2} r^2 \xi_r] 
+        - \frac{1}{e^{\lambda/2}r^2}\frac{\partial}{\partial r}
+        [e^{\lambda/2} r^2 \xi_r]
         + \frac{\ell(\ell + 1)e^\nu}{r^2\omega^2} \frac{\delta p}{p + \epsilon} - \frac{\Delta p}{\gamma p} &= 0\\
-    \frac{\partial \delta p}{\partial r} + g\left(1 + \frac{1}{c_s^2}\right)\delta p 
-        + e^{\lambda - \nu}h(N^2 - \omega^2)\xi_r &= 0 
+    \frac{\partial \delta p}{\partial r} + g\left(1 + \frac{1}{c_s^2}\right)\delta p
+        + e^{\lambda - \nu}h(N^2 - \omega^2)\xi_r &= 0
     \end{align}
     $$
 </p>
 
 <p>
 </p>
-</div> 
+</div>
 
 
 <div id = "G-Modes and Sound Speed Difference">
-    <h2>
+    <h2 id="section-3">
         G-Modes and Sound Speed Differences
     </h2>
     <p>
-        There is one specific mode of oscillation, the g-mode, which has buoyancy as its restorative force that seems especially well suited towards addressing the composition problem. 
+        There is one specific mode of oscillation, the g-mode, which has buoyancy as its restorative force that seems especially well suited towards addressing the composition problem.
     </p>
     <p>
         In particular, the g-mode's oscillation is directly proportional to a characteristic frequency called the  Brunt-Vaisala frequency \(N\). This frequency, given below, is dependent on the difference (of the reciprocals) of two different sound speeds
@@ -80,46 +86,46 @@ section:
         $$
         where
         $$
-            c_e^2 := \frac{dp}{d\epsilon} \qquad c_s^2 := 
+            c_e^2 := \frac{dp}{d\epsilon} \qquad c_s^2 :=
             \left(\frac{\partial p}{\partial \epsilon}\right)\bigg|_x
         $$
-        as defined are the equilibrium and adiabatic sound speed respectively. 
+        as defined are the equilibrium and adiabatic sound speed respectively.
     </p>
     <p>
-        The adiabatic sound speed in particular is defined as the partial derivative of the pressure with respect to energy density while keeping the various particle fractions fixed, or in other words, fixing the composition. 
+        The adiabatic sound speed in particular is defined as the partial derivative of the pressure with respect to energy density while keeping the various particle fractions fixed, or in other words, fixing the composition.
     </p>
     <p>
-        As a result, it is imperative to be able to calculate the difference between the two sound speeds and is a large focus of this project. 
+        As a result, it is imperative to be able to calculate the difference between the two sound speeds and is a large focus of this project.
     </p>
 </div>
 
 <div id = "Sound Speed Difference Methods">
 </div>
-    <h2> Sound Speed Difference Methods </h2>
+    <h2 id="section-4"> Sound Speed Difference Methods </h2>
     <p>
-        From the definition of the two sound speeds in terms of derivatives of pressure with respect to energy density, it is possible to then re-write this sound speed difference in terms of different expressions that may be more amenable to calculations. 
+        From the definition of the two sound speeds in terms of derivatives of pressure with respect to energy density, it is possible to then re-write this sound speed difference in terms of different expressions that may be more amenable to calculations.
     </p>
-    <h4>
-        Chemical Potential Expressions 
-    </h4>
+    <h3>
+        Chemical Potential Expressions
+    </h3>
 
 
 
 <div id = "Relativistic Mean Field Model">
-    <h2>
+    <h2 id="section-5">
         Relativistic Mean Field Model
     </h2>
     <p>
-        To make numerical progress, we need to actually specify a particular model or framework (which describes how the particles interact with one another) in which to work. Some popular ones include: MIT Bag models, NJL Models, or the one we use here in this thesis, a Walecka type relativistic mean field (RMF) model. 
+        To make numerical progress, we need to actually specify a particular model or framework (which describes how the particles interact with one another) in which to work. Some popular ones include: MIT Bag models, NJL Models, or the one we use here in this thesis, a Walecka type relativistic mean field (RMF) model.
     </p>
     <p>
         In this sort of model, an effective quantum field theory model, baryons such as nucleons and hyperons interact via different meson carriers. The interacting part of the Lagrangian describing these sort of interactions can take the following form (many other Lagrangians in this sort of model exist!)
         $$
-            \mathcal{L}_\text{int} = \sum_{B} \bar{\psi}_B 
+            \mathcal{L}_\text{int} = \sum_{B} \bar{\psi}_B
             \left[g_\sigma \sigma - g_\omega \gamma^\mu \omega_\mu - \frac{1}{2}g_\rho \gamma^\mu \vec{\tau} \vec{\rho}_\mu \right] \psi_B
-            - \frac{1}{2} bm(g_\sigma\sigma)^3 - \frac{1}{4}c(g_\sigma \sigma)^4 
+            - \frac{1}{2} bm(g_\sigma\sigma)^3 - \frac{1}{4}c(g_\sigma \sigma)^4
         $$
-        where of note are the meson fields: \(\sigma, \rho, \omega\) and the coupling constants \(g_\sigma, g_\omega, g_\rho\) which are what describes how the baryons and mesons couple to one another. 
+        where of note are the meson fields: \(\sigma, \rho, \omega\) and the coupling constants \(g_\sigma, g_\omega, g_\rho\) which are what describes how the baryons and mesons couple to one another.
     </p>
     <p>
         It's from this Lagrangian (and the free part) that we can apply the Euler-Lagrange equations to get the equations of motion for the various particle fields. But as we can see, we end up getting equations of motion that are highly nonlinear! And coupled! So it becomes quite a nightmare to deal with. But alas! We usually don't need to deal with the equations in this form. When we're interested in stars, we're interested in a system at equilibrium in its ground state which allows us to apply a simplifying approximation: the mean field approximation. The meson fields don't vary much in time or space in equilibrium so we can ignore their time and spatial variations (ie, derivative terms with respect to \(t,\vec{r}\))
@@ -130,23 +136,24 @@ section:
 
 
 <div id = "Python: Numerical Non-Linear Solver">
-    <h2>
+    <h2 id="section-6">
         Python: Data Generation and Numerical Non-Linear Solver
     </h2>
     <p>
-        To make any progress, we need to start off by solving for the various values of the different particle momentas and field values as a function of baryon density \( n_B \). Each point \( n_B \) then traces out a trajectory in phase space that uniquely defines values for the meson fields, baryon and lepton momenta and fraction. To do this though, we need to solve our system of equations in the context of an RMF model. 
+        To make any progress, we need to start off by solving for the various values of the different particle momentas and field values as a function of baryon density \( n_B \). Each point \( n_B \) then traces out a trajectory in phase space that uniquely defines values for the meson fields, baryon and lepton momenta and fraction. To do this though, we need to solve our system of equations in the context of an RMF model.
     </p>
     <p>
         We are left with a system of <i>n</i> highly nonlinear and coupled equations and <i>n</i> unknown variables. In other words, we have a multivariate optimization problem. We can approach this using a Quasi-Newton method called Broyden's method. The structure and tasks are as follows
      </p>
      <ol>
         <li>
-            First, from a defined system of particles (ie, specify the exact species of nucleons, hyperons, leptons, and mesons) that we want present, generate the RMF equations of motion. For the sake of verification that the equations are correct, we do this symbolically in <code> Sympy </code>. 
-            
-            <ul><li>There is one small subtlety: not all of the species will be present "at the beginning" when the total baryon density \(n_B\) is small, so we need to check whether or not the conditions for another heavier particle to enter the picture is satisfied or not. This is the threshold condition and is given by \(\mu_n + q_B \mu_e \geq m_B^*\)</li></ul>
+            First, from a defined system of particles (ie, specify the exact species of nucleons, hyperons, leptons, and mesons) that we want present, generate the RMF equations of motion. For the sake of verification that the equations are correct, we do this symbolically in <code> Sympy </code>.
+
+            <ul>
+<li>There is one small subtlety: not all of the species will be present "at the beginning" when the total baryon density \(n_B\) is small, so we need to check whether or not the conditions for another heavier particle to enter the picture is satisfied or not. This is the threshold condition and is given by \(\mu_n + q_B \mu_e \geq m_B^*\)</li></ul>
         </li>
         <li>
-            Solve the system of non-linear equations using a Broyden's method that interfaces with the symbolic sympy expressions. 
+            Solve the system of non-linear equations using a Broyden's method that interfaces with the symbolic sympy expressions.
         </li>
      </ol>
 
@@ -163,8 +170,8 @@ section:
      <pre>
          <code>
         class baryon:
-            # baryon class, stores both symbolic and numeric values in a single class 
-            # baryon particle 
+            # baryon class, stores both symbolic and numeric values in a single class
+            # baryon particle
             def __init__(self, name, spin, isospin, charge, kind, var_type,\
                 sym_mass, sym_mass_eff, sym_density, sym_frac, sym_kf, sym_ef, sym_chem_pot,\
                 num_mass = 0.0, num_mass_eff = 0.0, num_density = 0.0, num_frac = 0.0,\
@@ -182,7 +189,7 @@ section:
         # variables to be established at baryon declaration
         self.sym_mass = sym_mass
         self.num_mass = num_mass
-        
+
         # variables to be stored later
         self.sym_mass_eff = sym_mass_eff
         self.sym_num_density = sym_density
@@ -196,7 +203,7 @@ section:
         self.num_kf = num_kf
         self.num_ef = num_ef
         self.num_chem_pot = num_chem_pot
-        
+
         # coupling constants
         self.sym_g_sigma = 0.0
         self.sym_g_omega = 0.0
@@ -208,49 +215,49 @@ section:
         self.num_g_phi = 0.0
          </code>
      </pre>
-    
+
      <h4>
          Generating the various important quantities
      </h4>
      <p>
-         Next, we would need a few functions that take these objects and generate/calculate a few important quantities that ultimately lead to the equations of motion. In particular, we write functions that generate quantities such as the vector and scalar densities \(n_s^i\) defined as 
+         Next, we would need a few functions that take these objects and generate/calculate a few important quantities that ultimately lead to the equations of motion. In particular, we write functions that generate quantities such as the vector and scalar densities \(n_s^i\) defined as
          $$
-            n^s_i = \frac{m_i^*}{2\pi} \left[k_{F_i}E_{F_i} - {m_i^*}^2\ln \frac{k_{F_i} + E_{F_i}^*}{m_i^*}\right] 
+            n^s_i = \frac{m_i^*}{2\pi} \left[k_{F_i}E_{F_i} - {m_i^*}^2\ln \frac{k_{F_i} + E_{F_i}^*}{m_i^*}\right]
          $$
-         or the mesonic equations of motion such as 
+         or the mesonic equations of motion such as
          $$
-            m_\sigma^2 \sigma + \frac{\partial U}{\partial \sigma} = \sum_i g_{\sigma i} n_i^s 
+            m_\sigma^2 \sigma + \frac{\partial U}{\partial \sigma} = \sum_i g_{\sigma i} n_i^s
          $$
      </p>
      <pre>
          <code>
             def scalar_density(baryon):
             """ returns scalar density n_s for a given baryon
-                note: we modify the argument of the natural log as to be positive definite to avoid complex numbers 
+                note: we modify the argument of the natural log as to be positive definite to avoid complex numbers
                 this is a symbolic expression (sympy)
-            """ 
+            """
             coeff_1 = (2*baryon.spin + 1)/(2*Pi**2)
             coeff_2 = baryon.sym_mass_eff
-            term_2 = baryon.sym_ef*baryon.sym_kf 
+            term_2 = baryon.sym_ef*baryon.sym_kf
             term_2_2 = sym.sqrt(((baryon.sym_ef + baryon.sym_kf)/baryon.sym_mass_eff)**2)
             term_3 = sym.log(term_2_2)
-            
+
             return coeff_1*coeff_2*(term_2 - baryon.sym_mass_eff**2*term_3)/2
          </code>
      </pre>
      <p>
-         We also have other equations to consider in our system of equations which take the form of constraints such as charge neutrality, baryon number conservation, and beta equilibrium conditions (on chemical potentials). 
-         
+         We also have other equations to consider in our system of equations which take the form of constraints such as charge neutrality, baryon number conservation, and beta equilibrium conditions (on chemical potentials).
+
          <ol>
              <li>In particular though, we write them as take advantage of each particles' relevant attributes to generate this condition from just a list of particles, rather than hard code this in for each specific case.</li>
              <li>
-                 For example, each particle has a <code>particle.charge</code> attribute. Charge neutrality requires that the number of positively charged particles is equal to the number of negatively charged particles. Mathematically, this is written as 
+                 For example, each particle has a <code>particle.charge</code> attribute. Charge neutrality requires that the number of positively charged particles is equal to the number of negatively charged particles. Mathematically, this is written as
                  $$
                     \sum_i q_i n_i = 0 \qquad i \in \text{all particles}
                  $$
-                 So from a list of particles in our active system, using particle objects and classes, we could simply loop over and just extract each particle's charge attribiute which makes for easier and cleaner code. 
+                 So from a list of particles in our active system, using particle objects and classes, we could simply loop over and just extract each particle's charge attribiute which makes for easier and cleaner code.
              </li>
-        </ol>  
+        </ol>
      </p>
      <pre>
          <code>
@@ -258,16 +265,16 @@ section:
 
             """ gives charge conservation equation condition on fermi momentum """
 
-            particles = baryon_list + lepton_list 
-            expression = 0 
-        
+            particles = baryon_list + lepton_list
+            expression = 0
+
             for particle in particles:
                 if (particle.charge > 0):
                     expression += particle.sym_kf**3
                 elif (particle.charge < 0):
                     expression -= particle.sym_kf**3
-            
-            return expression 
+
+            return expression
          </code>
      </pre>
 
@@ -275,44 +282,44 @@ section:
         Generating a system of equations in matrix form
      </h4>
      <p>
-        In the end, to pass the system of equations to a Newton or quasi-Newton method, we need the system of equations in a matrix form as to calculate the Jacobian (or quasi-Jacobian). With our previously defined functions, we consolidate them all into a single <code>system generating</code> function. 
+        In the end, to pass the system of equations to a Newton or quasi-Newton method, we need the system of equations in a matrix form as to calculate the Jacobian (or quasi-Jacobian). With our previously defined functions, we consolidate them all into a single <code>system generating</code> function.
      </p>
      <pre>
         <code>
     def sys_eqn_gen(baryon_list, meson_list, lepton_list):
-    """ 
+    """
         function to generate all our equations and to store in an array
         called sys_eqn_gen
     """
 
-    meson_eqn = [] 
+    meson_eqn = []
     for meson in meson_list:
         if (meson.name == 'sigma'):
             meson_eqn.append(sigma_eom)
         elif (meson.name == 'omega'):
-            meson_eqn.append(omega_eom) 
+            meson_eqn.append(omega_eom)
         elif (meson.name == 'rho'):
             meson_eqn.append(rho_eom)
         elif (meson.name == 'phi'):
-            meson_eqn.append(phi_eom) 
-    
+            meson_eqn.append(phi_eom)
+
     other_func_gen = [beta_equilibrium, charge_conservation, baryon_num_conservation]
-    
+
     if(len(lepton_list) != 1):
         func_gen = meson_eqn + other_func_gen + [beta_equilibrium_lep]
     else:
         func_gen = meson_eqn + other_func_gen
 
     sys_eqn = []
-    
+
     for function in func_gen:
         if (function == charge_conservation):
-            # since charge conservation depends on both baryons and leptons, we need to 
-            # pass to it both baryon and lepton lists 
+            # since charge conservation depends on both baryons and leptons, we need to
+            # pass to it both baryon and lepton lists
             sys_eqn.append(function(baryon_list, lepton_list))
         elif (function == beta_equilibrium):
             # beta condition function returns an array with (possibly) multiple equations
-            # we unload those functions and append to array 
+            # we unload those functions and append to array
             beta_conditions = function(baryon_list, meson_list)
             for equation in beta_conditions:
                 sys_eqn.append(equation)
@@ -320,16 +327,16 @@ section:
             sys_eqn.append(function(lepton_list))
         else:
             sys_eqn.append(function(baryon_list))
-            
+
     return sys_eqn
         </code>
      </pre>
 
     <h4>
-        Data Parsing 
+        Data Parsing
     </h4>
     <p>
-        One last task to do is that of data storage. Our aim to recap is to calculate field values and momenta all as a function of baryon density \(n_B\). Then a natural object would be a two-dimensional array or matrix where each row will correspond to all the relevant values for a given specific \(n_B\). 
+        One last task to do is that of data storage. Our aim to recap is to calculate field values and momenta all as a function of baryon density \(n_B\). Then a natural object would be a two-dimensional array or matrix where each row will correspond to all the relevant values for a given specific \(n_B\).
     </p>
     <p>
         So with this in mind we write a function here that takes the data and stores it in a <code>Pandas DataFrame</code> which has the following benefits
@@ -338,13 +345,13 @@ section:
                 Natural two dimensional storage and visualization, especially in a <code>Jupyter Notebook</code>
             </li>
             <li>
-                Support for naming of columns 
+                Support for naming of columns
             </li>
             <li>
-                Established data analysis functions and tools in the <code>Pandas</code> library, especially easy extraction of arrays from columns, etc. 
+                Established data analysis functions and tools in the <code>Pandas</code> library, especially easy extraction of arrays from columns, etc.
             </li>
         </ol>
-        and in particular, we structure the code as to generate column names in an organized, dynamic way adaptable to different systems with differing number of particles. 
+        and in particular, we structure the code as to generate column names in an organized, dynamic way adaptable to different systems with differing number of particles.
     </p>
     <pre>
         <code>
@@ -352,15 +359,15 @@ section:
         """
         generate column names
         this is used to create the Dataframe in which we store our values
-        Data frame is well suited to Jupyter visualization which is great! 
+        Data frame is well suited to Jupyter visualization which is great!
         can convert/extract to numpy array too
         """
 
     columns = ['nB/n0']
-    
+
     for meson in meson_list:
         columns.append(meson.name + " " + 'field (MeV)')
-    
+
     columns.append(Neutron.name + " " + 'kF (MeV)')
     columns.append(Proton.name + " " + 'kF (MeV)')
     columns.append(electron.name + " " + 'kF (MeV)')
@@ -368,11 +375,11 @@ section:
     for lepton in lepton_list:
         if (lepton != electron):
             columns.append(lepton.name + " " + "kF (MeV)")
-    
+
     for baryon in baryon_list:
         if (baryon != Proton and baryon != Neutron):
             columns.append(baryon.name + " " + "kF (MeV)")
-    
+
     columns.append(Neutron.name + " " + 'frac')
     columns.append(Proton.name + " " + 'frac')
     columns.append(electron.name + " " + 'frac')
@@ -380,100 +387,100 @@ section:
     for lepton in lepton_list:
         if (lepton != electron):
             columns.append(lepton.name + " " + "frac")
-    
+
     for baryon in baryon_list:
         if (baryon != Proton and baryon != Neutron):
             columns.append(baryon.name + " " + "frac")
-    
-    
+
+
     return columns
         </code>
     </pre>
     <h4>
-        Black Box Solver 
+        Black Box Solver
     </h4>
     <p>
-        We can then consolidate everything into a single function that performs the task of interest: given a <code>Baryon</code> list, <code>Lepton</code> list, <code>Meson</code> list, and <code>Equation of State </code> object, calculate the various quantities of interest especially particle momenta, fraction, and meson field values. 
+        We can then consolidate everything into a single function that performs the task of interest: given a <code>Baryon</code> list, <code>Lepton</code> list, <code>Meson</code> list, and <code>Equation of State </code> object, calculate the various quantities of interest especially particle momenta, fraction, and meson field values.
     </p>
     <pre>
         <code>
     def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, solver_method = 'broyden'):
-    # full solver 
-    
-    # initialize all things... 
+    # full solver
+
+    # initialize all things...
     init(eos, baryon_list, meson_list)
-    
-    # create nB array 
+
+    # create nB array
     nB = np.arange(0.27, 8.0, 0.01) #nB/n0
-    nB_mev = nB*eos.n0*hc**3 #nB_mev in mev+3 
-    
+    nB_mev = nB*eos.n0*hc**3 #nB_mev in mev+3
+
     # create data array (pre-allocate)
     row_size = len(nB)
-    column_size = len(meson_list) + 2*len(baryon_list + lepton_list) + 1 
-    data = np.zeros((row_size, column_size), dtype = 'float') 
-    data[:,0] = nB 
-    
+    column_size = len(meson_list) + 2*len(baryon_list + lepton_list) + 1
+    data = np.zeros((row_size, column_size), dtype = 'float')
+    data[:,0] = nB
+
     # create first system: NPE
     current_baryons = [Neutron, Proton]
-    current_leptons = [electron] 
-    
-    # create lists for potential particles 
+    current_leptons = [electron]
+
+    # create lists for potential particles
     potential_baryons = potential_baryon_gen(baryon_list)
-    potential_leptons = potential_lepton_gen(lepton_list) 
-    
+    potential_leptons = potential_lepton_gen(lepton_list)
+
 
     # independent variables
     ind_vars = ind_variable(current_baryons, current_leptons, meson_list)
-    
-    # initial guess for NPE matter 
-    # x_guess = [8.00, 4.50, 210.0, 45.0, 45.0] 
-    #x_guess = [] 
+
+    # initial guess for NPE matter
+    # x_guess = [8.00, 4.50, 210.0, 45.0, 45.0]
+    #x_guess = []
     #for i in range(len(ind_vars)):
-    #    x_guess.append(20.0) 
+    #    x_guess.append(20.0)
     x_guess = npe_guess
-    
-    # iterate through baryon density nB 
-    for i in range(len(nB_mev)): 
-        
-        # update our system: 
-        
+
+    # iterate through baryon density nB
+    for i in range(len(nB_mev)):
+
+        # update our system:
+
         if (potential_baryons[0] != 'None'):
-            Bool = baryon_threshold(potential_baryons[0], meson_list) 
+            Bool = baryon_threshold(potential_baryons[0], meson_list)
             if (Bool):
                 current_baryons.append(potential_baryons[0])
                 potential_baryons.remove(potential_baryons[0])
                 x_guess = np.append(x_guess, 27.0)
-        
+
         if (potential_leptons[0] != 'None'):
             Bool = lepton_threshold(potential_leptons[0])
             if (Bool):
                 current_leptons.append(potential_leptons[0])
                 potential_leptons.remove(potential_leptons[0])
                 x_guess = np.append(x_guess, 2.0)
-        
-        # 
+
+        #
         init(eos, baryon_list, meson_list)
-            
-        # generate system of equations 
+
+        # generate system of equations
         sys_eqn = sys_eqn_gen(current_baryons, meson_list, current_leptons)
         subs(sys_eqn, nB_mev[i], current_baryons, meson_list, current_leptons)
-        
-        # generate independent variables 
+
+        # generate independent variables
         ind_vars = ind_variable(current_baryons, current_leptons, meson_list)
-        
+
         # call solver, broyden returns a vector with solutions to independent variables
         # very importantly, the independent variables are ordered: sigma, omega, rho, phi
         if (solver_method == 'broyden'):
             answer = broyden(sys_eqn, ind_vars, x_guess)
         elif (solver_method == 'newton'):
             answer = Newton(sys_eqn, ind_vars, x_guess)
-        
-        # append values to data file 
+
+        # append values to data file
         #for j in range(column_size - len(current_baryons + current_leptons) - 1):
         #    data[i][j+1] = answer[j]
         for j in range(len(ind_vars)):
             data[i][j+1] = answer[j]
-        
+
         # update important values
         pseudo_dict = [ind_vars, answer]
         for k in range(len(ind_vars)):
@@ -489,24 +496,24 @@ section:
                 Neutron.num_kf = answer[k]
             elif (pseudo_dict[0][k] == electron.sym_kf):
                 electron.num_kf = answer[k]
-        
+
         # update x_guess
-        x_guess = answer 
-        
-    # fill in fractions 
+        x_guess = answer
+
+    # fill in fractions
     for rem in range(len(nB)):
         for emilia in range(len(ind_vars) - len(meson_list)):
             data[rem][emilia + len(meson_list + baryon_list + lepton_list) + 1]\
                 = frac(data[rem][emilia + len(meson_list) + 1], data[rem][0]*eos.n0*hc**3)
-         
-    # convert data array to dataframe 
+
+    # convert data array to dataframe
     data_frame = pd.DataFrame(data, columns = column_name(baryon_list, meson_list, lepton_list))
-    
-    
-    # write out dataframe to csv file 
+
+
+    # write out dataframe to csv file
     data_frame.to_csv('data.csv', float_format = '{:.8f}'.format)
-    
-    return data_frame 
+
+    return data_frame
         </code>
     </pre>
 </div>
@@ -515,18 +522,20 @@ section:
 <p> The results from the function can be easily visualized in <code>Jupyter</code> as the following <code>DataFrame</code> which we can then manipulate right away or save and store as a CSV. </p>
 <div id = result_data>
 <figure>
-    <img src = /images/data.png> 
+    <img src = /images/data.png alt="Neutron-star oscillations — project figure" loading="lazy">
 </figure>
 </div>
 
 <div id = "Python: Sound Speed Difference">
-    <h2>
+    <h2 id="section-7">
         Python: Sound Speed Difference
     </h2>
-    <p> 
-        The next important step would be to actually calculate the sound speed difference. 
+    <p>
+        The next important step would be to actually calculate the sound speed difference.
     </p>
 
     <h3>
     </h3>
-</div>
+</div></article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>

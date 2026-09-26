@@ -1,143 +1,152 @@
----
-layout: blog 
-header: Au-Si Junction &#58; Schottky Diode 
-title: Schottky Diode
-css: /assets/css/text.css 
-section:
-    - "Introduction"
-    - "Fabrication"
-    - "Measurement"
-    - "Data Analysis"
-    - "Troubleshooting"
---- 
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Schottky-junction transport | Vinh Tran</title>
+<meta name="description" content="Fabrication and temperature-dependent electrical measurements of an Au–Si junction to investigate its potential barrier.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research" aria-current="page">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/index.html#research">All research</a>
+<h1>Schottky-junction transport</h1>
+<p>Fabrication and temperature-dependent electrical measurements of an Au–Si junction to investigate its potential barrier.</p>
+<div class="detail-meta"><span>Au–Si junction</span><span>LabVIEW</span><span>Electrical transport</span></div></header>
+<div class="article-grid">
+<nav class="article-nav" aria-label="On this page"><strong>In this project</strong><a href="#section-1">Introduction</a><a href="#section-2">Fabrication</a><a href="#section-3">Measurement via LabView</a><a href="#section-4">Data Analysis</a><a href="#section-5">Troubleshooting</a><a href="/index.html#research">Back to all research</a></nav>
+<article class="article-body">
 
 <div id= "Introduction">
-    <h2>
+    <h2 id="section-1">
         Introduction
     </h2>
     <p>
-    This is one of the lab projects that my group and I performed in our graduate nanoscale laboratory class. We fabricated a metal-semiconductor junction and explored its current versus voltage and temperature dependency (using data collection tools via LabView) and analyzed the resulting data to extract some meaningful properties such as the potential barrier height to compare to theoretical predictions. 
-    </p> 
+    This is one of the lab projects that my group and I performed in our graduate nanoscale laboratory class. We fabricated a metal-semiconductor junction and explored its current versus voltage and temperature dependency (using data collection tools via LabView) and analyzed the resulting data to extract some meaningful properties such as the potential barrier height to compare to theoretical predictions.
+    </p>
 </div>
 
-    <div id='intro-flex-container_reversed'> 
-    <div id='intro-flex-container-2'> 
-    <h4> Metal-Semiconductor Junction </h4>
-    <p> 
-        A Schottky diode is a diode that forms when we put a semiconductor such as Si together with a metal such as Au, which is the metal-semiconductor junction that we explored below. 
-    </p> 
-    <p>   
-    When the two are placed into contact, electrons tend to flow from the semiconductor to the metal such that the two reach equilibrium, ie, the Fermi energy level for the two become equal. This leads to a potential barrier at the interface which allows electrons to more easily flow from the semiconductor side over to the metal side but not so in the reverse direction. In particular, the potential barrier takes the following form 
+    <div id='intro-flex-container_reversed'>
+    <div id='intro-flex-container-2'>
+    <h3> Metal-Semiconductor Junction </h3>
+    <p>
+        A Schottky diode is a diode that forms when we put a semiconductor such as Si together with a metal such as Au, which is the metal-semiconductor junction that we explored below.
+    </p>
+    <p>
+    When the two are placed into contact, electrons tend to flow from the semiconductor to the metal such that the two reach equilibrium, ie, the Fermi energy level for the two become equal. This leads to a potential barrier at the interface which allows electrons to more easily flow from the semiconductor side over to the metal side but not so in the reverse direction. In particular, the potential barrier takes the following form
     $$
-        q\Phi = W_m - \chi 
+        q\Phi = W_m - \chi
     $$
-    where \(q\Phi\) is the barrier height, \(W_m\) is the work function of the metal, and \(\chi\) is the electron affinity of the semiconductor. 
-    </p> 
+    where \(q\Phi\) is the barrier height, \(W_m\) is the work function of the metal, and \(\chi\) is the electron affinity of the semiconductor.
+    </p>
     </div>
         <div class = "schottky_pic">
             <figure>
-            <img src='/images/au-si.jpeg'> 
+            <img src='/images/au-si.jpeg' alt="Schottky-junction transport — project figure" loading="lazy">
             <figcaption>
-                The Au-Si Junction wired to a puck that will be inserted into a PPMS which can cool the sample down for low temperature measurements 
+                The Au-Si Junction wired to a puck that will be inserted into a PPMS which can cool the sample down for low temperature measurements
             </figcaption>
             </figure>
         </div>
-    </div> 
+    </div>
 
 
 
 
-    <div id='intro-flex-container'> 
-        <div id='intro-flex-container-2'> 
+    <div id='intro-flex-container'>
+        <div id='intro-flex-container-2'>
             <h4> Rectifying Diode </h4>
             <p>
-                The metal-semiconductor junction exhibits a current versus voltage dependence characteristic of a diode. That is, for forward bias, current grows exponentially as forward voltage increases, but for reverse bias, current remains close to zero (until the breakdown voltage). This current versus voltage has a characteristic equation derived from thermionic emission theory, where the current density \(j\) is given by 
+                The metal-semiconductor junction exhibits a current versus voltage dependence characteristic of a diode. That is, for forward bias, current grows exponentially as forward voltage increases, but for reverse bias, current remains close to zero (until the breakdown voltage). This current versus voltage has a characteristic equation derived from thermionic emission theory, where the current density \(j\) is given by
                 $$
                     j = \frac{4\pi q m^* k^2}{h^3} T^2 \exp\left(-\frac{q\Phi}{k_BT}\right)\left[\exp\left(\frac{qV}{k_BT}\right)-1\right]
                 $$
-                The key thing is the exponential dependence on applied voltage in the forward bias direction as well as the \(T^2\) temperature dependence in the prefactor. These two things together give us the general shape of the curve! 
-            </p> 
+                The key thing is the exponential dependence on applied voltage in the forward bias direction as well as the \(T^2\) temperature dependence in the prefactor. These two things together give us the general shape of the curve!
+            </p>
 
             <h4> Goal of the Experiment </h4>
             <p>
                 Thus with this experiment, our goals were two-fold:
                 <ul>
                     <li>
-                        Measure the current as a function of applied voltage and as a function of temperature to see whether or not it does exhibit a dependence similar to the diode equation. 
+                        Measure the current as a function of applied voltage and as a function of temperature to see whether or not it does exhibit a dependence similar to the diode equation.
                     </li>
                     <li>
-                        From the current versus voltage data, extract the Schottky barrier height using a Richardson linearized-log plot in our data analysis 
+                        From the current versus voltage data, extract the Schottky barrier height using a Richardson linearized-log plot in our data analysis
                     </li>
                 </ul>
             </p>
 
-        </div> 
+        </div>
 
         <div class = "neutron_pic">
-            <figure> 
-            <img src='/images/Schottky/diode.png'> 
+            <figure>
+            <img src='/images/Schottky/diode.png' alt="Schottky-junction transport — project figure" loading="lazy">
             <figcaption>
-                Current vs Voltage Behavior for a Diode. Graph taken from Paul Horowitz' Art of Electronics. 
+                Current vs Voltage Behavior for a Diode. Graph taken from Paul Horowitz' Art of Electronics.
             </figcaption>
             </figure>
         </div>
-    </div> 
+    </div>
     <p>
-        We performed current measurements in two stages: first at room temperature and second by varying the temperature of the diode using a closed cycle cryostat or physical property measurement system (PPMS). Using the framework of TET we were able to extract various parameters such as the Schottky barrier height  of the sample which we find to be 0.3216 eV  at -5V and 0.2833 eV at -3V. 
-    </p> 
+        We performed current measurements in two stages: first at room temperature and second by varying the temperature of the diode using a closed cycle cryostat or physical property measurement system (PPMS). Using the framework of TET we were able to extract various parameters such as the Schottky barrier height  of the sample which we find to be 0.3216 eV  at -5V and 0.2833 eV at -3V.
+    </p>
 
 
     <div id = "Fabrication">
-        <h2>
-            Fabrication 
+        <h2 id="section-2">
+            Fabrication
         </h2>
-        <h4>
-            Deposition 
-        </h4>
+        <h3>
+            Deposition
+        </h3>
         <p>
-            The Schottky diode was fabricated by first constructing wafers of silicon into rectangles of about 1cm in length. Then half of the wafer was covered with tape and then placed into an evaporator which deposited 4nm of titanium and then 8nm of gold on the uncovered half to form the diode. 
+            The Schottky diode was fabricated by first constructing wafers of silicon into rectangles of about 1cm in length. Then half of the wafer was covered with tape and then placed into an evaporator which deposited 4nm of titanium and then 8nm of gold on the uncovered half to form the diode.
         </p>
         <h4>
             Wiring
         </h4>
         <p>
-            For temperature dependence measurements later, we need to attach the sample to a puck that inserts into a probe that then goes inside of a PPMS which can cool the sample down to some pretty chilly temperatures! But to do this attaching, we needed to wire the two sides of the junction to terminals on the puck using annealed gold wire and silver paste, which was a pretty tricky thing to do. 
+            For temperature dependence measurements later, we need to attach the sample to a puck that inserts into a probe that then goes inside of a PPMS which can cool the sample down to some pretty chilly temperatures! But to do this attaching, we needed to wire the two sides of the junction to terminals on the puck using annealed gold wire and silver paste, which was a pretty tricky thing to do.
         </p>
     </div>
 
 
 
 
-    <div id = "Measurement" > 
-        <h2>
-            Measurement via LabView 
+    <div id = "Measurement" >
+        <h2 id="section-3">
+            Measurement via LabView
         </h2>
         <p>
             We used a LabView program to interface with our equipment (via GPIB). In particular, we used LabView to control the power supply, choosing the maximum and minimum voltage as well as the step size between two voltage values and then to record the corresponding current value on the multimeter out to a CSV file. This then gives us a set of data points for current as a function of applied voltage.
         </p>
 
-        <h4>
+        <h3>
             Temperature Dependence Measurements via Physical Property Measurement System (PPMS)
-        </h4>
+        </h3>
         <p>
-            In addition to determining the current versus voltage behavior, we can also see how temperature affects the current values. To do this, we placed the sample inside of a PPMS where we can then control the temperature. Beginning at 295 K we then decreased the temperature in intervals, initially of 5 K, then increasing to 20 K as the behavior began to qualitatively change at a slower pace. 
+            In addition to determining the current versus voltage behavior, we can also see how temperature affects the current values. To do this, we placed the sample inside of a PPMS where we can then control the temperature. Beginning at 295 K we then decreased the temperature in intervals, initially of 5 K, then increasing to 20 K as the behavior began to qualitatively change at a slower pace.
         </p>
     </div>
 
 
 
 
-    <div id = "Data Analysis" > 
-        <h2>
-            Data Analysis 
+    <div id = "Data Analysis" >
+        <h2 id="section-4">
+            Data Analysis
         </h2>
-            <p>Our data consists of individual files that give current values for a range of voltage values from -5V to 5V, for a fixed temperature. </p> 
+            <p>Our data consists of individual files that give current values for a range of voltage values from -5V to 5V, for a fixed temperature. </p>
 
         <div class="main_body">
-            <h4>
+            <h3>
                 Current versus Voltage for varying temperatures
-            </h4>
+            </h3>
             <p>
                 To analyze our data, we load each of the data csv files into a <code>Pandas DataFrame</code> which gives us in essence a two dimensional array of data with for instance a specific row value specifying the voltage and a specific column specifying the temperature for a specific current value. Then we can either index row-wise or column-wise to explore the current dependence on one variable while holding the other fixed.
             </p>
@@ -145,51 +154,54 @@ section:
                 Then, using <code>Matplotlib.pyplot</code> we can plot both two dimensional and three dimensional scatter plots which allow us to better visualize the electronic behavior.
             </p>
             <div id = "side_by_side">
-                <img src="/images/3D2.png">
-                <img src="/images/3D_warm2.png">
+                <img src="/images/3D2.png" alt="Schottky-junction transport — project figure" loading="lazy">
+                <img src="/images/3D_warm2.png" alt="Schottky-junction transport — project figure" loading="lazy">
             </div>
             <p>
-                We can also visualize the temperature dependence at fixed voltage more precisely if we slice column-wise. 
+                We can also visualize the temperature dependence at fixed voltage more precisely if we slice column-wise.
             </p>
-            <img src="/images/fixed_voltage.png">
+            <img src="/images/fixed_voltage.png" alt="Schottky-junction transport — project figure" loading="lazy">
         </div>
 
 
         <h4>
-            Schottky Barrier Height 
+            Schottky Barrier Height
         </h4>
         <p>
             For reverse bias, the current-voltage expression reduces to the simplified form
             $$
                 j = -AA^* T^2 \exp\left(-\frac{q\Phi}{k_BT}\right)
             $$
-            We can re-write this expression in a linarized equation in terms of \(j/T^2\) versus \(1/T\) by dividing through by \(T^2\) and then taking the natural log of both sides and as if by magic we now have something that looks like \(y = mx + b\) where in this case \(x = 1/T\). 
+            We can re-write this expression in a linarized equation in terms of \(j/T^2\) versus \(1/T\) by dividing through by \(T^2\) and then taking the natural log of both sides and as if by magic we now have something that looks like \(y = mx + b\) where in this case \(x = 1/T\).
             $$
                 \ln \frac{-I}{T^2} = \ln (AA^*) - \frac{q\Phi}{k_BT }
             $$
-            Transforming our data in this manner then allows us to fit a linear function to this data (which we can do easily in <code>Python</code> using <code>scipy.optimize.curve_fit</code>) which then yields \(q\Phi/k_B\) as the slope \(m\) and we already know what \(q,k_B\) are so this would give us the Schottky barrier height \(\Phi\) (pretty cool). 
+            Transforming our data in this manner then allows us to fit a linear function to this data (which we can do easily in <code>Python</code> using <code>scipy.optimize.curve_fit</code>) which then yields \(q\Phi/k_B\) as the slope \(m\) and we already know what \(q,k_B\) are so this would give us the Schottky barrier height \(\Phi\) (pretty cool).
         </p>
 
         <div class = 'main_body'>
         <p>
-            When we do so to our data, we find the following plot which unfortunately doesn't appear to be linear throughout the entire range (at all) and infact some interesting things begin to happen after about 0.004 K\(^{-1}\) (about 250 K) which could mean a different type of electronic transport becoming dominant or comparable to thermionic emission. 
+            When we do so to our data, we find the following plot which unfortunately doesn't appear to be linear throughout the entire range (at all) and infact some interesting things begin to happen after about 0.004 K\(^{-1}\) (about 250 K) which could mean a different type of electronic transport becoming dominant or comparable to thermionic emission.
         </p>
-        <img src="/images/richard_one.png"> 
+        <img src="/images/richard_one.png" alt="Schottky-junction transport — project figure" loading="lazy">
         <p>
-            So what we can do though is restrict our domain to a region where the plot appears roughly linear, in this case, towards the beginning. When we do so, and perform our linear fit, we get the following which yields fitted values for the slopes as: <code>0.3216, 0.2779, and 0.2833</code> eV in descending order of voltage values. 
+            So what we can do though is restrict our domain to a region where the plot appears roughly linear, in this case, towards the beginning. When we do so, and perform our linear fit, we get the following which yields fitted values for the slopes as: <code>0.3216, 0.2779, and 0.2833</code> eV in descending order of voltage values.
         </p>
-        <img src="/images/richard_two.png">
+        <img src="/images/richard_two.png" alt="Schottky-junction transport — project figure" loading="lazy">
         </div>
 
         <h4>
-            Ideality Factor 
+            Ideality Factor
         </h4>
-    </div> 
+    </div>
 
 
 
     <div id = "Troubleshooting">
-        <h2>
+        <h2 id="section-5">
             Troubleshooting
         </h2>
     </div>
+</article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>

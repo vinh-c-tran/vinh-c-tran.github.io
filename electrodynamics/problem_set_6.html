@@ -1,44 +1,54 @@
----
-layout: blog 
-header: Problem Set 6 &#58; Radiation
-title: Problem Set 6
-css: /assets/css/text.css 
-section:
-    - "Problem 1"
-    - "Problem 2"
-    - "Problem 3"
-    - "Problem 4"
---- 
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Electrodynamics · Problem set 6 | Vinh Tran</title>
+<meta name="description" content="Worked notes on radiation and electromagnetic potentials.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html" aria-current="page">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/electrodynamics/em.html">Electrodynamics</a>
+<h1>Electrodynamics · Problem set 6</h1>
+<p>Worked notes on radiation and electromagnetic potentials.</p>
+<div class="detail-meta"><span>Graduate electrodynamics</span><span>Worked problems</span></div></header>
+<div class="article-grid">
+<nav class="article-nav" aria-label="On this page"><strong>In this project</strong><a href="#section-1">Problem 1: Larmor Radiation</a><a href="#section-2">Problem 2: Lienard-Wichert Potentials</a><a href="#section-3">Problem 3: Cherenkov and Bremsstrahlung Radiation</a><a href="/electrodynamics/em.html">Back to electrodynamics</a></nav>
+<article class="article-body">
 <p>
     Solutions that I've written for problem sets as a graduate teaching assistant.
 </p>
 
 
-<div id = "Problem 1"> 
-<h2>
-    Problem 1: Larmor Radiation 
+<div id = "Problem 1">
+<h2 id="section-1">
+    Problem 1: Larmor Radiation
 </h2>
 <p>
-    The Larmor formula can be applied just as well to a magnetic dipole by simply replacing the electric dipole moment \(\vec{p}\) by the magnetic dipole moment \(\vec{m}\). Given that the Earth has a magnetic dipole moment with magnitude \( 8.1 \times 10^{25}\) ergs/Gauss and direction \(11^\circ\) to the Earth's axis of rotation, find the total power radiated in CGS units (ergs/sec). You will need the unit conversion (1 Gauss)\(^2\) = \(8\pi\) ergs/cm\(^3\).  
+    The Larmor formula can be applied just as well to a magnetic dipole by simply replacing the electric dipole moment \(\vec{p}\) by the magnetic dipole moment \(\vec{m}\). Given that the Earth has a magnetic dipole moment with magnitude \( 8.1 \times 10^{25}\) ergs/Gauss and direction \(11^\circ\) to the Earth's axis of rotation, find the total power radiated in CGS units (ergs/sec). You will need the unit conversion (1 Gauss)\(^2\) = \(8\pi\) ergs/cm\(^3\).
 </p>
 <p>
     <i><b> Solution </b>  </i>
 </p>
 <p>
-    The magnetic dipole moment can be written down in spherical coordinates as: \(\vec{m} = m_0\,\hat{n}(t)\) where \(\hat{n}(t)\) is the unit normal vector pointing in the direction of \(\vec{m}\). For our case, the earth is rotating (about its axis of rotation) so the polar angle is fixed and the azimuthal angle \(\varphi = \omega t\) is free to evolve where \(\omega = 2\pi/24\,\)hours.  
-    $$ 
+    The magnetic dipole moment can be written down in spherical coordinates as: \(\vec{m} = m_0\,\hat{n}(t)\) where \(\hat{n}(t)\) is the unit normal vector pointing in the direction of \(\vec{m}\). For our case, the earth is rotating (about its axis of rotation) so the polar angle is fixed and the azimuthal angle \(\varphi = \omega t\) is free to evolve where \(\omega = 2\pi/24\,\)hours.
+    $$
 \begin{align}
-    \hat{n}(t) = 
-        \cos(\omega t) \sin(11^\circ) \hat{x} + 
-        \sin(\omega t) \sin(11^\circ) \hat{y} + 
-        \cos(11^\circ) \hat{z} 
+    \hat{n}(t) =
+        \cos(\omega t) \sin(11^\circ) \hat{x} +
+        \sin(\omega t) \sin(11^\circ) \hat{y} +
+        \cos(11^\circ) \hat{z}
 \end{align}
 $$
 Then differentiating this twice gives us
 $$
 \begin{align}
-    \dot{\hat{n}}(t) &= 
+    \dot{\hat{n}}(t) &=
     -\omega\sin(\omega t )\sin(11^\circ) \hat{x} +
     \omega\cos(\omega t)\sin(11^\circ)\hat{y}\\
     \ddot{\hat{n}}(t) &= -\omega^2\cos(\omega t)\sin(11^\circ)\hat{x} - \omega^2 \sin(\omega t )\sin(11^\circ)\,\hat{y}
@@ -53,20 +63,20 @@ $$
 Inserting this into the magnetic dipole moment and into the Larmor formula gives us
 $$
 \begin{align}
-    P = \frac{2}{3c^3}\ddot{\vec{m}} &= 
+    P = \frac{2}{3c^3}\ddot{\vec{m}} &=
     \frac{2m_0^2\omega^4}{3c^3}
     \left(\cos^2\omega t + \sin^2\omega t\right)\sin^2(11^\circ)\\
-    &= 
+    &=
     \frac{2m_0\omega^4}{3c^3}\sin^2(11^\circ)
 \end{align}
 $$
 Then using \(m_0 = 8.1\times10^{25}\) ergs/Gauss, \(\omega = 2\pi/86400\) s\(^{-1}\), \(c = 3\times 10^{10}\) cm/s, we get
 $$
 \begin{align}
-    P &= 164.959 \,\frac{\text{ergs}^2}{\text{Gauss}^2\cdot \text{s}\cdot \text{cm}^3} = 
-    \frac{164.959}{8\pi} \, 
+    P &= 164.959 \,\frac{\text{ergs}^2}{\text{Gauss}^2\cdot \text{s}\cdot \text{cm}^3} =
+    \frac{164.959}{8\pi} \,
     \frac{\text{ergs}}{\text{s}}
-    = 6.564\, 
+    = 6.564\,
     \frac{\text{ergs}}{\text{s}}
 \end{align}
 $$
@@ -75,34 +85,34 @@ $$
 
 <br>
 
-</br> 
+</br>
 
 
-<div id = "Problem 2"> 
-    <h2>
-        Problem 2: Lienard-Wichert Potentials 
+<div id = "Problem 2">
+    <h2 id="section-2">
+        Problem 2: Lienard-Wichert Potentials
     </h2>
     <p>
     </p>
-    A charged particle \(q\) traveling on the \(x\)-axis with a non-relativistic velocity approaches the origin from the left (ie, along the \(+\hat{x})\) direction). It decelerates at a constant rate \(a\) coming to a complete stop at the origin at \(t=0\). 
+    A charged particle \(q\) traveling on the \(x\)-axis with a non-relativistic velocity approaches the origin from the left (ie, along the \(+\hat{x})\) direction). It decelerates at a constant rate \(a\) coming to a complete stop at the origin at \(t=0\).
     <p>
     <p>
         Using the expressions for \(E_\text{rad}\) for a non-relativistic charge derived from the LW potentials, prove that the radiative part of the electirc field at the point (\(x = 0, y = b\)) at \(t=0\) is given by
         $$
             E_x = \frac{qab^2}{c^2 R^3}
         $$
-        and 
+        and
         $$
             E_y = - \frac{qa^2 b}{2Rc^4}
         $$
-        where \( R = |\vec{r} - \vec{r}'(t')| \). Find an expression for \(R\) in terms of \(a,b\) and the speed of light \(c\) only. 
+        where \( R = |\vec{r} - \vec{r}'(t')| \). Find an expression for \(R\) in terms of \(a,b\) and the speed of light \(c\) only.
     </p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
     <p>
-        The radiation part of the electric field, from the LW potentials, is given by 
+        The radiation part of the electric field, from the LW potentials, is given by
         $$
 \begin{align}
     \vec{E}_\text{rad} &=
@@ -113,7 +123,7 @@ $$
 where \(\hat{n}\) is a unit vector in the \(\vec{r} - \vec{r}_0\) direction (\(\vec{r}\) is the position of the observer, \(\vec{r}_0\) is the position of the source), \(\beta = d\vec{r}_0/dt\), \(R\) is the magnitude \(R = |\vec{r}-\vec{r}_0(t')|\), and \(t'\) is the retarded time.
 
 
-In the non-relativistic limit \(\beta \ll 1\) so this expression reduces to 
+In the non-relativistic limit \(\beta \ll 1\) so this expression reduces to
 $$
 \begin{align}
     \vec{E}_\text{rad} = \frac{q}{c}
@@ -150,7 +160,7 @@ We can start by writing down the various quantities.
                 =   \frac{1}{R}\left(\frac{1}{2}at^2\hat{x} + b\hat{y}\right)
             \end{align}
         </li>
-        
+
         <li>
             Next, we can write down \(\vec{\beta}\) and \(\dot{\vec{\beta}}\)
             $$
@@ -176,7 +186,7 @@ We can start by writing down the various quantities.
 
 
 
-At this point, we can start to calculate things. In the following steps, we aim to calculate the numerator inside of the brackets \(\hat{n}\times[(\hat{n} - \vec{\beta}) \times \dot{\vec{\beta}}]\). 
+At this point, we can start to calculate things. In the following steps, we aim to calculate the numerator inside of the brackets \(\hat{n}\times[(\hat{n} - \vec{\beta}) \times \dot{\vec{\beta}}]\).
 
 
 
@@ -195,7 +205,7 @@ At this point, we can start to calculate things. In the following steps, we aim 
             \end{align}
             $$
         </li>
-        
+
         <li>
             Next, finding \( (\hat{n} \times \vec{\beta}) \times \dot{\vec{\beta}}\)
             $$
@@ -251,9 +261,9 @@ At this point, we can start to calculate things. In the following steps, we aim 
 Putting this all back together gives us the components of the radiation field as
 $$
 \begin{align}
-    \vec{E}_\text{rad} &= 
+    \vec{E}_\text{rad} &=
     \frac{q}{c}
-   \left[\frac{\hat{n} \times [(\hat{n}-\vec{\beta} ) \times \dot{\vec{\beta}}]}{R}\right]_{t=t'} = 
+   \left[\frac{\hat{n} \times [(\hat{n}-\vec{\beta} ) \times \dot{\vec{\beta}}]}{R}\right]_{t=t'} =
     \frac{q}{R^3c^2}
     \begin{pmatrix}
         -ab^2\\
@@ -269,10 +279,10 @@ $$
     t' = \cancel{t} - \frac{|\vec{r}-\vec{r}'(t')|}{c} \qquad \implies \qquad  t' = - \frac{R}{c}
 \end{align}
 $$
-we arrive at 
+we arrive at
 $$
 \begin{align}
-       \vec{E}_\text{rad} &= 
+       \vec{E}_\text{rad} &=
     \frac{q}{R^3c^2}
     \begin{pmatrix}
         -ab^2\\
@@ -289,12 +299,12 @@ $$
 $$
 
 
-<h4>Expression for \(R\)</h4>
+<h3>Expression for \(R\)</h3>
 To find an expression for \(R\) in terms of \(a,b,c\), we can start from our current expression for \(R\)
 $$
 \begin{align}
-    R = |\vec{r} - \vec{r}'(t')| = 
-    \sqrt{\left(\frac{at'^2}{2}\right)^2 + b^2} 
+    R = |\vec{r} - \vec{r}'(t')| =
+    \sqrt{\left(\frac{at'^2}{2}\right)^2 + b^2}
 \end{align}
 $$
 Next, we'll solve for \(t'\) from the implicit equation defining the retarded time (at \( t = 0\))
@@ -306,7 +316,7 @@ $$
 We can solve this for \(t'\) to find (using Mathematica)
 $$
 \begin{align}
-    t' &= \pm 
+    t' &= \pm
     \sqrt{2}\left[\left(\frac{c}{a}\right)^2 \pm \frac{\sqrt{c^4 - a^2 b^2}}{a^2}\right]^{1/2}
 \end{align}
 $$
@@ -325,8 +335,8 @@ $$
 
 
 
-<div id = "Problem 3"> 
-    <h2>
+<div id = "Problem 3">
+    <h2 id="section-3">
         Problem 3: Cherenkov and Bremsstrahlung Radiation    </h2>
     <p>
     </p>
@@ -342,16 +352,16 @@ $$
                 $$
             </li>
             <li>
-                The index of refraction of Lucite (a type of resin) is 1.5. What is the angle of emission of Cherenkov radiation from a protion moving in a slab of lucite with kinetic energy 3760 MeV? The mass of a proton is 940 MeV. 
+                The index of refraction of Lucite (a type of resin) is 1.5. What is the angle of emission of Cherenkov radiation from a protion moving in a slab of lucite with kinetic energy 3760 MeV? The mass of a proton is 940 MeV.
             </li>
         </ol>
     <p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
     <p>
-        <h4>Part A </h4>
+        <h3>Part A </h3>
 We can start by finding the perpendicular part of the acceleration.
 
 <ul>
@@ -377,19 +387,19 @@ We can start by finding the perpendicular part of the acceleration.
 
 
 
-Now that we have \(a_\perp\), we can insert it into the work integral 
+Now that we have \(a_\perp\), we can insert it into the work integral
 $$
 \begin{align}
-    W &= \int_0^\infty P(t)\,dt = 
-    \int_0^\infty 
-    \frac{2e^2}{3c^3}\left(\frac{Ze^2}{mb^2}\sin^3\theta\right)^2\,dt 
+    W &= \int_0^\infty P(t)\,dt =
+    \int_0^\infty
+    \frac{2e^2}{3c^3}\left(\frac{Ze^2}{mb^2}\sin^3\theta\right)^2\,dt
 \end{align}
 $$
-But this is an integral over \(t\) which is a little inconvenient, so we can change variables to integrate over \(\theta\) rather than \(t\), ie, we would want to use \(dt = dt/d\theta \cdot d\theta\). 
+But this is an integral over \(t\) which is a little inconvenient, so we can change variables to integrate over \(\theta\) rather than \(t\), ie, we would want to use \(dt = dt/d\theta \cdot d\theta\).
 
 
 <ul>
-    
+
     <li>
         In particular, we can use the fact that the particle's velocity \(v\) is almost constant to write down its position in terms of \(v, b, t\)
         $$
@@ -431,15 +441,15 @@ But this is an integral over \(t\) which is a little inconvenient, so we can cha
 With this result, our change-of-variables integral becomes
 $$
 \begin{align}
-    W &= 
-    \int_0^\pi 
+    W &=
+    \int_0^\pi
     \frac{2e^2}{3c^3}\left(\frac{Ze^2}{mb^2}\sin^3\theta\right)^2\,\left(\frac{b}{v}\frac{1}{\sin^2\theta}\right)\,d\theta\\
-    &= 
+    &=
     \frac{2e^6 Z^2}{3c^3 m^2}\frac{1}{b^3 v}
     \int_0^\pi \sin^4(\theta)\,d\theta\\
     &=  \frac{2e^6 Z^2}{3c^3 m^2}\frac{1}{b^3 v}
    \left(\frac{3\pi}{8}\right)\\
-   &= \boxed{\frac{\pi Z^2 e^6}{4m_e^2 c^3}\frac{1}{b^3 v}} \qquad \checkmark 
+   &= \boxed{\frac{\pi Z^2 e^6}{4m_e^2 c^3}\frac{1}{b^3 v}} \qquad \checkmark
 \end{align}
 $$
 
@@ -455,16 +465,18 @@ $$
 We want to find \(\beta\). A proton that has kinetic energy \(3760\) MeV will have total energy \(4700\) MeV. Then from \(E_\text{tot} = \gamma E_\text{rest}\) we can solve for \(\gamma\) to find
 $$
 \begin{align}
-    \gamma &= 
-    \frac{1}{\sqrt{1-\beta^2}} = \frac{4700}{940} 
+    \gamma &=
+    \frac{1}{\sqrt{1-\beta^2}} = \frac{4700}{940}
     \quad \implies \quad \beta = \frac{2\sqrt{6}}{5}
 \end{align}
 $$
 Then the emission angle (for \(n = 1.5\)) is
 $$
 \begin{align}
-     \theta = \arccos\left(\frac{2}{3}\frac{5}{2\sqrt{6}}\right) \approx 47.12^\circ 
+     \theta = \arccos\left(\frac{2}{3}\frac{5}{2\sqrt{6}}\right) \approx 47.12^\circ
 \end{align}
 $$
 </p>
-</div>
+</div></article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>

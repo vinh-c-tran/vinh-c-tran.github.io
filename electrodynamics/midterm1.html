@@ -1,22 +1,33 @@
----
-layout: blog 
-header: Midterm 1
-title: Midterm 1
-css: /assets/css/text.css 
-section:
-    - "Problem 1"
-    - "Problem 2"
-    - "Problem 3"
-    - "Problem 4"
---- 
-<div id = "Problem 1"> 
-<h2>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Electrodynamics · Midterm 1 | Vinh Tran</title>
+<meta name="description" content="Worked solutions on electromagnetic fields, potentials, and relativistic transformations.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html" aria-current="page">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/electrodynamics/em.html">Electrodynamics</a>
+<h1>Electrodynamics · Midterm 1</h1>
+<p>Worked solutions on electromagnetic fields, potentials, and relativistic transformations.</p>
+<div class="detail-meta"><span>Graduate electrodynamics</span><span>Worked solutions</span></div></header>
+<div class="article-grid">
+<nav class="article-nav" aria-label="On this page"><strong>In this project</strong><a href="#section-1">Problem 1</a><a href="#section-2">Problem 2</a><a href="#section-3">Problem 3</a><a href="#section-4">Problem 4</a><a href="/electrodynamics/em.html">Back to electrodynamics</a></nav>
+<article class="article-body">
+<div id = "Problem 1">
+<h2 id="section-1">
     Problem 1
 </h2>
 <p>
-    Prove explicitly that the energy-momentum tensor given below, which we motivated physically in class, is a symmetric tensor. 
+    Prove explicitly that the energy-momentum tensor given below, which we motivated physically in class, is a symmetric tensor.
     $$
-        T^{\mu\alpha} = \frac{1}{4\pi} 
+        T^{\mu\alpha} = \frac{1}{4\pi}
         \left(F^{\mu\nu}{F^\alpha}_\nu - \frac{g^{\mu\alpha}}{4} F^{\nu\beta}F_{\nu\beta}\right )
     $$
 </p>
@@ -26,47 +37,47 @@ section:
 <p>
     Starting from the original expression for the energy-momentum tensor
 $$
-    T^{\mu\alpha} = 
-    \frac{1}{4\pi} 
-    \left(F^{\mu\nu}{F^\alpha}_\nu - 
+    T^{\mu\alpha} =
+    \frac{1}{4\pi}
+    \left(F^{\mu\nu}{F^\alpha}_\nu -
     \frac{g^{\mu\alpha}}{4}F^{\nu\beta}F_{\nu\beta}\right)
 $$
-we can interchange \(\mu\) and \(\alpha\) to get 
+we can interchange \(\mu\) and \(\alpha\) to get
 $$
-    T^{\alpha\mu} = 
+    T^{\alpha\mu} =
     \frac{1}{4\pi}\left(F^{\alpha\nu}{F^\mu}_\nu
-    - 
+    -
     \frac{g^{\alpha\mu}}{4}F^{\nu\beta}F_{\nu\beta}\right)
 $$
-For the tensor to be symmetric, we need to have 
+For the tensor to be symmetric, we need to have
 $$
-    T^{\mu\alpha} - T^{\alpha\mu} = 0 \qquad \Longleftrightarrow \qquad 
+    T^{\mu\alpha} - T^{\alpha\mu} = 0 \qquad \Longleftrightarrow \qquad
     T^{\mu\alpha} =  T^{\alpha\mu}
 $$
-In the case where \(g^{\mu\alpha} = \eta^{\mu\alpha}\) (the Minkowski metric), we have the second term be manifestly symmetric since we'd have 
+In the case where \(g^{\mu\alpha} = \eta^{\mu\alpha}\) (the Minkowski metric), we have the second term be manifestly symmetric since we'd have
 $$
-    \eta^{\mu\alpha}F^{\nu\beta}F_{\nu\beta} = \eta^{\alpha\mu} F^{\nu\beta}F_{\nu\beta} 
+    \eta^{\mu\alpha}F^{\nu\beta}F_{\nu\beta} = \eta^{\alpha\mu} F^{\nu\beta}F_{\nu\beta}
 $$
-and we know that the metric \(\eta^{\mu\nu}\) is symmetric and \(F^{\nu\beta}F_{\nu\beta}\) is a scalar. 
-<p> 
+and we know that the metric \(\eta^{\mu\nu}\) is symmetric and \(F^{\nu\beta}F_{\nu\beta}\) is a scalar.
+<p>
 </p>
 So we just need to show then that the first terms vanish
 $$
-    F^{\mu\nu}{F^\alpha}_\nu - 
-    F^{\alpha\nu}{F^\mu}_\nu = 0 \qquad \Longleftrightarrow \qquad 
-     F^{\mu\nu}{F^\alpha}_\nu = 
+    F^{\mu\nu}{F^\alpha}_\nu -
+    F^{\alpha\nu}{F^\mu}_\nu = 0 \qquad \Longleftrightarrow \qquad
+     F^{\mu\nu}{F^\alpha}_\nu =
     F^{\alpha\nu}{F^\mu}_\nu
 $$
 
-<h4>Approach 1</h4>
-We can use the lowering and raising properties of the metric tensor to re-write some of the terms. For instance, we can re-write \({F^\alpha}_\nu\) as 
+<h3>Approach 1</h3>
+We can use the lowering and raising properties of the metric tensor to re-write some of the terms. For instance, we can re-write \({F^\alpha}_\nu\) as
 \(
     {F^\alpha}_\nu = g_{\nu \rho}F^{\alpha\rho}
 \) and \( F^{\mu\nu}\) as \(F^{\mu\nu} = g^{\nu\beta} {F^\mu}_\beta\)
 which when inserted back in gives us
 $$
 \begin{align}
-F^{\mu\nu}{F^\alpha}_\nu = 
+F^{\mu\nu}{F^\alpha}_\nu =
     (g^{\nu\beta} {F^\mu}_\beta)(g_{\nu\rho}F^{\alpha\rho}) &=
     {F^\mu}_\beta F^{\alpha\rho}
     (g^{\nu\beta}g_{\nu\rho})\\
@@ -75,50 +86,50 @@ F^{\mu\nu}{F^\alpha}_\nu =
     &= {F^\mu}_\nu F^{\alpha\nu} \qquad \checkmark
 \end{align}
 $$
-In the second line, we use the property that the Minkowski metric contracted with itself results in a Kronecker delta. In the third line, since \(\beta\) is a dummy summation index, we can take \(\beta \rightarrow \nu\) and we get our desired result. 
+In the second line, we use the property that the Minkowski metric contracted with itself results in a Kronecker delta. In the third line, since \(\beta\) is a dummy summation index, we can take \(\beta \rightarrow \nu\) and we get our desired result.
 <p>
 </p>
 
 <h4>Approach 2</h4>
-We can expand the product \(F^{\mu\nu}{F^\alpha}_\nu\) in terms of \(\partial_i A_j\). To do so, we start by re-writing the mixed tensor in terms of a fully covariant form using the Minkowski metric to lower the first index and then substitute in \(F_{\mu\nu} = (\partial_\mu A_\nu -\partial_\nu A_\mu)\). 
+We can expand the product \(F^{\mu\nu}{F^\alpha}_\nu\) in terms of \(\partial_i A_j\). To do so, we start by re-writing the mixed tensor in terms of a fully covariant form using the Minkowski metric to lower the first index and then substitute in \(F_{\mu\nu} = (\partial_\mu A_\nu -\partial_\nu A_\mu)\).
 $$
 \begin{align}
-    F^{\mu\nu}{F^\alpha}_\nu = 
+    F^{\mu\nu}{F^\alpha}_\nu =
     F^{\mu\nu}F_{\beta\nu} \eta^{\alpha\beta} &= (\partial^\mu A^\nu - \partial^\nu A^\mu)(\partial_\beta A_\nu - \partial_\nu A_\beta)\eta^{\alpha\beta}\\
-    &= 
+    &=
     (\partial^\mu A^\nu - \partial^\nu A^\mu)(\partial^\alpha A_\nu - \partial_\nu A^\alpha)\\
-    &= \partial^\mu A^\nu \partial^\alpha A_\nu 
+    &= \partial^\mu A^\nu \partial^\alpha A_\nu
     - \partial^\mu A^\nu \partial_\nu A^\alpha
     - \partial^\nu A^\mu \partial^\alpha A_\nu + \partial^\nu A^\mu \partial_\nu A^\alpha
 \end{align}
 $$
-We can repeat this for the second term to find 
+We can repeat this for the second term to find
 $$
 \begin{align}
-     F^{\alpha\nu}{F^\mu}_\nu = 
+     F^{\alpha\nu}{F^\mu}_\nu =
     F^{\alpha\nu}F_{\beta\nu} \eta^{\beta\mu} &=
     (\partial^\alpha A^\nu - \partial^\nu A^\alpha)(\partial_\beta A_\nu - \partial_\nu A_\beta)\eta^{\beta\mu}\\
-    &= 
+    &=
      (\partial^\alpha A^\nu - \partial^\nu A^\alpha)(\partial^\mu A_\nu - \partial_\nu A^\mu)\\
-     &= 
-     \partial^\alpha A^\nu \partial^\mu A_\nu 
-     - \partial^\alpha A^\nu \partial_\nu A^\mu - \partial^\nu A^\alpha \partial^\mu A_\nu + \partial^\nu A^\alpha \partial_\nu A^\mu 
+     &=
+     \partial^\alpha A^\nu \partial^\mu A_\nu
+     - \partial^\alpha A^\nu \partial_\nu A^\mu - \partial^\nu A^\alpha \partial^\mu A_\nu + \partial^\nu A^\alpha \partial_\nu A^\mu
 \end{align}
 $$
 Then putting everything back together, we have the difference given below. In the second line, we group terms and show that they cancel each other
 $$
     \begin{align}
-        F^{\mu\nu}{F^\alpha}_\nu - 
+        F^{\mu\nu}{F^\alpha}_\nu -
         F^{\alpha\nu}{F^\mu}_\nu &=
-        \partial^\mu A^\nu \partial^\alpha A_\nu 
+        \partial^\mu A^\nu \partial^\alpha A_\nu
         - \partial^\mu A^\nu \partial_\nu A^\alpha
         - \partial^\nu A^\mu \partial^\alpha A_\nu + \partial^\nu A^\mu \partial_\nu A^\alpha \\
-        &\qquad 
-        -\partial^\alpha A^\nu \partial^\mu A_\nu 
+        &\qquad
+        -\partial^\alpha A^\nu \partial^\mu A_\nu
         + \partial^\alpha A^\nu \partial_\nu A^\mu + \partial^\nu A^\alpha \partial^\mu A_\nu - \partial^\nu A^\alpha \partial_\nu A^\mu\\
-        &= (\partial^\mu A^\nu \partial^\alpha A_\nu - \partial^\alpha A^\nu \partial^\mu A_\nu) 
+        &= (\partial^\mu A^\nu \partial^\alpha A_\nu - \partial^\alpha A^\nu \partial^\mu A_\nu)
         + (\partial^\alpha A^\nu\partial_\nu A^\mu - \partial^\mu A^\nu \partial_\nu A^\alpha)\\
-        &\qquad 
+        &\qquad
         + (\partial^\nu A^\alpha \partial^\mu A_\nu
         - \partial^\nu A^\mu \partial^\alpha A_\nu)
         + (\partial^\nu A^\mu \partial_\nu A^\alpha - \partial^\nu A^\alpha\partial_\nu A^\mu)
@@ -133,31 +144,31 @@ $$
 \begin{align}
     (\partial^\mu A^\nu)(\partial^\alpha A_\nu) &=
     (\partial^\mu A_\beta \eta^{\beta\nu})(\partial^\alpha A^\beta \eta_{\beta\nu})\\
-    &= 
+    &=
     (\partial^\mu A_\beta)(\partial^\alpha A^\beta)(\eta^{\beta \nu}\eta_{\beta\nu})\qquad \eta^{\beta\nu}\eta_{\beta\nu} = 1\\
     &= (\partial^\mu A_\beta)(\partial^\alpha A^\beta)\\
     &= (\partial^\mu A_\nu)(\partial^\alpha A^\nu)
 \end{align}
 $$
-Using this fact, we can re-write the above as 
+Using this fact, we can re-write the above as
 $$
 \begin{align}
-      F^{\mu\nu}{F^\alpha}_\nu - 
-    F^{\alpha\nu}{F^\mu}_\nu 
+      F^{\mu\nu}{F^\alpha}_\nu -
+    F^{\alpha\nu}{F^\mu}_\nu
      &= [\cancel{(\partial^\mu A_\nu)( \partial^\alpha A^\nu)} - \cancel{(\partial^\alpha A^\nu)( \partial^\mu A_\nu)}]
      + [\cancel{(\partial^\alpha A_\nu)(\partial^\nu A^\mu)} - \cancel{(\partial^\mu A^\nu)( \partial_\nu A^\alpha)}]\\
-     &\qquad 
+     &\qquad
      + [\cancel{(\partial_\nu A^\alpha )(\partial^\mu A^\nu)}
      - \cancel{(\partial^\nu A^\mu)( \partial^\alpha A_\nu)}]
      + [\cancel{(\partial_\nu A^\mu)( \partial^\nu A^\alpha)} - \cancel{(\partial^\nu A^\alpha)(\partial_\nu A^\mu)}]\\
      &= 0
 \end{align}
 $$
-And we see that inside of each bracket, we have zero, so 
+And we see that inside of each bracket, we have zero, so
 $$
-    F^{\mu\nu}{F^\alpha}_\nu - 
-    F^{\alpha\nu}{F^\mu}_\nu 
-     = 0 
+    F^{\mu\nu}{F^\alpha}_\nu -
+    F^{\alpha\nu}{F^\mu}_\nu
+     = 0
 $$
 which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
 </p>
@@ -166,8 +177,8 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
 
 
 
-<div id = "Problem 2"> 
-    <h2>
+<div id = "Problem 2">
+    <h2 id="section-2">
         Problem 2
     </h2>
     <p>
@@ -175,14 +186,14 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
     </p>
     <p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
     <p>
                 We want to perform a Lorentz boost along the \(\hat{x}\) direction which is given by the following matrix
         $$
         \begin{align}
-            {\Lambda^\mu}_\nu  &= 
+            {\Lambda^\mu}_\nu  &=
             \begin{pmatrix}
             \gamma &-\beta \gamma &0 &0\\
             -\beta \gamma &\gamma &0 &0\\
@@ -197,10 +208,10 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
             \bar{F}^{\mu\nu} &= {\Lambda^\mu}_\alpha {\Lambda^\nu}_\beta F^{\alpha\beta}
         \end{align}
         $$
-        Using 
+        Using
         $$
         \begin{align}
-            F^{\mu\nu} &= 
+            F^{\mu\nu} &=
             \begin{pmatrix}
             0 &-E_x &-E_y &-E_z\\
             E_x &0 &-B_z &B_y\\
@@ -212,10 +223,10 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
         we can calculate the transformation of each of the components. For example, \(E_x'\) is given by the following summation
         $$
         \begin{align}
-            \bar{F}^{10} &= E_x' = 
+            \bar{F}^{10} &= E_x' =
             {\Lambda^1}_\alpha {\Lambda^0}_\beta F^{\alpha\beta}\\
             E_x' &= \sum_{\alpha = 0}^3\sum_{\beta=0}^3
-            {\Lambda^1}_\alpha {\Lambda^0}_\beta F^{\alpha\beta} 
+            {\Lambda^1}_\alpha {\Lambda^0}_\beta F^{\alpha\beta}
         \end{align}
         $$
         We can evaluate these summations using Mathematica to give us
@@ -223,7 +234,7 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
         \begin{align}
             \bar{F}^{10} = E_x' &= \gamma^2(1-\beta^2) E_x = E_x\\
         \bar{F}^{20} = E_y' &= E_y \gamma - B_z \beta \gamma\\
-        \bar{F}^{30} = E_z' &= E_z\gamma + B_y\beta \gamma 
+        \bar{F}^{30} = E_z' &= E_z\gamma + B_y\beta \gamma
         \end{align}
         $$
         Repeating this for the magnetic field components, we find
@@ -231,7 +242,7 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
         \begin{align}
             \bar{F}^{32} &= B_x' = B_x\\
             \bar{F}^{13} &= B_y' = B_y \gamma + E_z \beta \gamma \\
-            \bar{F}^{21} &= B_z' = B_z \gamma - E_y \beta \gamma 
+            \bar{F}^{21} &= B_z' = B_z \gamma - E_y \beta \gamma
         \end{align}
         $$
         So together we have the expressions for \(\vec{E}\) and \(\vec{B}\) in a frame moving with speed $v$ along the $x-$direction relative
@@ -241,7 +252,7 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
             E_x\\
             \gamma (E_y - \beta B_z)\\
             \gamma(E_z + \beta B_y)
-            \end{pmatrix}} \qquad 
+            \end{pmatrix}} \qquad
             \vec{B}' = {\begin{pmatrix}
             B_x\\
             \gamma(B_y + \beta E_z)\\
@@ -249,14 +260,14 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
             \end{pmatrix}}
         \end{align}
         $$
-        where \(E_i, B_i\) are the rest-frame components. For a charged particle, this reduces to 
+        where \(E_i, B_i\) are the rest-frame components. For a charged particle, this reduces to
         $$
         \begin{align}
             \vec{E}' &= {\begin{pmatrix}
             E_x\\
             \gamma E_y\\
             \gamma E_z
-            \end{pmatrix}} \qquad 
+            \end{pmatrix}} \qquad
             \vec{B}' = {\begin{pmatrix}
             0\\
             \gamma \beta E_z \\
@@ -267,13 +278,13 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
         with \(\vec{E}\) for a charged particle given by
         $$
         \begin{align}
-            \vec{E} &=  
+            \vec{E} &=
             \frac{q (x\hat{x} + y\hat{y} + z\hat{z})}{(x^2 + y^2 + z^2)^{3/2}}
         \end{align}
         $$
 
-        <h4>Showing \(\vec{E}\cdot\vec{E} - \vec{B}\cdot\vec{B}\) is a Lorentz Invariant</h4>
-        
+        <h3>Showing \(\vec{E}\cdot\vec{E} - \vec{B}\cdot\vec{B}\) is a Lorentz Invariant</h3>
+
         <ol>
             <li>
                 Approach 1
@@ -306,10 +317,10 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
             </li>
              <li>
                  Approach 2.
-            
+
                          This approach would hold in general.
-            
-            
+
+
                          Using the above expressions for \(\vec{E}'\) and \(\vec{B}'\), we can calculate \(\vec{E}'\cdot\vec{E}' - \vec{B}'\cdot\vec{B}'\) and show that it reduces to \(\vec{E}\cdot\vec{E} - \vec{B}\cdot\vec{B}\)
                          $$
                          \begin{align}
@@ -331,7 +342,7 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
                             - B_x^2 - \gamma^2(1-\beta^2)(B_y^2 + B_z^2)\\
                             &\qquad + 2\beta \gamma^2\left[-\cancel{E_yB_z} + \cancel{E_zB_y} - \cancel{B_yE_z} + \cancel{B_zE_y} \right]\\
                             &= (E_x^2 + E_y^2 + E_z^2) - (B_x^2 + B_y^2 + B_z^2)\\
-                            \implies \quad 
+                            \implies \quad
                             \vec{E}'\cdot\vec{E}' - \vec{B}'\cdot\vec{B}'
                             &= \vec{E}\cdot\vec{E} - \vec{B}\cdot\vec{B}
                         \end{align}
@@ -345,50 +356,50 @@ which implies that the energy-momentum tensor is \(\boxed{\text{symmetric}}\).
 
 
 
-<div id = "Problem 3"> 
-    <h2>
+<div id = "Problem 3">
+    <h2 id="section-3">
         Problem 3
     </h2>
     <p>
         Given expressions for the potential and vector potential as
         $$
-            V(\vec{r},t) = V_0\sin(\omega t - az) \qquad \qquad 
+            V(\vec{r},t) = V_0\sin(\omega t - az) \qquad \qquad
             \vec{A}(\vec{r},t) = \frac{V_0}{c}\sin(\omega t - az)(\hat{y} + \hat{z})
         $$
         <ol>
             <li>
-                Find expressions for \(\vec{E}\) and \(\vec{B}\). By requiring that they satisfy Maxwell's equaitons, derive a relationship between \(\omega\) and \(a\). 
+                Find expressions for \(\vec{E}\) and \(\vec{B}\). By requiring that they satisfy Maxwell's equaitons, derive a relationship between \(\omega\) and \(a\).
             </li>
             <li>
-                Taking into account the results of (a), do the given \(V(\vec{r},t)\) and \(\vec{A}(\vec{r},t)\) satisfy the Coulomb gauge condition, Lorenz gauge condition, or both (or neither)? 
+                Taking into account the results of (a), do the given \(V(\vec{r},t)\) and \(\vec{A}(\vec{r},t)\) satisfy the Coulomb gauge condition, Lorenz gauge condition, or both (or neither)?
             </li>
         </ol>
     </p>
     <p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
     <p>
-        Starting from the expressions for \(\vec{E}\) and \(\vec{B}\) in terms of the vector and scalar potentials 
+        Starting from the expressions for \(\vec{E}\) and \(\vec{B}\) in terms of the vector and scalar potentials
         $$
 \begin{align}
-    \vec{E} &= -\frac{\partial \vec{A}}{\partial t} - \vec{\nabla}\phi \qquad 
-    \vec{B} = \vec{\nabla} \times \vec{A} 
+    \vec{E} &= -\frac{\partial \vec{A}}{\partial t} - \vec{\nabla}\phi \qquad
+    \vec{B} = \vec{\nabla} \times \vec{A}
 \end{align}
 $$
 we have
 $$
 \begin{align}
-    \vec{E} &= 
+    \vec{E} &=
     -\frac{\partial}{\partial t}
     \left[\frac{V_0}{c}\sin(\omega t - az) (\hat{y}+\hat{z})\right]
     - \vec{\nabla} V_0\sin(\omega t - az)\\
-    &= 
+    &=
     -\omega \frac{V_0}{c}\cos(\omega t - az)(\hat{y} + \hat{z})
     +aV_0 \cos(\omega t - az)\hat{z}\\
-    &= 
-    - 
+    &=
+    -
     V_0
     \begin{pmatrix}
     0\\
@@ -400,7 +411,7 @@ $$
 or in other words
 $$
 \begin{align}
-    \vec{E} &= -V_0\frac{\omega}{c}\cos(\omega t - az) \hat{y} 
+    \vec{E} &= -V_0\frac{\omega}{c}\cos(\omega t - az) \hat{y}
     - V_0 \left(\frac{\omega}{c}-a\right)\cos(\omega t - az)\hat{z}
 \end{align}
 $$
@@ -408,22 +419,22 @@ and
 $$
 \begin{align}
     \vec{B} &= \vec{\nabla} \times \frac{V_0}{c}\sin(\omega t - az)(\hat{y} + \hat{z})\\
-    &= 
+    &=
     \frac{V_0}{c}
     \left(\frac{\partial}{\partial y}\sin(\omega t - az) - \frac{\partial}{\partial z}\sin(\omega t - az)\right) \hat{x}
 \end{align}
 $$
-which gives us 
+which gives us
 $$
-\begin{align} 
-    \vec{B} 
+\begin{align}
+    \vec{B}
     &= a\frac{V_0}{c}
     \cos(\omega t - az)\hat{x}
 \end{align}
 $$
 <p>
 </p>
-Next, we can apply them to Maxwell's equations. There are a few possible ways to approach this. 
+Next, we can apply them to Maxwell's equations. There are a few possible ways to approach this.
 
 
 
@@ -447,7 +458,7 @@ Next, we can apply them to Maxwell's equations. There are a few possible ways to
         $$
     </li>
     <li>
-        We can consider the Ampere-Maxwell equation which in vacuum reads \(\nabla \times \vec{B} = 1/c^2 \partial_t \vec{E}\). 
+        We can consider the Ampere-Maxwell equation which in vacuum reads \(\nabla \times \vec{B} = 1/c^2 \partial_t \vec{E}\).
         $$
         \begin{align}
             \nabla \times \vec{B} &= \frac{1}{c^2} \frac{\partial \vec{E}}{\partial t}\\
@@ -476,7 +487,7 @@ Next, we can apply them to Maxwell's equations. There are a few possible ways to
 
 
 
-<h4>Part B </h4>
+<h3>Part B </h3>
 
     <ol>
         <li>
@@ -489,7 +500,7 @@ Next, we can apply them to Maxwell's equations. There are a few possible ways to
             $$
             So we see that the Coulomb gauge is not satisfied.
         </li>
-        
+
         <li>
             Next, we can check if the Lorenz gauge is satisfied.
             $$
@@ -518,12 +529,12 @@ Next, we can apply them to Maxwell's equations. There are a few possible ways to
 
 
 
-<div id = "Problem 4"> 
-    <h2>
+<div id = "Problem 4">
+    <h2 id="section-4">
         Problem 4
     </h2>
     <p>
-        Show using the properties of the Levi-Civita symbol that 
+        Show using the properties of the Levi-Civita symbol that
         $$
             \det F \propto (\vec{E}\cdot\vec{B})^2
         $$
@@ -534,7 +545,9 @@ Next, we can apply them to Maxwell's equations. There are a few possible ways to
     </p>
     <p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
-</div>
+</div></article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>

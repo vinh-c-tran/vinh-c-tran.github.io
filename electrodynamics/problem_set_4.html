@@ -1,22 +1,33 @@
----
-layout: blog 
-header: Problem Set 4
-title: Problem Set 4
-css: /assets/css/text.css 
-section:
-    - "Problem 1"
-    - "Problem 2"
-    - "Problem 3"
-    - "Problem 4"
---- 
-<div id = "Problem 1"> 
-<h2>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Electrodynamics · Problem set 4 | Vinh Tran</title>
+<meta name="description" content="Worked notes on conformal mapping, metric tensors, and Lorentz transformations.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html" aria-current="page">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/electrodynamics/em.html">Electrodynamics</a>
+<h1>Electrodynamics · Problem set 4</h1>
+<p>Worked notes on conformal mapping, metric tensors, and Lorentz transformations.</p>
+<div class="detail-meta"><span>Graduate electrodynamics</span><span>Worked problems</span></div></header>
+<div class="article-grid">
+<nav class="article-nav" aria-label="On this page"><strong>In this project</strong><a href="#section-1">Problem 1</a><a href="#section-2">Problem 2</a><a href="#section-3">Problem 3</a><a href="/electrodynamics/em.html">Back to electrodynamics</a></nav>
+<article class="article-body">
+<div id = "Problem 1">
+<h2 id="section-1">
     Problem 1
 </h2>
 <p>
-    Prove explicitly that the energy-momentum tensor given below, which we motivated physically in class, is a symmetric tensor. 
+    Prove explicitly that the energy-momentum tensor given below, which we motivated physically in class, is a symmetric tensor.
     $$
-        T^{\mu\alpha} = \frac{1}{4\pi} 
+        T^{\mu\alpha} = \frac{1}{4\pi}
         \left(F^{\mu\nu}{F^\alpha}_\nu - \frac{g^{\mu\alpha}}{4} F^{\nu\beta}F_{\nu\beta}\right )
     $$
 </p>
@@ -30,8 +41,8 @@ section:
 
 
 
-<div id = "Problem 2"> 
-    <h2>
+<div id = "Problem 2">
+    <h2 id="section-2">
         Problem 2
     </h2>
     <p>
@@ -40,42 +51,42 @@ section:
     $$
     V_{i ; j} = \frac{\partial V_i}{\partial q^j} - V_k \Gamma^k_{ij}
     $$
-    where \( \Gamma^k_{ij} = \epsilon^k \cdot \frac{\partial \epsilon_i}{\partial q^j}\) and \(\epsilon\) denotes basis vectors, show that \(g_{ij;k}=0\) where 
+    where \( \Gamma^k_{ij} = \epsilon^k \cdot \frac{\partial \epsilon_i}{\partial q^j}\) and \(\epsilon\) denotes basis vectors, show that \(g_{ij;k}=0\) where
     \(g_{ij} =\epsilon_i \cdot \epsilon_j\) is the metric tensor. (Hint: use the)
     the product rule for derivatives on \(g_{ij}\)).
     <p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
     <p>
                 Generalizing the covariant derivative of a vector to a rank 2 tensor, we have the covariant derivative of the metric tensor given by
         \begin{align}
-            g_{ij;k} &= 
+            g_{ij;k} &=
             \frac{\partial g_{ij}}{\partial q^k}
-            - g_{i\alpha}\Gamma^\alpha_{jk} 
+            - g_{i\alpha}\Gamma^\alpha_{jk}
             - g_{j\beta}\Gamma^\beta_{ik}
             \label{eq1}
         \end{align}
         Next, we can use the product rule to re-write $\partial g_{ij}/\partial q^k$
         \begin{align}
-            \frac{\partial g_{ij}}{\partial q^k} &= 
+            \frac{\partial g_{ij}}{\partial q^k} &=
             \frac{\partial (\epsilon_i \cdot \epsilon_j)}{\partial q^k} = \frac{\partial\epsilon_i}{\partial q^k}\cdot \epsilon_j + \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
         \end{align}
         Inserting this expression back into \ref{eq1} and re-writing the Christoffel symbols using $\Gamma_{ij}^k = \epsilon^k \cdot \frac{\partial \epsilon_i}{\partial q^j}$ gives us
         \begin{align}
-            g_{ij;k} &= 
+            g_{ij;k} &=
             \frac{\partial\epsilon_i}{\partial q^k}\cdot \epsilon_j + \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
-            - g_{i\alpha}\left[\epsilon^\alpha \cdot \frac{\partial \epsilon_j}{\partial q^k}\right] 
-            - g_{j\beta}\left[\epsilon^\beta \cdot \frac{\partial \epsilon_i}{\partial q^k}\right] 
+            - g_{i\alpha}\left[\epsilon^\alpha \cdot \frac{\partial \epsilon_j}{\partial q^k}\right]
+            - g_{j\beta}\left[\epsilon^\beta \cdot \frac{\partial \epsilon_i}{\partial q^k}\right]
         \end{align}
-        Then, we can use the lowering and raising properties of the metric tensor to re-write the last two terms as the first line. Then we see that the sum cancels out piece-wise. 
+        Then, we can use the lowering and raising properties of the metric tensor to re-write the last two terms as the first line. Then we see that the sum cancels out piece-wise.
         \begin{align}
-            g_{ij;k} &= 
+            g_{ij;k} &=
             \frac{\partial\epsilon_i}{\partial q^k}\cdot \epsilon_j + \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
             - \epsilon_i \cdot \frac{\partial \epsilon_j}{\partial q^k}
             - \epsilon_j \cdot \frac{\partial \epsilon_i}{\partial q^k}\\
-            &= 0 
+            &= 0
         \end{align}
     </p>
 </div>
@@ -85,25 +96,27 @@ section:
 
 
 
-<div id = "Problem 3"> 
-    <h2>
+<div id = "Problem 3">
+    <h2 id="section-3">
         Problem 3    </h2>
     <p>
         A coordinate system \(K'\) moves with a velocity \(\vec{v}\) relative to another system \(K\). In \(K'\), a particle has a velocity \(\vec{u}'\) and an acceleration \(\vec{a}'\). Show that in system \(K\), the components of acceleration parallel and perpendicular to \(\vec{v}\) are, respectively
         $$
         \begin{align}
-        \vec{a}_\parallel 
-        &= 
+        \vec{a}_\parallel
+        &=
         \frac{(1-v^2/c^2)^{3/2}}{(1+\vec{u}'\cdot\vec{v})/c^2)^3}\vec{a}'_\parallel\\
-        \vec{a}_\perp 
-        &= 
+        \vec{a}_\perp
+        &=
         \frac{(1-v^2/c^2)^{1/2}}{(1+\vec{u}'\cdot\vec{v}/c^2)^3}\left(\vec{a}_\perp' + \frac{\vec{v}}{c^2}\times(\vec{a}'\times\vec{u})\right)
         \end{align}
         $$
     </p>
     <p>
         <i><b>
-            Solution 
+            Solution
         </b></i>
     </p>
-</div>
+</div></article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>

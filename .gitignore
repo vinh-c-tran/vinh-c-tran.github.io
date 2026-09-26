@@ -3,3 +3,8 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+# Local design review captures and preserved migration originals
+.impeccable/review/
+.impeccable/migration-originals/
+.impeccable/mocks/

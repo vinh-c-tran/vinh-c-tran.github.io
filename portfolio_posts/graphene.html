@@ -1,66 +1,75 @@
----
-layout: blog 
-header: Graphene Field Effect Transistor
-title: Graphene Field Effect Transistor
-css: /assets/css/text.css 
-section:
-    - "Background Information"
-    - "Fabrication"
-    - "Measurement"
-    - "Data Analysis"
-    - "Troubleshooting"
---- 
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Graphene field-effect transistors | Vinh Tran</title>
+<meta name="description" content="Fabricating graphene devices and measuring gate-dependent resistivity, with attention to leakage and measurement limitations.">
+<link rel="icon" href="/images/favicon2.ico">
+<link rel="stylesheet" href="/assets/css/portfolio.css">
+<script src="/assets/js/portfolio.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="masthead"><a class="identity" href="/index.html">Vinh Tran<span>Physics · Computation · Experiment</span></a>
+<nav aria-label="Main navigation"><a href="/index.html#research" aria-current="page">Research</a><a href="/experience.html">Experience</a><a href="/index.html#about">About</a><a href="/teaching.html">Teaching</a><a class="nav-cv" href="/Tran_Vinh_CV.pdf">CV (PDF)</a></nav></header>
+<main id="main">
+<header class="page-heading"><a class="breadcrumb" href="/index.html#research">All research</a>
+<h1>Graphene field-effect transistors</h1>
+<p>Fabricating graphene devices and measuring gate-dependent resistivity, with attention to leakage and measurement limitations.</p>
+<div class="detail-meta"><span>Photolithography</span><span>LabVIEW</span><span>Transport measurements</span></div></header>
+<div class="article-grid">
+<nav class="article-nav" aria-label="On this page"><strong>In this project</strong><a href="#section-1">Introduction</a><a href="#section-2">Background Information</a><a href="#section-3">Fabrication</a><a href="#section-4">Measurement</a><a href="#section-5">Data Analysis</a><a href="#section-6">Troubleshooting</a><a href="#section-7">References</a><a href="/index.html#research">Back to all research</a></nav>
+<article class="article-body">
 <div id= "Introduction">
     <p>
-        This is a lab project where we fabricated a graphene field effect transistor (FET) to measure the resistivity of the graphene channel as a function of applied gate voltage. Graphene's band structure and density of states predicts that the graphene channel's resistivity would exhibit a sharp peak at the Fermi level. Applying a voltage to the gate would induce charge separation via the electric field effect and by sweeping through a range of voltage values the energy level should sweep from below to above the Fermi level allowing us to perhaps see this effect for ourselves. Through this project, we got hands on experience with fabricating this FET via photolithography and automating measurements via equipment interfacing with LabView. 
+        This is a lab project where we fabricated a graphene field effect transistor (FET) to measure the resistivity of the graphene channel as a function of applied gate voltage. Graphene's band structure and density of states predicts that the graphene channel's resistivity would exhibit a sharp peak at the Fermi level. Applying a voltage to the gate would induce charge separation via the electric field effect and by sweeping through a range of voltage values the energy level should sweep from below to above the Fermi level allowing us to perhaps see this effect for ourselves. Through this project, we got hands on experience with fabricating this FET via photolithography and automating measurements via equipment interfacing with LabView.
     </p>
-<h2>
+<h2 id="section-1">
     Introduction
 </h2>
 </div>
 
 
 
-<div id='intro-flex-container'> 
-<div id='intro-flex-container-2'> 
+<div id='intro-flex-container'>
+<div id='intro-flex-container-2'>
 <p>
     Graphene is a two dimensional hexagonal arrangement of carbon atoms. It has the unique properties of having an energy band structure that's linear rather than parabolic (at "low" energies) and is a zero-gap semiconductor. These two properties lead to a resistivity versus gate voltage curve that exhibits a sharp peak for undoped graphene at zero gate voltage (\(V_G\)) that then slopes down towards zero as \(V_G\) increases/decreases.
-</p> 
-</p> 
-To experimentally verify this behavior, we fabricated a graphene field effect transistor (FET) and measured the resistivity of the graphene channel as a function of the gate voltage. We fabricated two graphene FETs and performed back gate resistivity measurements and found that for one sample (3A) that there may be a resistivity dependence on \(V_G\) that weakly agrees with the expected behavior although curve appears to be broadened and our data is overall noisy. We then discuss the possible reasons: gate leakage in our samples, non ideal graphene samples, 
 </p>
-</div> 
+</p>
+To experimentally verify this behavior, we fabricated a graphene field effect transistor (FET) and measured the resistivity of the graphene channel as a function of the gate voltage. We fabricated two graphene FETs and performed back gate resistivity measurements and found that for one sample (3A) that there may be a resistivity dependence on \(V_G\) that weakly agrees with the expected behavior although curve appears to be broadened and our data is overall noisy. We then discuss the possible reasons: gate leakage in our samples, non ideal graphene samples,
+</p>
+</div>
 <div class = "neutron_pic">
-    <figure><img src='/images/FET.JPG'>
+    <figure><img src='/images/FET.JPG' alt="Graphene field-effect transistors — project figure" loading="lazy">
     <figcaption>
         Microscope image of completed transistor post photolithography, deposition, and liftoff with the graphene sample at the center of the "crosshairs"
     </figcaption>
-    </figure> 
+    </figure>
 </div>
-</div> 
+</div>
 
 
 <div id = 'Background Information'>
-        <h2>
+        <h2 id="section-2">
             Background Information
         </h2>
-        <h4>
-            Field Effect Transistor 
-        </h4>
+        <h3>
+            Field Effect Transistor
+        </h3>
 
         <h4>
-            Graphene 
+            Graphene
         </h4>
         <p>
             Proper monolayer graphene is a two dimensional, single layer of hexagonal honeycomb arrangement of carbon atoms. Due to this structure, graphene has some significant electronic properties such as high electron mobility on the order of 15,000 cm\(^2\)/Vs. Additionally, graphene is a semiconductor with zero-gap between the valence and conduction band (which in this case would make it more like a metal).
-        </p> 
+        </p>
         <p>
             The energy-momentum dispersion relation takes the linear form
             $$
                 E = \hbar k c_* \qquad c_* \approx 10^6\text{m/s}
             $$
-            akin to the dispersion relation for relativistic massless particles like photons for low energies near the Dirac points, the points where the valence and conduction bands meet. We can see that the typical parabolic bands are to first order replaced by linear cones, illustrating the linear energy-momentum dispersion relation. 
+            akin to the dispersion relation for relativistic massless particles like photons for low energies near the Dirac points, the points where the valence and conduction bands meet. We can see that the typical parabolic bands are to first order replaced by linear cones, illustrating the linear energy-momentum dispersion relation.
             <!-- \begin{figure}[H]
                 \centering
                 \includegraphics[scale=0.3]{Intro/graphene_band_structure.png}
@@ -68,7 +77,7 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
                 \label{fig:graphene_band_struc}
             \end{figure} -->
         </p>
-        <p> 
+        <p>
             Likewise for low energies, from the linear energy momentum dispersion relation, the density of states as a function of energy is given approximately by \(\rho(E) \propto |E|\) <!--\cite{Novoselov}-->. Since the number density of carriers is given by
             $$
                 n = \int_{-\infty}^E \rho(E)F(E)\,dE
@@ -77,39 +86,39 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
         </p>
 
         <h4>
-            Graphene FET 
+            Graphene FET
         </h4>
         <p>
-            A graphene field effect transistor is a field effect transistor where the channel is replaced with a sample of graphene. 
+            A graphene field effect transistor is a field effect transistor where the channel is replaced with a sample of graphene.
         </p>
         <p>
-            When we apply a voltage to the gate, the electric field effect shifts the position of the Fermi energy by inducing a doping of electrons or holes in the graphene. The number of available states will in turn increase as the Fermi energy moves away from the Dirac points which increases the conductivity. Conversely, as the Fermi energy approaches the Dirac point, the number of states in principal approaches zero which means that the conductivity goes towards zero, or equivalently the resistance increases to infinity. 
-            
+            When we apply a voltage to the gate, the electric field effect shifts the position of the Fermi energy by inducing a doping of electrons or holes in the graphene. The number of available states will in turn increase as the Fermi energy moves away from the Dirac points which increases the conductivity. Conversely, as the Fermi energy approaches the Dirac point, the number of states in principal approaches zero which means that the conductivity goes towards zero, or equivalently the resistance increases to infinity.
+
             <!-- This idea is visualized in Figure \ref{fig:resistivity_curve} which gives the resistivity as a function of applied gate voltage which demonstrates a sharp peak \cite[pg. 667]{Novoselov} -->
-            
+
             For few-layer graphene, the resistivity tends towards the order of 100 ohms for high gate voltage and tends towards orders of kilo-ohms as the resistivity approaches its peak [Novoselov].
         </p>
         <p>
-            A model describing this effect is presented in Novoselov et. al where the graphene is treated as a two dimensional metal with the conductance band and valence bands overlapping. When a gate voltage \(V_G\) is applied, the subsequent electric field induces a charge density \(n\) in the graphene where <i>n</i> is given by 
+            A model describing this effect is presented in Novoselov et. al where the graphene is treated as a two dimensional metal with the conductance band and valence bands overlapping. When a gate voltage \(V_G\) is applied, the subsequent electric field induces a charge density \(n\) in the graphene where <i>n</i> is given by
             $$
                 n = \frac{\varepsilon_0 \varepsilon V_G}{te}
             $$
-            with \(\varepsilon_0, \varepsilon\) are the permitivities of free space and Si\(\text{O}_2\), <i>e</i> is the charge of the electron, and <i>t</i> is the depth of the insulating layer. As \(V_G\) goes towards zero, <i>n</i> goes to zero and hence the resistivity increases towards infinity. Likewise, as \(V_G\) increases or decreases further away, <i>n</i> increases and the resistivity will instead decrease. 
+            with \(\varepsilon_0, \varepsilon\) are the permitivities of free space and Si\(\text{O}_2\), <i>e</i> is the charge of the electron, and <i>t</i> is the depth of the insulating layer. As \(V_G\) goes towards zero, <i>n</i> goes to zero and hence the resistivity increases towards infinity. Likewise, as \(V_G\) increases or decreases further away, <i>n</i> increases and the resistivity will instead decrease.
         </p>
 </div>
 
 
 
 <div id = 'Fabrication'>
-    <h2>
+    <h2 id="section-3">
         Fabrication
     </h2>
 
-    <h4>
+    <h3>
         Exfoliation of Highly Oriented Graphite (with Scotch tape!)
-    </h4>
-    <div id = "exfoliation"> 
-    
+    </h3>
+    <div id = "exfoliation">
+
     <div>
         <p>
             We prepared rectangular wafers approximately 1.5 cm by 2 cm in size from a 3 inch diameter silicon wafer marked with a grid of letters and numbers which allows for recalling the location of graphene samples. The silicon wafer consists of highly doped silicon (Si++) with a thin surface coat of silicon dioxide (SiO2) which acts as a dielectric. We made the cuts by scoring the wafers with a diamond tipped pen to then break the wafer along the scored lines using a small wire taped to a flat surface as a fulcrum.
@@ -122,7 +131,7 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
         </p>
     </div>
     <figure>
-        <img src = "/images/Graphene/sample.JPG">  
+        <img src = "/images/Graphene/sample.JPG" alt="Graphene field-effect transistors — project figure" loading="lazy">
         <figcaption>
         </figcaption>
     </figure>
@@ -132,12 +141,12 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
         Photolithography
     </h4>
     <p>
-        The next process involved photolithography which prints a gold-titanium circuit onto the wafer with the graphene sample at the center of the circuit. All of the following steps takes place in a room with a special filter that filters out UV light. 
-    
+        The next process involved photolithography which prints a gold-titanium circuit onto the wafer with the graphene sample at the center of the circuit. All of the following steps takes place in a room with a special filter that filters out UV light.
 
-    
+
+
     <ol>
-    <li> First, we applied a coating of (positive) photoresist, a light sensitive chemical that becomes soluble to the developer after being exposed to ultraviolet light, to the wafers which took place in three stages.  </li> 
+    <li> First, we applied a coating of (positive) photoresist, a light sensitive chemical that becomes soluble to the developer after being exposed to ultraviolet light, to the wafers which took place in three stages.  </li>
     <ul>
 
         <li>First, we placed our wafer into the spin-coat machine, applying a vacuum seal to hold the wafer in place and applied 3 drops of primer to fully coat the wafer. Then we set the machine to run at 4000 rotations per minute (rpm) for 40 seconds. </li>
@@ -147,27 +156,27 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
 
     </ul>
 
-    
+
     <li>Next, we aligned a mask with a circuit pattern over our graphene sample and exposed the wafer to ultraviolet (UV) light. The UV light makes the photoresist soluble to the developer so that in the developing step, the parts of the wafer not covered by the mask will wash off exposing the silicon dioxide wafer substrate. </li>
-    
+
         <ul>
             <li>We loaded the wafer into the mask aligner and located the general location of the graphene sample using the gold letter and number markings on the wafer.</li>
             <li>We loaded the mask into the holder which uses a vacuum to hold the mask in place. Keeping one hand underneath the mask, in the case of vacuum failure, we inserted the mask into the aligner above the sample. </li>
             <li>Next, we aligned the graphene sample with a finer circuit pattern using a combination of coarse lever controls which move the objectives and fine levers which move the stage in the X and Y directions.</li>
            <li>After having aligned the graphene sample into the center of the circuit pattern, we expose the wafer to UV light for 4.25 seconds.</li>
         </ul>
-    
-    
-    
+
+
+
     <p>
 
      <li>Next, we developed the wafers which allowed for the exposed photoresist to be washed off and harden the remaining photoresist.  This step took place in three stages. </li>
      <ul>
-            <li> 
+            <li>
          First, we placed the wafers into a dish with developer for 50 seconds. The developer used was diluted from the original concentration with milli-q water using a ratio of 1 part original developer to 6 parts milli-q water.</li>
         <li>
         After that, we rinsed the wafers in de-ionized water for 40 seconds before drying the samples using jets of air. </li>
-        <li> 
+        <li>
         Then we hard baked the sample at 100$^\circ$ C for two minutes which solidifies the non-exposed photoresist. </li>
     </ul>
     </p>
@@ -179,27 +188,27 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
     <h4>
         Deposition
     </h4>
-    <div id = "main_body"> 
+    <div id = "main_body">
     <p>
-        Next, we evaporated 4 nm of titanium and afterwards 40 nm of gold onto the wafers. The specific evaporator used is an electron beam evaporator. First, the samples are loaded via retaining pins into a dish which is then attached into the interior of the evaporator and small amounts of titanium and gold are loaded into their respective crucibles. The evaporator is then closed and a vacuum is applied. Then, via a tungsten filament, beam of electrons is sent towards the crucibles heating the metals up and turning them into vapors which then condense and form a thin film onto the wafer. 
+        Next, we evaporated 4 nm of titanium and afterwards 40 nm of gold onto the wafers. The specific evaporator used is an electron beam evaporator. First, the samples are loaded via retaining pins into a dish which is then attached into the interior of the evaporator and small amounts of titanium and gold are loaded into their respective crucibles. The evaporator is then closed and a vacuum is applied. Then, via a tungsten filament, beam of electrons is sent towards the crucibles heating the metals up and turning them into vapors which then condense and form a thin film onto the wafer.
     </p>
-        <div id="side_by_side_smaller"> 
+        <div id="side_by_side_smaller">
             <figure>
-                <img src = "/images/Graphene/evaporator.jpeg"> 
+                <img src = "/images/Graphene/evaporator.jpeg" alt="Graphene field-effect transistors — project figure" loading="lazy">
                 <figcaption>
                     Electron beam evaporator opened up
                 </figcaption>
             </figure>
             <figure>
-                <img src = "/images/Graphene/post_deposition.jpeg"> 
+                <img src = "/images/Graphene/post_deposition.jpeg" alt="Graphene field-effect transistors — project figure" loading="lazy">
                 <figcaption>
-                    Wafers post deposition! How shiny! 
+                    Wafers post deposition! How shiny!
                 </figcaption>
             </figure>
             <figure>
-                <img src = "/images/Graphene/crucible.jpeg"> 
+                <img src = "/images/Graphene/crucible.jpeg" alt="Graphene field-effect transistors — project figure" loading="lazy">
                 <figcaption>
-                    The crucible where gold pellets are loaded in. 
+                    The crucible where gold pellets are loaded in.
                 </figcaption>
             </figure>
         </div>
@@ -215,39 +224,40 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
         Lastly, we perform the lift off wash for the wafers which removes the irrelevant gold, that is, the gold that lays on top of the photoresist, without removing the gold that forms the electrodes. As the photoresist used in this lab is acetone soluble, the lift off wash consists of placing the wafers into a dish of acetone which starts to eat away the photoresist. Then using a syringe, we applied more pressurized jets of acetone to encourage removal of more stubborn bits of gold.
     </p>
     <figure>
-        <img src="/images/Graphene/acetone_needle.jpeg"> 
+        <img src="/images/Graphene/acetone_needle.jpeg" alt="Graphene field-effect transistors — project figure" loading="lazy">
     </figure>
     </div>
 </div>
 
 <div id = 'Measurement'>
-    <h2>
-        Measurement 
+    <h2 id="section-4">
+        Measurement
     </h2>
 
-    <h4>
-        Lock In Amplifier 
-    </h4>
+    <h3>
+        Lock In Amplifier
+    </h3>
+<p class="notice">These source notes are unfinished; this section has not yet been written.</p>
 </div>
 
 
 
 
 <div id = 'Data Analysis'>
-    <h2>
+    <h2 id="section-5">
         Data Analysis
     </h2>
 
     <p>
-        Our goal was to measure the resistivity of the graphene FET as a function of applied gate voltage. After making corrections to our samples (after initial poor measurements), we got the following data, which we take and analyze using Python. 
+        Our goal was to measure the resistivity of the graphene FET as a function of applied gate voltage. After making corrections to our samples (after initial poor measurements), we got the following data, which we take and analyze using Python.
     </p>
 
-    <h4>
+    <h3>
         Curve Fitting
-    </h4>
+    </h3>
 
-    <div id = "resistivity_container"> 
-        <div id = "flex_item_1"> 
+    <div id = "resistivity_container">
+        <div id = "flex_item_1">
         <p>
             Since resistivity versus gate voltage plot for graphene was expected to exhibit a shark peak around the Fermi energy, we tried to fit a "peak" function to the data. We ended up choosing a Lorentzian function, although a Gaussian could work as well (or even a Voigt function which is a convolution of a Gaussian and a Lorentzian). That is, we used a function of the following form
             $$
@@ -255,11 +265,11 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
                 \frac{1}{\pi}
                 \frac{\frac{1}{2}\Gamma}{(x-x_0)^2 + (\frac{1}{2}\Gamma)^2} + h
             $$
-            with \(\Gamma, x_0, h\) as fittable parameters and fitted it to the scattered points by minimizing the mean square error. In particular, we loaded in the data, which we have stored in CSV form from our LabView output as a <code>Pandas DataFrame</code>. Extracting the array data we then use <code>scipy.optimize.curve_fit</code> to find the parameters that best fit the data and then plot the resulting graphs with <code>Matplotlib.pyplot</code>. 
+            with \(\Gamma, x_0, h\) as fittable parameters and fitted it to the scattered points by minimizing the mean square error. In particular, we loaded in the data, which we have stored in CSV form from our LabView output as a <code>Pandas DataFrame</code>. Extracting the array data we then use <code>scipy.optimize.curve_fit</code> to find the parameters that best fit the data and then plot the resulting graphs with <code>Matplotlib.pyplot</code>.
         </p>
     </div>
-        <div class = 'resistivity'> 
-            <img src="/images/Graphene/resistivity.png">
+        <div class = 'resistivity'>
+            <img src="/images/Graphene/resistivity.png" alt="Graphene field-effect transistors — project figure" loading="lazy">
         </div>
     </div>
 </div>
@@ -267,11 +277,15 @@ To experimentally verify this behavior, we fabricated a graphene field effect tr
 
 
 <div id = 'Troubleshooting'>
-    <h2>
-        Troubleshooting 
+    <h2 id="section-6">
+        Troubleshooting
     </h2>
+<p class="notice">These source notes are unfinished; this section has not yet been written.</p>
 </div>
 
-<h2>
+<h2 id="section-7">
     References
 </h2>
+<p class="notice">These source notes are unfinished; this section has not yet been written.</p></article></div></main>
+<footer class="footer"><span>Vinh Tran · Research portfolio</span>
+<div><a href="mailto:vinh.c.tran42@gmail.com">Email</a><a href="https://github.com/vinh-c-tran">GitHub</a><a href="https://www.linkedin.com/in/vinh-tran-800a90bb/">LinkedIn</a><a href="/Tran_Vinh_CV.pdf">CV</a></div></footer></div></body></html>
