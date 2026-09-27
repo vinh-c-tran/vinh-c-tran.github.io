@@ -926,6 +926,7 @@ p {
 .paper-article > section > h2 { margin-top: 0; }
 .paper-article .paper-figure { margin: 32px 0 48px; }
 .paper-figure > a { display: block; background: white; }
+.paper-vector > a { background: transparent; }
 .paper-article .paper-figure img { width: 100%; max-height: none; height: auto; margin: 0; }
 .paper-figure figcaption { margin-top: 14px; }
 .paper-steps { padding-left: 24px; }
@@ -938,3 +939,15 @@ p {
   .paper-article section { margin-bottom: 44px; }
   .paper-article .paper-figure { margin-block: 24px 36px; }
 }
+
+/* Pair the introductory explanation with its half-width diagram. */
+.approach-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; margin-bottom: 32px; }
+.approach-intro > p, .paper-article .approach-intro > .paper-figure { margin: 0; }
+@media (max-width: 700px) {
+  .approach-intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+
+/* Material label for projects without a supplied image. */
+.project-materials { display: flex; align-items: center; justify-content: center; background: var(--ink); color: var(--paper, #f4f6f2); }
+.project-materials span { font-size: clamp(22px, 2.2vw, 32px); font-weight: 600; }
+
