@@ -16,7 +16,7 @@ Existing project pages cover neutron-star oscillations, graphene FET fabrication
 Vinh Tran. Research-focused replacement for the colorful Phantom tiles.
 
 ## Additional confirmed project
-Van der Waals Injection Molding — a novel approach to thin-film growth between hBN layers. User requested it first in the project list. No project-specific photos, quantitative results, or process details have been supplied; the figure is an explicitly labeled conceptual cross-section.
+Van der Waals Injection Molding remains first in the project list. Its article is grounded in the published paper “Van der Waals injection-molded crystals” (DOI: 10.1038/s41699-025-00626-5) and its supplementary information. Five sections cover the summary, general approach, sample growth, structural and crystal characterization, and electrical characterization. Eight real figure plates reproduce main-text Figures 1–4 and supplementary Figures S1, S10, S12, and S8, with source and full-size links. Main-text transport results for S51 are distinguished from the thinner S56 device in supplementary Figure S8, including the different measurement geometries for S56’s temperature and field sweeps. The page credits the collaborative study and identifies Vinh as a co-first author; it does not attribute every result solely to him.
 
 ## Experience source
 User supplied Vinh_Tran_Rigetti_Skills_First.pdf for the Experience page. Dates, accomplishments, education, publication citations, and fellowships are transcribed or closely paraphrased from its two pages. Research roles are ordered by start date, newest first; overlapping CSU Long Beach roles are preserved. No external fact verification or CV replacement was requested.

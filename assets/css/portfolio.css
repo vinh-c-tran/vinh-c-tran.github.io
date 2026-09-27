@@ -918,3 +918,23 @@ p {
   .experience-detail h3 { font-size: 23px; }
   .experience-topic { margin-top: 24px; }
 }
+
+/* Paper text and figures share one readable content width. */
+.paper-article { width: 100%; max-width: 72ch; font-family: Manrope, Arial, sans-serif; }
+.paper-article p, .paper-article > section > ol { max-width: none; }
+.paper-article section { margin-bottom: 64px; }
+.paper-article > section > h2 { margin-top: 0; }
+.paper-article .paper-figure { margin: 32px 0 48px; }
+.paper-figure > a { display: block; background: white; }
+.paper-article .paper-figure img { width: 100%; max-height: none; height: auto; margin: 0; }
+.paper-figure figcaption { margin-top: 14px; }
+.paper-steps { padding-left: 24px; }
+.paper-steps li { padding-left: 4px; margin-bottom: 16px; }
+.paper-measurement-note { padding: 20px; background: #e5ebdf; font-size: 16px; }
+.paper-sources { padding-top: 24px; border-top: 1px solid var(--line); }
+.paper-sources p, .paper-sources li { font-family: Manrope, Arial, sans-serif; font-size: 13px; line-height: 1.8; }
+.paper-sources li { margin-bottom: 10px; }
+@media (max-width: 700px) {
+  .paper-article section { margin-bottom: 44px; }
+  .paper-article .paper-figure { margin-block: 24px 36px; }
+}

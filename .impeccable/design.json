@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-26T21:04:56.454736+00:00",
+  "generatedAt": "2026-09-26T23:48:31.926805+00:00",
   "title": "Design System: Vinh Tran Research Portfolio",
   "extensions": {
     "colorMeta": {
@@ -100,6 +100,20 @@
           "oklch(72.14% 0.03212 163.47)",
           "oklch(83.57% 0.03212 163.47)",
           "oklch(95.00% 0.03212 163.47)"
+        ]
+      },
+      "figure-ground": {
+        "role": "neutral",
+        "displayName": "Figure ground",
+        "tonalRamp": [
+          "oklch(15.00% 0 0)",
+          "oklch(26.43% 0 0)",
+          "oklch(37.86% 0 0)",
+          "oklch(49.29% 0 0)",
+          "oklch(60.71% 0 0)",
+          "oklch(72.14% 0 0)",
+          "oklch(83.57% 0 0)",
+          "oklch(95.00% 0 0)"
         ]
       }
     },
@@ -246,6 +260,11 @@
         "name": "Chronological Experience",
         "section": "layout",
         "body": "Experience uses newest-first entries within each section, with a 210px date rail, 40px gap and 760px maximum detail width. Below 700px dates stack above content. Navigation places Experience between Research and About."
+      },
+      {
+        "name": "The Full Plate Rule",
+        "body": "In publication articles, display complete scientific plates at the full content-column width without a height cap, retain their source aspect ratio and white ground, and provide a full-size image link.",
+        "section": "layout"
       }
     ],
     "dos": [

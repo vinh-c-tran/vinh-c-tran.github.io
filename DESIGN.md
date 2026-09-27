@@ -9,6 +9,7 @@ colors:
   line: "#cad3ca"
   surface: "#e5ebdf"
   article-ink: "#273c32"
+  figure-ground: "white"
 typography:
   display:
     fontFamily: "Manrope, Arial, sans-serif"
@@ -78,6 +79,10 @@ components:
   text-link:
     textColor: "{colors.ink}"
     typography: "{typography.action}"
+  scientific-plate:
+    backgroundColor: "{colors.figure-ground}"
+    width: "100%"
+    height: "auto"
   notice:
     backgroundColor: "{colors.surface}"
     padding: "22px"
@@ -116,6 +121,7 @@ The palette is low-chroma and botanical, leaving the color of scientific evidenc
 - **Mineral rule** (`line`): masthead, project, course, and article dividers.
 - **Pale sage surface** (`surface`): the about panel and notices.
 - **Reading ink** (`article-ink`): long technical prose.
+- **Figure ground** (`figure-ground`): white backing beneath published scientific plates, preserving the source figures’ native ground.
 
 **The Evidence Color Rule.** Keep scientific images in their source colors; the surrounding interface supplies the restrained palette.
 
@@ -146,7 +152,9 @@ The homepage starts with the research heading, filters, and project rows directl
 
 At 1100px the homepage sidebar becomes 210px with a 36px gap, and the cards become a two-column grid. At 900px and below, the introduction follows the complete project list in both DOM and visual order; it is no longer sticky. At 620px and below, cards form one column with the same image-first layout. The main research heading is 34px. Navigation remains visible, filters wrap, and counts remain announced. About, teaching, and article layouts become single-column as before.
 
-The homepage has no large hero image or capabilities strip. Research plates crop to their thumbnail containers; technical figures preserve their aspect ratio and use contain behavior with a 650px height cap. Tables, code, and display equations scroll locally when needed. Print removes navigation, filters, and contact actions and makes the article layout a single block.
+The homepage has no large hero image or capabilities strip. Research plates crop to their thumbnail containers; standard technical figures preserve their aspect ratio and use contain behavior with a 650px height cap. Publication articles instead let plates span the full content column with automatic height and no height cap; paragraphs and process lists retain the 56ch reading measure. Tables, code, and display equations scroll locally when needed. Print removes navigation, filters, and contact actions and makes the article layout a single block.
+
+**The Full Plate Rule.** In publication articles, display complete scientific plates at the full content-column width without a height cap, retain their source aspect ratio and white ground, and provide a full-size image link.
 
 ## Elevation & Depth
 
@@ -181,6 +189,10 @@ Rows combine one real image plate, a linked title, concise description, methods,
 ### Resource and method lists
 
 Courses, downloadable resources, and method definitions use open rows with bottom rules and restrained metadata. Links identify available material; plain text is used where no resource exists. These rows inherit the typography and divider vocabulary rather than becoming boxed cards.
+
+### Scientific figure plates
+
+Publication figures are uncropped images in linked rectangular white grounds. Each image and its caption’s explicit “Open full-size figure” link opens the same asset in a new tab; captions also link to the source. Captions retain Manrope metadata styling. Figure spacing is 32px above and 48px below, with a 14px caption gap; below 700px the figure margins become 24px and 36px. Article sections separate by 64px, reducing to 44px on mobile. This full-width treatment overrides the standard article image height cap without widening the prose.
 
 ### Notices
 
