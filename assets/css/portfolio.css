@@ -951,3 +951,29 @@ p {
 .project-materials { display: flex; align-items: center; justify-content: center; background: var(--ink); color: var(--paper, #f4f6f2); }
 .project-materials span { font-size: clamp(22px, 2.2vw, 32px); font-weight: 600; }
 
+
+/* Images share the article width in one row, regardless of image count. */
+.sample-stage-gallery { display: grid; width: 100%; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: clamp(4px, 1.2vw, 16px); margin: 24px 0 48px; }
+.sample-stage-gallery > a { display: flex; align-items: center; min-width: 0; }
+.paper-article .sample-stage-gallery img { display: block; width: 100%; min-width: 0; height: auto; aspect-ratio: 1; max-height: none; object-fit: contain; margin: 0; }
+
+/* Give the probe article three quarters of the page content width. */
+.probe-article-grid > .paper-article { max-width: none; }
+@media (min-width: 701px) {
+  .probe-article-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 32px; }
+}
+
+/* Proportional columns preserve all three photos at the same height. */
+.probe-solder-gallery { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 3fr) minmax(0, 4fr); gap: clamp(4px, 1.2vw, 16px); width: 100%; margin: 24px 0 48px; align-items: start; }
+.probe-solder-gallery > a { display: block; min-width: 0; }
+.paper-article .probe-solder-gallery img { display: block; width: 100%; height: auto; max-height: none; margin: 0; }
+
+/* Three pin groups keep the 24 measurements compact. */
+.resistance-table-wrap { max-width: 100%; overflow-x: auto; margin: 20px 0 32px; }
+.paper-article .resistance-table { width: 100%; min-width: 480px; margin: 0; border-collapse: collapse; font-size: 14px; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.paper-article .resistance-table th, .paper-article .resistance-table td { padding: 8px 12px; border: 0; border-bottom: 1px solid var(--line); }
+.resistance-table thead th { text-align: left; background: #e5ebdf; }
+.resistance-table tbody th { text-align: left; font-weight: 500; }
+.resistance-table td { text-align: right; }
+.resistance-table th:nth-child(3), .resistance-table th:nth-child(5) { border-left: 1px solid var(--line); }
+.resistance-table caption { caption-side: bottom; text-align: left; padding-top: 12px; font-size: 13px; color: var(--muted); }
